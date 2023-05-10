@@ -52,9 +52,9 @@
 														"$ref": "AAAAAAGH+F6U0jNigKk="
 													},
 													"font": "Arial;13;0",
-													"left": 56.72998046875,
-													"top": 117,
-													"width": 40,
+													"left": 144.72998046875,
+													"top": 181,
+													"width": 34.7349853515625,
 													"height": 13,
 													"text": "로그인"
 												},
@@ -65,18 +65,18 @@
 														"$ref": "AAAAAAGH+F6U0jNigKk="
 													},
 													"font": "Arial;13;1",
-													"left": 37,
-													"top": 117,
+													"left": 125,
+													"top": 181,
 													"width": 14.72998046875,
 													"height": 13,
 													"text": "sd"
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 32,
-											"top": 112,
-											"width": 913,
-											"height": 545,
+											"left": 120,
+											"top": 176,
+											"width": 681,
+											"height": 369,
 											"nameLabel": {
 												"$ref": "AAAAAAGH+F6U0jNjNGI="
 											},
@@ -2196,7 +2196,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2287,7 +2288,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2295,7 +2297,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGH+F6U0jNfSsI="
 							},
-							"name": "Role3"
+							"name": "Role3",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2359,7 +2362,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2367,7 +2371,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGH+F6U0jNfSsI="
 							},
-							"name": "Role5"
+							"name": "Role5",
+							"type": ""
 						}
 					]
 				},
@@ -2414,7 +2419,7 @@
 													"font": "Arial;13;0",
 													"left": 80.72998046875,
 													"top": 125,
-													"width": 53,
+													"width": 45.97998046875,
 													"height": 13,
 													"text": "로그아웃"
 												},
@@ -3805,7 +3810,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGH+F7vWjNvywY="
 							},
-							"name": "Role1"
+							"name": "Role1",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3842,7 +3848,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3906,7 +3913,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3970,7 +3978,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3978,7 +3987,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGH+F7vWjNvywY="
 							},
-							"name": "Role5"
+							"name": "Role5",
+							"type": ""
 						}
 					]
 				},
@@ -4023,9 +4033,9 @@
 														"$ref": "AAAAAAGH+F8jMTOC/I8="
 													},
 													"font": "Arial;13;0",
-													"left": 40.72998046875,
-													"top": 45,
-													"width": 56.61181640625,
+													"left": 128.72998046875,
+													"top": 93,
+													"width": 49.591796875,
 													"height": 13,
 													"text": "회원 탈퇴"
 												},
@@ -4036,18 +4046,18 @@
 														"$ref": "AAAAAAGH+F8jMTOC/I8="
 													},
 													"font": "Arial;13;1",
-													"left": 21,
-													"top": 45,
+													"left": 109,
+													"top": 93,
 													"width": 14.72998046875,
 													"height": 13,
 													"text": "sd"
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 16,
-											"top": 40,
-											"width": 849,
-											"height": 593,
+											"left": 104,
+											"top": 88,
+											"width": 689,
+											"height": 465,
 											"nameLabel": {
 												"$ref": "AAAAAAGH+F8jMTODOdk="
 											},
@@ -5928,7 +5938,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6019,7 +6030,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6027,7 +6039,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGH+F8jMTN/LRI="
 							},
-							"name": "Role3"
+							"name": "Role3",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6118,7 +6131,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6155,7 +6169,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6246,7 +6261,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6254,7 +6270,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGH+F8jMTN/LRI="
 							},
-							"name": "Role7"
+							"name": "Role7",
+							"type": ""
 						}
 					]
 				},
@@ -7435,9 +7452,9 @@
 														"$ref": "AAAAAAGH+4fBnRYLv4k="
 													},
 													"font": "Arial;13;0",
-													"left": 40.72998046875,
-													"top": 21,
-													"width": 53,
+													"left": 72.72998046875,
+													"top": 61,
+													"width": 45.97998046875,
 													"height": 13,
 													"text": "회원가입"
 												},
@@ -7448,18 +7465,18 @@
 														"$ref": "AAAAAAGH+4fBnRYLv4k="
 													},
 													"font": "Arial;13;1",
-													"left": 21,
-													"top": 21,
+													"left": 53,
+													"top": 61,
 													"width": 14.72998046875,
 													"height": 13,
 													"text": "sd"
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 16,
-											"top": 16,
-											"width": 801,
-											"height": 657,
+											"left": 48,
+											"top": 56,
+											"width": 673,
+											"height": 513,
 											"nameLabel": {
 												"$ref": "AAAAAAGH+4fBnRYMCw4="
 											},
@@ -10376,7 +10393,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10440,7 +10458,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10531,7 +10550,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10568,7 +10588,8 @@
 										}
 									}
 								}
-							]
+							],
+							"type": ""
 						}
 					]
 				}
