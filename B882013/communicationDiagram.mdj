@@ -20064,9 +20064,9 @@
 														"$ref": "AAAAAAGH9XiEutrXf30="
 													},
 													"font": "Arial;13;0",
-													"left": 32.72998046875,
+													"left": 32.45703125,
 													"top": 13,
-													"width": 99.998046875,
+													"width": 99.033203125,
 													"height": 13,
 													"text": "CheckClosedInfo"
 												},
@@ -20079,7 +20079,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 14.45703125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -22748,9 +22748,9 @@
 														"$ref": "AAAAAAGH9X6lNQM4a0A="
 													},
 													"font": "Arial;13;0",
-													"left": 48.72998046875,
+													"left": 48.45703125,
 													"top": 13,
-													"width": 109.37353515625,
+													"width": 109.341796875,
 													"height": 13,
 													"text": "RecruitInfoStatistic"
 												},
@@ -22763,7 +22763,7 @@
 													"font": "Arial;13;1",
 													"left": 29,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 14.45703125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -26027,7 +26027,7 @@
 											"top": 499,
 											"width": 129.2763671875,
 											"height": 13,
-											"text": "+companyName",
+											"text": "-companyName",
 											"horizontalAlignment": 0
 										}
 									],
@@ -26259,7 +26259,7 @@
 											"top": 491,
 											"width": 130.4189453125,
 											"height": 13,
-											"text": "+work",
+											"text": "-work",
 											"horizontalAlignment": 0
 										},
 										{
@@ -26276,7 +26276,7 @@
 											"top": 506,
 											"width": 130.4189453125,
 											"height": 13,
-											"text": "+numPeople",
+											"text": "-numPeople",
 											"horizontalAlignment": 0
 										},
 										{
@@ -26293,7 +26293,7 @@
 											"top": 521,
 											"width": 130.4189453125,
 											"height": 13,
-											"text": "+deadline",
+											"text": "-deadline",
 											"horizontalAlignment": 0
 										},
 										{
@@ -26310,7 +26310,7 @@
 											"top": 536,
 											"width": 130.4189453125,
 											"height": 13,
-											"text": "+recruitInfoName",
+											"text": "-recruitInfoName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -26327,7 +26327,7 @@
 											"top": 551,
 											"width": 130.4189453125,
 											"height": 13,
-											"text": "+numAppliers",
+											"text": "-numAppliers",
 											"horizontalAlignment": 0
 										}
 									],
@@ -26793,7 +26793,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAJInDJTmhV0="
 							},
-							"name": "companyName"
+							"name": "companyName",
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -26860,7 +26862,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAJIvmZUP6Ok="
 							},
-							"name": "work"
+							"name": "work",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -26868,7 +26872,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAJIvmZUP6Ok="
 							},
-							"name": "numPeople"
+							"name": "numPeople",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -26876,7 +26882,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAJIvmZUP6Ok="
 							},
-							"name": "deadline"
+							"name": "deadline",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -26884,7 +26892,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAJIvmZUP6Ok="
 							},
-							"name": "recruitInfoName"
+							"name": "recruitInfoName",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -26892,7 +26902,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAJIvmZUP6Ok="
 							},
-							"name": "numAppliers"
+							"name": "numAppliers",
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -27352,7 +27364,7 @@
 											"font": "Arial;13;0",
 											"left": 269,
 											"top": 357,
-											"width": 96.89697265625,
+											"width": 97.88720703125,
 											"height": 13,
 											"text": "«entity»"
 										},
@@ -27365,7 +27377,7 @@
 											"font": "Arial;13;1",
 											"left": 269,
 											"top": 372,
-											"width": 96.89697265625,
+											"width": 97.88720703125,
 											"height": 13,
 											"text": "Company"
 										},
@@ -27398,7 +27410,7 @@
 									"font": "Arial;13;0",
 									"left": 264,
 									"top": 352,
-									"width": 106.89697265625,
+									"width": 107.88720703125,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIAKrDIkj8Fak="
@@ -27435,16 +27447,16 @@
 											"font": "Arial;13;0",
 											"left": 269,
 											"top": 395,
-											"width": 96.89697265625,
+											"width": 97.88720703125,
 											"height": 13,
-											"text": "+companyName",
+											"text": "-companyName",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 264,
 									"top": 390,
-									"width": 106.89697265625,
+									"width": 107.88720703125,
 									"height": 23
 								},
 								{
@@ -27469,7 +27481,7 @@
 											"font": "Arial;13;0",
 											"left": 269,
 											"top": 418,
-											"width": 96.89697265625,
+											"width": 97.88720703125,
 											"height": 13,
 											"text": "+listRecruitInfo()",
 											"horizontalAlignment": 0
@@ -27478,7 +27490,7 @@
 									"font": "Arial;13;0",
 									"left": 264,
 									"top": 413,
-									"width": 106.89697265625,
+									"width": 107.88720703125,
 									"height": 23
 								},
 								{
@@ -27516,7 +27528,7 @@
 							"containerChangeable": true,
 							"left": 264,
 							"top": 352,
-							"width": 106.89697265625,
+							"width": 107.88720703125,
 							"height": 84,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIAKrDIkj7rgw="
@@ -27563,7 +27575,7 @@
 											"font": "Arial;13;0",
 											"left": 509,
 											"top": 333,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
 											"text": "«entity»"
 										},
@@ -27576,7 +27588,7 @@
 											"font": "Arial;13;1",
 											"left": 509,
 											"top": 348,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
 											"text": "RecruitInfo"
 										},
@@ -27590,7 +27602,7 @@
 											"font": "Arial;13;0",
 											"left": -112,
 											"top": -112,
-											"width": 73.67724609375,
+											"width": 77.9365234375,
 											"height": 13,
 											"text": "(from Model)"
 										},
@@ -27611,7 +27623,7 @@
 									"font": "Arial;13;0",
 									"left": 504,
 									"top": 328,
-									"width": 110.07080078125,
+									"width": 114.4443359375,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIA5BrA0Xqd1U="
@@ -27648,9 +27660,9 @@
 											"font": "Arial;13;0",
 											"left": 509,
 											"top": 371,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+recruitInfoName",
+											"text": "-recruitInfoName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -27665,9 +27677,9 @@
 											"font": "Arial;13;0",
 											"left": 509,
 											"top": 386,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+work",
+											"text": "-work",
 											"horizontalAlignment": 0
 										},
 										{
@@ -27682,9 +27694,9 @@
 											"font": "Arial;13;0",
 											"left": 509,
 											"top": 401,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+deadline",
+											"text": "-deadline",
 											"horizontalAlignment": 0
 										},
 										{
@@ -27699,9 +27711,9 @@
 											"font": "Arial;13;0",
 											"left": 509,
 											"top": 416,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+recruitInfoName",
+											"text": "-recruitInfoName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -27716,16 +27728,16 @@
 											"font": "Arial;13;0",
 											"left": 509,
 											"top": 431,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+numAppliers",
+											"text": "-numAppliers",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 504,
 									"top": 366,
-									"width": 110.07080078125,
+									"width": 114.4443359375,
 									"height": 83
 								},
 								{
@@ -27740,7 +27752,7 @@
 									"font": "Arial;13;0",
 									"left": 504,
 									"top": 449,
-									"width": 110.07080078125,
+									"width": 114.4443359375,
 									"height": 10
 								},
 								{
@@ -27780,7 +27792,7 @@
 							"containerChangeable": true,
 							"left": 504,
 							"top": 328,
-							"width": 110.07080078125,
+							"width": 114.4443359375,
 							"height": 131,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIA5BrAkXpsIc="
@@ -27945,7 +27957,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 396,
+									"left": 397,
 									"top": 401,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -27965,7 +27977,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 399,
+									"left": 400,
 									"top": 415,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -27985,7 +27997,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 392,
+									"left": 393,
 									"top": 374,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -28031,7 +28043,7 @@
 								"$ref": "AAAAAAGIA5BrAkXoF8M="
 							},
 							"lineStyle": 1,
-							"points": "503:393;371:393",
+							"points": "503:393;372:393",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGIA5eKwUzP5kY="
@@ -28756,7 +28768,7 @@
 											"top": 371,
 											"width": 116.6572265625,
 											"height": 13,
-											"text": "+companyName",
+											"text": "-companyName",
 											"horizontalAlignment": 0
 										}
 									],
@@ -28988,7 +29000,7 @@
 											"top": 363,
 											"width": 133.57373046875,
 											"height": 13,
-											"text": "+work",
+											"text": "-work",
 											"horizontalAlignment": 0
 										},
 										{
@@ -29005,7 +29017,7 @@
 											"top": 378,
 											"width": 133.57373046875,
 											"height": 13,
-											"text": "+numPeople",
+											"text": "-numPeople",
 											"horizontalAlignment": 0
 										},
 										{
@@ -29022,7 +29034,7 @@
 											"top": 393,
 											"width": 133.57373046875,
 											"height": 13,
-											"text": "+deadline",
+											"text": "-deadline",
 											"horizontalAlignment": 0
 										},
 										{
@@ -29039,7 +29051,7 @@
 											"top": 408,
 											"width": 133.57373046875,
 											"height": 13,
-											"text": "+recruitInfoName",
+											"text": "-recruitInfoName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -29056,7 +29068,7 @@
 											"top": 423,
 											"width": 133.57373046875,
 											"height": 13,
-											"text": "+numAppliers",
+											"text": "-numAppliers",
 											"horizontalAlignment": 0
 										}
 									],
@@ -30003,7 +30015,7 @@
 											"top": 355,
 											"width": 100.7880859375,
 											"height": 13,
-											"text": "+companyName",
+											"text": "-companyName",
 											"horizontalAlignment": 0
 										}
 									],
@@ -30131,7 +30143,7 @@
 											"font": "Arial;13;0",
 											"left": 533,
 											"top": 317,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
 											"text": "«entity»"
 										},
@@ -30144,7 +30156,7 @@
 											"font": "Arial;13;1",
 											"left": 533,
 											"top": 332,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
 											"text": "RecruitInfo"
 										},
@@ -30158,7 +30170,7 @@
 											"font": "Arial;13;0",
 											"left": -64,
 											"top": -112,
-											"width": 73.67724609375,
+											"width": 77.9365234375,
 											"height": 13,
 											"text": "(from Model)"
 										},
@@ -30179,7 +30191,7 @@
 									"font": "Arial;13;0",
 									"left": 528,
 									"top": 312,
-									"width": 110.07080078125,
+									"width": 114.4443359375,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIA5LHwElPZoo="
@@ -30216,9 +30228,9 @@
 											"font": "Arial;13;0",
 											"left": 533,
 											"top": 355,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+recruitInfoName",
+											"text": "-recruitInfoName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -30233,9 +30245,9 @@
 											"font": "Arial;13;0",
 											"left": 533,
 											"top": 370,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+work",
+											"text": "-work",
 											"horizontalAlignment": 0
 										},
 										{
@@ -30250,9 +30262,9 @@
 											"font": "Arial;13;0",
 											"left": 533,
 											"top": 385,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+deadline",
+											"text": "-deadline",
 											"horizontalAlignment": 0
 										},
 										{
@@ -30267,9 +30279,9 @@
 											"font": "Arial;13;0",
 											"left": 533,
 											"top": 400,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+recruitInfoName",
+											"text": "-recruitInfoName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -30284,16 +30296,16 @@
 											"font": "Arial;13;0",
 											"left": 533,
 											"top": 415,
-											"width": 100.07080078125,
+											"width": 104.4443359375,
 											"height": 13,
-											"text": "+numAppliers",
+											"text": "-numAppliers",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 528,
 									"top": 350,
-									"width": 110.07080078125,
+									"width": 114.4443359375,
 									"height": 83
 								},
 								{
@@ -30308,7 +30320,7 @@
 									"font": "Arial;13;0",
 									"left": 528,
 									"top": 433,
-									"width": 110.07080078125,
+									"width": 114.4443359375,
 									"height": 10
 								},
 								{
@@ -30348,7 +30360,7 @@
 							"containerChangeable": true,
 							"left": 528,
 							"top": 312,
-							"width": 110.07080078125,
+							"width": 114.4443359375,
 							"height": 131,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIA5LHwElOG1w="
@@ -30699,7 +30711,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAKrDIkj4KWA="
 							},
-							"name": "companyName"
+							"name": "companyName",
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -30846,7 +30860,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAK60VVrevgU="
 							},
-							"name": "companyName"
+							"name": "companyName",
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -30913,7 +30929,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAK69xVsHZ7w="
 							},
-							"name": "work"
+							"name": "work",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -30921,7 +30939,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAK69xVsHZ7w="
 							},
-							"name": "numPeople"
+							"name": "numPeople",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -30929,7 +30949,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAK69xVsHZ7w="
 							},
-							"name": "deadline"
+							"name": "deadline",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -30937,7 +30959,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAK69xVsHZ7w="
 							},
-							"name": "recruitInfoName"
+							"name": "recruitInfoName",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -30945,7 +30969,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAK69xVsHZ7w="
 							},
-							"name": "numAppliers"
+							"name": "numAppliers",
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -31044,7 +31070,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIALcG47qvfrk="
 							},
-							"name": "companyName"
+							"name": "companyName",
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -31579,7 +31607,7 @@
 											"top": 395,
 											"width": 97.88720703125,
 											"height": 13,
-											"text": "+companyName",
+											"text": "-companyName",
 											"horizontalAlignment": 0
 										}
 									],
@@ -31794,7 +31822,7 @@
 											"top": 387,
 											"width": 113.04541015625,
 											"height": 13,
-											"text": "+work",
+											"text": "-work",
 											"horizontalAlignment": 0
 										},
 										{
@@ -31811,7 +31839,7 @@
 											"top": 402,
 											"width": 113.04541015625,
 											"height": 13,
-											"text": "+numPeople",
+											"text": "-numPeople",
 											"horizontalAlignment": 0
 										},
 										{
@@ -31828,7 +31856,7 @@
 											"top": 417,
 											"width": 113.04541015625,
 											"height": 13,
-											"text": "+deadline",
+											"text": "-deadline",
 											"horizontalAlignment": 0
 										},
 										{
@@ -31845,7 +31873,7 @@
 											"top": 432,
 											"width": 113.04541015625,
 											"height": 13,
-											"text": "+recruitInfoName",
+											"text": "-recruitInfoName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -31862,7 +31890,7 @@
 											"top": 447,
 											"width": 113.04541015625,
 											"height": 13,
-											"text": "+numAppliers",
+											"text": "-numAppliers",
 											"horizontalAlignment": 0
 										}
 									],
@@ -32295,6 +32323,7 @@
 								"$ref": "AAAAAAGIALrxdM9lg8I="
 							},
 							"name": "companyName",
+							"visibility": "private",
 							"type": ""
 						}
 					],
@@ -32355,6 +32384,7 @@
 								"$ref": "AAAAAAGIALr7js+O0jA="
 							},
 							"name": "work",
+							"visibility": "private",
 							"type": ""
 						},
 						{
@@ -32364,6 +32394,7 @@
 								"$ref": "AAAAAAGIALr7js+O0jA="
 							},
 							"name": "numPeople",
+							"visibility": "private",
 							"type": ""
 						},
 						{
@@ -32373,6 +32404,7 @@
 								"$ref": "AAAAAAGIALr7js+O0jA="
 							},
 							"name": "deadline",
+							"visibility": "private",
 							"type": ""
 						},
 						{
@@ -32381,7 +32413,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIALr7js+O0jA="
 							},
-							"name": "recruitInfoName"
+							"name": "recruitInfoName",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32389,7 +32423,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIALr7js+O0jA="
 							},
-							"name": "numAppliers"
+							"name": "numAppliers",
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -32448,7 +32484,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5BrAkXmH0Y="
 							},
-							"name": "recruitInfoName"
+							"name": "recruitInfoName",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32456,7 +32494,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5BrAkXmH0Y="
 							},
-							"name": "work"
+							"name": "work",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32464,7 +32504,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5BrAkXmH0Y="
 							},
-							"name": "deadline"
+							"name": "deadline",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32472,7 +32514,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5BrAkXmH0Y="
 							},
-							"name": "recruitInfoName"
+							"name": "recruitInfoName",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32480,7 +32524,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5BrAkXmH0Y="
 							},
-							"name": "numAppliers"
+							"name": "numAppliers",
+							"visibility": "private",
+							"type": ""
 						}
 					]
 				},
@@ -32529,7 +32575,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5LHwElLWkA="
 							},
-							"name": "recruitInfoName"
+							"name": "recruitInfoName",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32537,7 +32585,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5LHwElLWkA="
 							},
-							"name": "work"
+							"name": "work",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32545,7 +32595,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5LHwElLWkA="
 							},
-							"name": "deadline"
+							"name": "deadline",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32553,7 +32605,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5LHwElLWkA="
 							},
-							"name": "recruitInfoName"
+							"name": "recruitInfoName",
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -32561,7 +32615,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGIA5LHwElLWkA="
 							},
-							"name": "numAppliers"
+							"name": "numAppliers",
+							"visibility": "private",
+							"type": ""
 						}
 					]
 				}
