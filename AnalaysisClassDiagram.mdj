@@ -629,7 +629,7 @@
 											"top": 1831,
 											"width": 135,
 											"height": 13,
-											"text": "+getApplyDetail()",
+											"text": "+getApplyInfoDetail()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1142,7 +1142,7 @@
 											"top": 1815,
 											"width": 167.99072265625,
 											"height": 13,
-											"text": "+deleteApply()",
+											"text": "+deleteApplyInfo()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1159,7 +1159,7 @@
 											"top": 1830,
 											"width": 167.99072265625,
 											"height": 13,
-											"text": "+getMonthlyApplyInfoNums()",
+											"text": "+getMonthlyApplyNums()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3459,8 +3459,8 @@
 									"top": 1327,
 									"width": 19.5126953125,
 									"height": 13,
-									"alpha": -0.5235987755982988,
-									"distance": 25,
+									"alpha": -0.5390412947052522,
+									"distance": 24.698178070456937,
 									"hostEdge": {
 										"$ref": "AAAAAAGIBdlS3qgSMdY="
 									},
@@ -4139,17 +4139,18 @@
 									"model": {
 										"$ref": "AAAAAAGIBdx7p85SYg0="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 577,
+									"left": 568,
 									"top": 1561,
+									"width": 19.5126953125,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGIBeKr7vOd7jI="
 									},
-									"edgePosition": 2
+									"edgePosition": 2,
+									"text": "0..*"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -4200,16 +4201,17 @@
 									"model": {
 										"$ref": "AAAAAAGIBdx7p85TZZY="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 502,
+									"left": 493,
 									"top": 1559,
+									"width": 19.5126953125,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGIBeKr7vOd7jI="
-									}
+									},
+									"text": "1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -5713,7 +5715,7 @@
 											"top": 364,
 											"width": 135.79541015625,
 											"height": 13,
-											"text": "RecruitInfoStatistic UI"
+											"text": "RecruitInfoStatisticUI"
 										},
 										{
 											"_type": "LabelView",
@@ -5926,7 +5928,7 @@
 											"top": 532,
 											"width": 135,
 											"height": 13,
-											"text": "RecruitInfoStatistics"
+											"text": "RecruitInfoStatistic"
 										},
 										{
 											"_type": "LabelView",
@@ -7345,7 +7347,7 @@
 											"top": 692,
 											"width": 151,
 											"height": 13,
-											"text": "ImmediateApplyUI"
+											"text": "Apply"
 										},
 										{
 											"_type": "LabelView",
@@ -7558,7 +7560,7 @@
 											"top": 812,
 											"width": 151,
 											"height": 13,
-											"text": "ImmediateApply"
+											"text": "Apply"
 										},
 										{
 											"_type": "LabelView",
@@ -8557,7 +8559,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 837,
-											"top": 909,
+											"top": 901,
 											"width": 143,
 											"height": 13,
 											"text": "«boundary»"
@@ -8570,10 +8572,10 @@
 											},
 											"font": "Arial;13;1",
 											"left": 837,
-											"top": 924,
+											"top": 916,
 											"width": 143,
 											"height": 13,
-											"text": "ApplyInfoStatisticsUI"
+											"text": "ApplyInfoStatisticUI"
 										},
 										{
 											"_type": "LabelView",
@@ -8584,7 +8586,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 208,
-											"top": -208,
+											"top": -224,
 											"width": 62.841796875,
 											"height": 13,
 											"text": "(from total)"
@@ -8598,14 +8600,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 208,
-											"top": -208,
+											"top": -224,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 832,
-									"top": 904,
+									"top": 896,
 									"width": 153,
 									"height": 38,
 									"stereotypeLabel": {
@@ -8632,7 +8634,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 832,
-									"top": 942,
+									"top": 934,
 									"width": 153,
 									"height": 10
 								},
@@ -8657,7 +8659,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 837,
-											"top": 957,
+											"top": 949,
 											"width": 143,
 											"height": 13,
 											"text": "+startInterface()",
@@ -8674,16 +8676,16 @@
 											},
 											"font": "Arial;13;0",
 											"left": 837,
-											"top": 972,
+											"top": 964,
 											"width": 143,
 											"height": 13,
-											"text": "+selectStatistics()",
+											"text": "+selectStatistic()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 832,
-									"top": 952,
+									"top": 944,
 									"width": 153,
 									"height": 38
 								},
@@ -8699,7 +8701,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 104,
-									"top": -104,
+									"top": -112,
 									"width": 10,
 									"height": 10
 								},
@@ -8715,7 +8717,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 104,
-									"top": -104,
+									"top": -112,
 									"width": 10,
 									"height": 10
 								}
@@ -8723,7 +8725,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 832,
-							"top": 904,
+							"top": 896,
 							"width": 153,
 							"height": 97,
 							"nameCompartment": {
@@ -8786,7 +8788,7 @@
 											"top": 1028,
 											"width": 143,
 											"height": 13,
-											"text": "ApplyInfoStatistics"
+											"text": "ApplyInfoStatistic"
 										},
 										{
 											"_type": "LabelView",
@@ -8873,7 +8875,7 @@
 											"top": 1061,
 											"width": 143,
 											"height": 13,
-											"text": "+showStatistics()",
+											"text": "+showStatistic()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9239,17 +9241,18 @@
 									"model": {
 										"$ref": "AAAAAAGIBiHr3sT1Kzg="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 577,
+									"left": 568,
 									"top": 1771,
+									"width": 19.5126953125,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGIBiHr3sT40zo="
 									},
-									"edgePosition": 2
+									"edgePosition": 2,
+									"text": "0..*"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -9300,16 +9303,17 @@
 									"model": {
 										"$ref": "AAAAAAGIBiHr3sT2EFc="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 503,
+									"left": 500,
 									"top": 1771,
+									"width": 7.22998046875,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAGIBiHr3sT40zo="
-									}
+									},
+									"text": "1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -9989,7 +9993,8 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAGIBdK1IIacCKo="
-								}
+								},
+								"multiplicity": "0..*"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -10000,7 +10005,8 @@
 								"reference": {
 									"$ref": "AAAAAAGIBdknIJ3yC80="
 								},
-								"aggregation": "shared"
+								"aggregation": "shared",
+								"multiplicity": "1"
 							}
 						}
 					],
@@ -10051,7 +10057,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIBdK1IIacCKo="
 							},
-							"name": "getApplyDetail"
+							"name": "getApplyInfoDetail"
 						},
 						{
 							"_type": "UMLOperation",
@@ -10161,7 +10167,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGIBc52sYVXbrA="
 					},
-					"name": "ApplyInfoStatisticsUI",
+					"name": "ApplyInfoStatisticUI",
 					"stereotype": "boundary",
 					"operations": [
 						{
@@ -10178,7 +10184,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIBffiRyTt9Ms="
 							},
-							"name": "selectStatistics"
+							"name": "selectStatistic"
 						}
 					]
 				},
@@ -10188,7 +10194,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGIBc52sYVXbrA="
 					},
-					"name": "ApplyInfoStatistics",
+					"name": "ApplyInfoStatistic",
 					"stereotype": "control",
 					"operations": [
 						{
@@ -10197,7 +10203,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIBfirrSghGF8="
 							},
-							"name": "showStatistics"
+							"name": "showStatistic"
 						}
 					]
 				},
@@ -19713,7 +19719,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIBdknIJ3yC80="
 							},
-							"name": "deleteApply"
+							"name": "deleteApplyInfo"
 						},
 						{
 							"_type": "UMLOperation",
@@ -19721,7 +19727,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIBdknIJ3yC80="
 							},
-							"name": "getMonthlyApplyInfoNums"
+							"name": "getMonthlyApplyNums"
 						}
 					]
 				},
@@ -50044,7 +50050,8 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAGIBdx7qM8/RPs="
-								}
+								},
+								"multiplicity": "0..*"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -50055,7 +50062,8 @@
 								"reference": {
 									"$ref": "AAAAAAGIBdknIJ3rxO4="
 								},
-								"aggregation": "shared"
+								"aggregation": "shared",
+								"multiplicity": "1"
 							}
 						}
 					],
@@ -55522,7 +55530,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGIBdx7osi9eTk="
 					},
-					"name": "RecruitInfoStatistic UI",
+					"name": "RecruitInfoStatisticUI",
 					"stereotype": "boundary",
 					"operations": [
 						{
@@ -55549,7 +55557,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGIBdx7osi9eTk="
 					},
-					"name": "RecruitInfoStatistics",
+					"name": "RecruitInfoStatistic",
 					"stereotype": "control",
 					"operations": [
 						{
@@ -69426,7 +69434,7 @@
 											"top": 388,
 											"width": 151,
 											"height": 13,
-											"text": "ApplyUI"
+											"text": "Apply"
 										},
 										{
 											"_type": "LabelView",
@@ -70778,7 +70786,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGIBe3EO68e/VM="
 					},
-					"name": "ImmediateApplyUI",
+					"name": "Apply",
 					"stereotype": "boundary",
 					"operations": [
 						{
@@ -70805,7 +70813,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGIBe3EO68e/VM="
 					},
-					"name": "ImmediateApply",
+					"name": "Apply",
 					"stereotype": "control",
 					"operations": [
 						{

@@ -52,7 +52,7 @@
 														"$ref": "AAAAAAGH+F6U0jNigKk="
 													},
 													"font": "Arial;13;0",
-													"left": 144.72998046875,
+													"left": 143.47998046875,
 													"top": 181,
 													"width": 34.7349853515625,
 													"height": 13,
@@ -67,7 +67,7 @@
 													"font": "Arial;13;1",
 													"left": 125,
 													"top": 181,
-													"width": 14.72998046875,
+													"width": 13.47998046875,
 													"height": 13,
 													"text": "sd"
 												}
@@ -4056,8 +4056,8 @@
 											"font": "Arial;13;0",
 											"left": 104,
 											"top": 88,
-											"width": 689,
-											"height": 465,
+											"width": 625,
+											"height": 441,
 											"nameLabel": {
 												"$ref": "AAAAAAGH+F8jMTODOdk="
 											},
@@ -4108,7 +4108,7 @@
 															"top": 151,
 															"width": 126,
 															"height": 13,
-															"text": ":UnregisterUI"
+															"text": ":WithdrawlUI"
 														},
 														{
 															"_type": "LabelView",
@@ -4310,7 +4310,7 @@
 															"top": 423,
 															"width": 126,
 															"height": 13,
-															"text": ":Unregister"
+															"text": ":Withdrawl"
 														},
 														{
 															"_type": "LabelView",
@@ -4725,13 +4725,13 @@
 														"$ref": "AAAAAAGH/DGbHMMK+98="
 													},
 													"font": "Arial;13;0",
-													"left": 573.234130859375,
-													"top": 300,
-													"width": 84.53173828125,
+													"left": 571.431396484375,
+													"top": 296,
+													"width": 88.13720703125,
 													"height": 13,
-													"alpha": 0.07827112523660383,
-													"distance": 51.15662224971465,
-													"text": "3 : unregister()"
+													"alpha": 0.15559479795827375,
+													"distance": 51.62363799656123,
+													"text": "3 : withdrawal()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -5682,13 +5682,13 @@
 														"$ref": "AAAAAAGIAEwfWP+if9I="
 													},
 													"font": "Arial;13;0",
-													"left": 368.234130859375,
-													"top": 144,
-													"width": 84.53173828125,
+													"left": 366.431396484375,
+													"top": 128,
+													"width": 88.13720703125,
 													"height": 13,
-													"alpha": 1.57079566012823,
-													"distance": 15,
-													"text": "2 : unregister()"
+													"alpha": 1.5707960042142515,
+													"distance": 31,
+													"text": "2 : withdrawal()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -5756,7 +5756,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGH+F8jMTOAV7U="
 									},
-									"name": "unregister()",
+									"name": "withdrawal()",
 									"source": {
 										"$ref": "AAAAAAGH+F98ezOSDbE="
 									},
@@ -5810,7 +5810,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGH+F8jMTOAV7U="
 									},
-									"name": "unregister()",
+									"name": "withdrawal()",
 									"source": {
 										"$ref": "AAAAAAGH+Iq3BDT4nok="
 									},
@@ -5830,7 +5830,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGH+F8jMTOAV7U="
 									},
-									"name": ":UnregisterUI",
+									"name": ":WithdrawlUI",
 									"represent": {
 										"$ref": "AAAAAAGH+F98ezOR1QI="
 									},
@@ -5854,7 +5854,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGH+F8jMTOAV7U="
 									},
-									"name": ":Unregister",
+									"name": ":Withdrawl",
 									"represent": {
 										"$ref": "AAAAAAGH+//F3xMHtIY="
 									},
