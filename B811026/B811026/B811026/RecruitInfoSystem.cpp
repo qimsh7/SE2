@@ -1,6 +1,7 @@
 #include "RecruitInfoSystem.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 
@@ -77,9 +78,32 @@ void Applicant::getApplyNumsPerWork()
     // 현재 로그인한 applicant의 지원목록리스트
     vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
     
-    // 업무별로 지원횟수 출력해야함
-    // 업무들을 뽑아서 리스트를 만든다?
+    // 업무들을 모아놓은 리스트
+    vector <string> workList;
     
+    // 업무들을 모아놓은 리스트에서 중복 제거한 리스트
+    vector <string> workListUnique;
+    
+    // loop 돌면서 업무들을 workList와 workListUnique에 push
+    for (int i = 0 ; i < applyInfoList.size(); i++)
+    {
+        string work = applyInfoList[i]->getWork();
+        workList.push_back(work);
+        workListUnique.push_back(work);
+    }
+    
+    // workListUnique에서 중복 제거
+    sort(workListUnique.begin(), workListUnique.end());
+    workListUnique.erase(unique(workListUnique.begin(), workListUnique.end(), workListUnique.end()));
+    
+    // loop 돌면서 업무와 지원횟수 출력
+    for (int i = 0 ; i < workListUnique.size() ; i++)
+    {
+        string targetWork = workListUnique[i];
+        int cnt = count(workList.begin(), workList.end(), targetWork);
+        // 출력 양식
+        cout << targetWork << ' ' << cnt << endl;
+    }
 }
 
 
