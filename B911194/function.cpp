@@ -13,23 +13,23 @@ using namespace std;
 
 
 void doTask()
-{	// ¸Ş´º ÆÄ½ÌÀ» À§ÇÑ level ±¸ºĞÀ» À§ÇÑ º¯¼ö
+{	// ë©”ë‰´ íŒŒì‹±ì„ ìœ„í•œ level êµ¬ë¶„ì„ ìœ„í•œ ë³€ìˆ˜
 	int menu_level_1 = 0, menu_level_2 = 0; int is_program_exit = 0;
 		
 	while (!is_program_exit) { 
-		// ÀÔ·ÂÆÄÀÏ¿¡¼­ ¸Ş´º ¼ıÀÚ 2°³¸¦ ÀĞ±â
+		// ì…ë ¥íŒŒì¼ì—ì„œ ë©”ë‰´ ìˆ«ì 2ê°œë¥¼ ì½ê¸°
 		inputFile >> menu_level_1 >> menu_level_2;
 
-		// ¸Ş´º ±¸ºĞ ¹× ÇØ´ç ¿¬»ê ¼öÇà
+		// ë©”ë‰´ êµ¬ë¶„ ë° í•´ë‹¹ ì—°ì‚° ìˆ˜í–‰
 		switch (menu_level_1) {
 			case 1: { switch (menu_level_2) {
-				case 1: // "1.1. È¸¿ø°¡ÀÔ" ¸Ş´º ºÎºĞ
-				{	// join() ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà 
+				case 1: // "1.1. íšŒì›ê°€ì…" ë©”ë‰´ ë¶€ë¶„
+				{	// join() í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰ 
 					join();
 					break; 
 				} 
-				case 2:	// "1.2. È¸¿øÅ»Åğ" ¸Ş´º ºÎºĞ
-				{	// withdrawal() ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà
+				case 2:	// "1.2. íšŒì›íƒˆí‡´" ë©”ë‰´ ë¶€ë¶„
+				{	// withdrawal() í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰
 					withdrawal();
 					break; 
 				}
@@ -37,13 +37,13 @@ void doTask()
 			}}
 
 			case 2: { switch (menu_level_2) {
-				case 1: // "2.1. ·Î±×ÀÎ" ¸Ş´º ºÎºĞ
-				{	// login() ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà
+				case 1: // "2.1. ë¡œê·¸ì¸" ë©”ë‰´ ë¶€ë¶„
+				{	// login() í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰
 					login();
 					break;
 				}
-				case 2: // "2.2. ·Î±×¾Æ¿ô" ¸Ş´º ºÎºĞ
-				{	// logout() ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà
+				case 2: // "2.2. ë¡œê·¸ì•„ì›ƒ" ë©”ë‰´ ë¶€ë¶„
+				{	// logout() í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰
 					logout();
 					break;
 				}
@@ -51,13 +51,13 @@ void doTask()
 			}}
 
 			case 3: { switch (menu_level_2) {
-				case 1: // "3.1. Ã¤¿ë Á¤º¸ µî·Ï" ¸Ş´º ºÎºĞ
-				{	// () ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà 
+				case 1: // "3.1. ì±„ìš© ì •ë³´ ë“±ë¡" ë©”ë‰´ ë¶€ë¶„
+				{	// () í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰ 
 					();
 					break;
 				}
-				case 2:	// "3.2. µî·ÏµÈ Ã¤¿ë Á¤º¸ Á¶È¸" ¸Ş´º ºÎºĞ
-				{	// () ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà
+				case 2:	// "3.2. ë“±ë¡ëœ ì±„ìš© ì •ë³´ ì¡°íšŒ" ë©”ë‰´ ë¶€ë¶„
+				{	// () í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰
 					();
 					break;
 				}
@@ -65,23 +65,23 @@ void doTask()
 			}}
 			
 			case 4: { switch (menu_level_2) {
-				case 1: // "4.1. Ã¤¿ë Á¤º¸ °Ë»ö" ¸Ş´º ºÎºĞ
-				{	// () ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà 
+				case 1: // "4.1. ì±„ìš© ì •ë³´ ê²€ìƒ‰" ë©”ë‰´ ë¶€ë¶„
+				{	// () í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰ 
 					();
 					break;
 				}
-				case 2:	// "4.2. Ã¤¿ë Áö¿ø" ¸Ş´º ºÎºĞ
-				{	// () ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà
+				case 2:	// "4.2. ì±„ìš© ì§€ì›" ë©”ë‰´ ë¶€ë¶„
+				{	// () í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰
 					();
 					break;
 				}
-				case 3:	// "4.3. Áö¿ø Á¤º¸ Á¶È¸" ¸Ş´º ºÎºĞ
-				{	// () ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà
+				case 3:	// "4.3. ì§€ì› ì •ë³´ ì¡°íšŒ" ë©”ë‰´ ë¶€ë¶„
+				{	// () í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰
 					();
 					break;
 				}
-				case 4:	// "4.4. Áö¿ø Ãë¼Ò" ¸Ş´º ºÎºĞ
-				{	// () ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà
+				case 4:	// "4.4. ì§€ì› ì·¨ì†Œ" ë©”ë‰´ ë¶€ë¶„
+				{	// () í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰
 					();
 					break;
 				}
@@ -89,8 +89,8 @@ void doTask()
 			}}
 
 			case 5: { switch (menu_level_2) {
-				case 1: // "5.1. Áö¿ø Á¤º¸ Åë°è" ¸Ş´º ºÎºĞ
-				{	// () ÇÔ¼ö¿¡¼­ ÇØ´ç ±â´É ¼öÇà 
+				case 1: // "5.1. ì§€ì› ì •ë³´ í†µê³„" ë©”ë‰´ ë¶€ë¶„
+				{	// () í•¨ìˆ˜ì—ì„œ í•´ë‹¹ ê¸°ëŠ¥ ìˆ˜í–‰ 
 					();
 					break;
 				}
@@ -98,7 +98,7 @@ void doTask()
 			}}
 
 			case 6: { switch (menu_level_2) {
-				case 1: // "6.1. Á¾·á¡° ¸Ş´º ºÎºĞ
+				case 1: // "6.1. ì¢…ë£Œâ€œ ë©”ë‰´ ë¶€ë¶„
 				{ 
 					program_exit(); 
 					is_program_exit = 1; 
@@ -111,7 +111,7 @@ void doTask()
 	}
 }
 
-//±â´É: È¸¿ø°¡ÀÔ
+//ê¸°ëŠ¥: íšŒì›ê°€ì…
 void join(vector<Member>& members)
 {
 	AddMemberUI addmemberui;
@@ -134,37 +134,34 @@ void Member::addNewMember(vector<Member>& members)
 {
 	char name[MAX_STRING], number[MAX_STRING], ID[MAX_STRING], PW[MAX_STRING];
 
-	int memberCategory = 0;				//ÀÏ¹İÈ¸¿øÀÎÁö È¸»çÈ¸¿øÀÎÁö ±¸ºĞ
+	int memberCategory = 0;				//ì¼ë°˜íšŒì›ì¸ì§€ íšŒì‚¬íšŒì›ì¸ì§€ êµ¬ë¶„
 
-	// ÀÔ·Â Çü½Ä : ÀÌ¸§, ÁÖ¹Î¹øÈ£, ID, Password¸¦ ÆÄÀÏ·ÎºÎÅÍ ÀĞÀ½
+	// ì…ë ¥ í˜•ì‹ : ì´ë¦„, ì£¼ë¯¼ë²ˆí˜¸, ID, Passwordë¥¼ íŒŒì¼ë¡œë¶€í„° ì½ìŒ
 	inputFile >> memberCategory;
 
-	if (memberCategory == 1)			// È¸»çÈ¸¿ø È¸¿ø°¡ÀÔ
+	if (memberCategory == 1)			// íšŒì‚¬íšŒì› íšŒì›ê°€ì…
 	{
-		vector <CompanyMember> member;	// CompanyMember °´Ã¼¸¦ ÀúÀåÇÏ´Â º¤ÅÍ »ı¼º
+		vector <CompanyMember> member;	// CompanyMember ê°ì²´ë¥¼ ì €ì¥í•˜ëŠ” ë²¡í„° ìƒì„±
 		CompanyMember m;
 		inputFile >> name >> number >> ID >> PW;
 		member.push_back(CompanyMember(name, number, ID, PW));
 	}
 
-	else if (memberCategory == 2)		// ÀÏ¹İÈ¸¿ø È¸¿ø°¡ÀÔ
+	else if (memberCategory == 2)		// ì¼ë°˜íšŒì› íšŒì›ê°€ì…
 	{
-		vector <NormalMember> member;	// NormalMember °´Ã¼¸¦ ÀúÀåÇÏ´Â º¤ÅÍ »ı¼º
+		vector <NormalMember> member;	// NormalMember ê°ì²´ë¥¼ ì €ì¥í•˜ëŠ” ë²¡í„° ìƒì„±
 		NormalMember m;
 		inputFile >> name >> number >> ID >> PW; 
 		member.push_back(NormalMember(name, number, ID, PW));
-		vector <Member> members;
-		Member ms;
-		members.push_back(Member(ID, PW));
 	}
 
-	outputFile << "1.1. È¸¿ø°¡ÀÔ" << endl;
+	outputFile << "1.1. íšŒì›ê°€ì…" << endl;
 	outputFile << "> " << memberCategory << " " << name << " " << number << " " << ID << " " << PW << endl;
 
 }
 
 
-//±â´É : È¸¿øÅ»Åğ
+//ê¸°ëŠ¥ : íšŒì›íƒˆí‡´
 void withdrawal(vector<Member>& members)
 {
 	WithdrawalUI withdrawalui;
@@ -191,17 +188,17 @@ void Member::deleteMember(vector<Member>& members)
 	for (auto it = members.begin(); it != members.end(); ++it) {
 		if (strcmp(it->getID(), targetID) == 0) {
 			members.erase(it);
-			break; // ¸â¹ö ID°¡ °íÀ¯ÇÏ´Ù°í °¡Á¤ÇÏ°í, ÀÏÄ¡ÇÏ´Â Ç×¸ñÀ» Ã£À¸¸é °Ë»öÀ» Áß´ÜÇÕ´Ï´Ù.
+			break; // ë©¤ë²„ IDê°€ ê³ ìœ í•˜ë‹¤ê³  ê°€ì •í•˜ê³ , ì¼ì¹˜í•˜ëŠ” í•­ëª©ì„ ì°¾ìœ¼ë©´ ê²€ìƒ‰ì„ ì¤‘ë‹¨í•©ë‹ˆë‹¤.
 		}
 	}
 
-	outputFile << "1.2. È¸¿øÅ»Åğ" << endl;
+	outputFile << "1.2. íšŒì›íƒˆí‡´" << endl;
 	outputFile << "> " << targetID << endl;
 
 }
 
 
-//±â´É : ·Î±×ÀÎ
+//ê¸°ëŠ¥ : ë¡œê·¸ì¸
 void login(vector<Member>& members)
 {
 	LoginUI loginui;
@@ -229,10 +226,10 @@ void Member::checkMember(vector<Member>& members)
 
 	for (Member& member : members) {
 		if (member.getID() == targetID && member.getPW() == targetPW) {
-			// ·Î±×ÀÎ ¼º°ø
+			// ë¡œê·¸ì¸ ì„±ê³µ
 			member.setLoggedIn(1);
 
-			outputFile << "2.1. ·Î±×ÀÎ" << endl;
+			outputFile << "2.1. ë¡œê·¸ì¸" << endl;
 			outputFile << "> " << targetID << " " << targetPW << endl;
 
 			return;
@@ -242,7 +239,7 @@ void Member::checkMember(vector<Member>& members)
 }
 
 
-//±â´É : ·Î±×¾Æ¿ô
+//ê¸°ëŠ¥ : ë¡œê·¸ì•„ì›ƒ
 void logout(vector<Member>& members)
 {
 	LogoutUI logoutui;
@@ -261,17 +258,17 @@ void Logout::logout(vector<Member>& members)
 
 	for (Member& member : members) {
 		if (member.getID() == targetID) {
-			// ·Î±×¾Æ¿ô Ã³¸®
+			// ë¡œê·¸ì•„ì›ƒ ì²˜ë¦¬
 			member.setLoggedIn(0);
 
-			outputFile << "2.2. ·Î±×¾Æ¿ô" << endl;
+			outputFile << "2.2. ë¡œê·¸ì•„ì›ƒ" << endl;
 			outputFile << "> " << targetID << endl;
 		}
 	}
 }
 
 
-//±â´É : ÇÁ·Î±×·¥ Á¾·á
+//ê¸°ëŠ¥ : í”„ë¡œê·¸ë¨ ì¢…ë£Œ
 void program_exit()
 {
 
