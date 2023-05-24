@@ -261,7 +261,8 @@ void Applicant::deleteApplyInfo(string entrepreneurNumber)
     }
     
     // 출력 양식
-    cout << applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
+    outputFile << "> ";
+    outputFile << applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
     
     // 해당 applyInfo 삭제
     if (j != -1)
@@ -301,8 +302,10 @@ void Applicant::getApplyNumsPerWork()
     {
         string targetWork = workListUnique[i];
         int cnt = count(workList.begin(), workList.end(), targetWork);
+        
         // 출력 양식
-        cout << targetWork << ' ' << cnt << endl;
+        outputFile << "> "
+        outputFile << targetWork << ' ' << cnt << endl;
     }
 }
 
@@ -316,7 +319,8 @@ void Applicant::getApplyNumsPerWork()
 void ApplyInfo::getApplyInfoDetail()
 {
     // 출력 양식
-    cout << getCompanyName() << " " << getWork() << " " << getNumPeople() << " " << getDeadline() << endl;
+    outputFile << "> ";
+    outputFile << getCompanyName() << " " << getWork() << " " << getNumPeople() << " " << getDeadline() << endl;
 }
 
 
@@ -374,7 +378,7 @@ void CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
 {
     string entrepreneurNumber;  // 사업자 번호
     // 입력 받음
-    cin >> entrepreneurNumber;
+    inputFile >> entrepreneurNumber;
     
     cancelApply->sendCancelApplyData(entrepreneurNumber);
 }
