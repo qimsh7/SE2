@@ -23,6 +23,12 @@ class Client
 
 };
 
+
+/*
+회원
+Member : Entity Class
+작성자 : 최은서
+*/
 class Member
 {
 private:
@@ -50,6 +56,11 @@ public:
 
 };
 
+/*
+일반회원
+NormalMember : Entity Class
+작성자 : 최은서
+*/
 class NormalMember : public Member    // 일반 회원
 {
 private:
@@ -61,6 +72,11 @@ public:
     NormalMember(string str1, string str2) : name(str1), residentNumber(str2) {}
 };
 
+/*
+회사회원
+CompanyMember : Entity Class
+작성자 : 최은서
+*/
 class CompanyMember : public Member    // 회사 회원
 {
 private:
@@ -72,48 +88,88 @@ public:
     CompanyMember(string str1, string str2) : companyName(str1), entrepreneurNumber(str2) {}
 };
 
+/*
+회원가입
+AddMember : Control Class
+작성자 : 최은서
+*/
 class AddMember
 {
 public:
     void createNewMember(vector<Member>& members);
 };
 
+/*
+회원가입
+AddMemberUI : Boundary Class
+작성자 : 최은서
+*/
 class AddMemberUI
 {
 public:
     void joinNewMember(vector<Member>& members);
 };
 
+/*
+회원탈퇴
+Withdrawal : Control Class
+작성자 : 최은서
+*/
 class Withdrawal
 {
 public:
     void withdrawal(vector<Member>& members);
 };
 
+/*
+회원탈퇴
+WithdrawalUI : Boundary Class
+작성자 : 최은서
+*/
 class WithdrawalUI
 {
 public:
     void requestWithdrawal(vector<Member>& members);
 };
 
+/*
+로그인
+Login : Control Class
+작성자 : 최은서
+*/
 class Login
 {
 public:
     void getLoginInformation(vector<Member>& members);
 };
 
+/*
+로그인
+LoginUI : Boundary Class
+작성자 : 최은서
+*/
 class LoginUI
 {
 public:
     void login(vector<Member>& members);
 };
 
+/*
+로그아웃
+Logout : Control Class
+작성자 : 최은서
+*/
 class Logout
 {
 public:
     void logout(vector<Member>& members);
 };
 
+/*
+로그아웃
+LogoutUI : Boudary Class
+작성자 : 최은서
+*/
 class LogoutUI
 {
 public:
