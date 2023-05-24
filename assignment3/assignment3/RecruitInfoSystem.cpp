@@ -415,6 +415,8 @@ void Applicant::getApplyInfo()
     
     // 출력 양식
     outputFile << "4.3. 지원 정보 조회" << endl << "> ";
+    
+    // loop 돌면서 applyInfo마다 세부정보 불러오기
     for (int i = 0 ; i < applyInfoList.size(); i++)
         applyInfoList[i]->getApplyInfoDetail();
 }
