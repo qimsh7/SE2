@@ -340,7 +340,7 @@ public:
     Company(const string& name = "");
     string getCompanyName() const; // 얘가 여기 들어가도 되나?
     ~Company();
-    void addNewRecruitInfo(string& work, int numPeople, string& deadline); // 이부분에 해당하는 내꺼모르겠당
+    void getRecruitInfo();
     vector<RecruitInfo*> getRecruitInfo() const;
 }; //class Company끝, 내가 손댄것없음, 겹치지만 사용하는 곳이 다름
 
