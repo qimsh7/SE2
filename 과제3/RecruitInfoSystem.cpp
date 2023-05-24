@@ -13,9 +13,12 @@ using namespace std;
 
 
 void doTask()
-{	// 메뉴 파싱을 위한 level 구분을 위한 변수
+{	
+	vector<Member> members;
+	
+	// 메뉴 파싱을 위한 level 구분을 위한 변수
 	int menu_level_1 = 0, menu_level_2 = 0; int is_program_exit = 0;
-		
+	
 	while (!is_program_exit) { 
 		// 입력파일에서 메뉴 숫자 2개를 읽기
 		inputFile >> menu_level_1 >> menu_level_2;
