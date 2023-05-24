@@ -101,11 +101,17 @@ class CompanyMember : public Member    // 회사 회원
 private:
     string companyName;            // 회사 이름
     string entrepreneurNumber;    // 사업자번호
+    vector<RecruitInfo*> recruitInfos;
+
 
 public:
     CompanyMember() : Member("", ""), companyName(""), entrepreneurNumber("") {}
     CompanyMember(string str1, string str2) : companyName(str1), entrepreneurNumber(str2) {}
+    void addNewRecruitInfo(string& work, int numPeople, string& deadline);
+    vector<RecruitInfo*> getAllRecruitInfo() const;
 };
+
+
 
 /*
 회원가입
@@ -236,18 +242,7 @@ public:
 Company : Entity Class
 작성자 : 남석현
 */
-class Company
-{
-private:
-    string companyName;
-    vector<RecruitInfo*> recruitInfos;
 
-public:
-    Company(const string& name = "");
-    ~Company();
-    void addNewRecruitInfo(string& work, int numPeople, string& deadline);
-    vector<RecruitInfo*> getAllRecruitInfo() const;
-};
 
 /*
 채용정보등록
@@ -278,16 +273,16 @@ AddRecruitInfo : Control Class
 작성자 : 남석현
 */
 class AddRecruitInfoUI; //전방선언
-class Company;
+class CompanyMember;
 
 class AddRecruitInfo
 {
 private:
     AddRecruitInfoUI& ui;
-    Company& company;
+    CompanyMember& companyMember;
 
 public:
-    AddRecruitInfo(AddRecruitInfoUI& ui, Company& comp);
+    AddRecruitInfo(AddRecruitInfoUI& ui, CompanyMember& comp);
     void startInterface();
     void addNewRecruitInfo(string& work, int numPeople, string& deadline);
 };
@@ -321,16 +316,16 @@ CheckRecruitInfo : Control Class
 작성자 : 남석현
 */
 class CheckRecruitInfoUI;
-class Company;
+class CompanyMember;
 
 class CheckRecruitInfo
 {
 private:
     CheckRecruitInfoUI& ui;
-    Company& company;
+    CompanyMember& companyMember;
 
 public:
-    CheckRecruitInfo(CheckRecruitInfoUI& ui, Company& comp);
+    CheckRecruitInfo(CheckRecruitInfoUI& ui, CompanyMember& comp);
     void startInterface();
     vector<RecruitInfo*> showRecruitInfo() const;
 };
@@ -363,15 +358,15 @@ RecruitInfoStatic : Control Class
 작성자 : 남석현
 */
 class RecruitInfoStatisticUI;
-class Company;
+class CompanyMember;
 
 class RecruitInfoStatistic {
 private:
     RecruitInfoStatisticUI& ui;
-    Company& company;
+    CompanyMember& companyMember;
 
 public:
-    RecruitInfoStatistic(RecruitInfoStatisticUI& ui, Company& company);
+    RecruitInfoStatistic(RecruitInfoStatisticUI& ui, CompanyMember& company);
     void startInterface();
     unordered_map<string, int> showStatistic() const;
 };
