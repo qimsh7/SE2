@@ -245,6 +245,13 @@ vector<RecruitInfo*> Company::getAllRecruitInfo() const {
 }
 
 /*
+지원정보 통계 sudo code
+1. Company.getAllRecruitInfo()로 vector불러오기
+2. for(recruitInfo : recruitinfos) 돌면서
+3. recruitInfo->setNumAppliers(recruitInfo->getNumAppliers()+1)
+*/
+
+/*
 채용정보등록
 AddRecruitInfoUI : Boundary Class
 작성자 : 남석현
