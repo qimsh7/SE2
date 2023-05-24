@@ -1,9 +1,9 @@
+#include "RecruitInfoSystem.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
-
-#include "Class.h"
+#include <algorithm>
 
 #define MAX_STRING 32
 #define INPUT_FILE_NAME "input.txt"
@@ -11,112 +11,9 @@
 
 using namespace std;
 
+ifstream inputFile(INPUT_FILE_NAME);   // input.txt 를 읽기모드로 열기
+ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 를 쓰기모드로 열기
 
-void doTask()
-{	
-	vector<Member> members;
-	
-	// 메뉴 파싱을 위한 level 구분을 위한 변수
-	int menu_level_1 = 0, menu_level_2 = 0; int is_program_exit = 0;
-	
-	while (!is_program_exit) { 
-		// 입력파일에서 메뉴 숫자 2개를 읽기
-		inputFile >> menu_level_1 >> menu_level_2;
-
-		// 메뉴 구분 및 해당 연산 수행
-		switch (menu_level_1) {
-			case 1: { switch (menu_level_2) {
-				case 1: // "1.1. 회원가입" 메뉴 부분
-				{	// join() 함수에서 해당 기능 수행 
-					AddMemberUI addmemberui;
-					addmemberui.joinNewMember(members);
-					break; 
-				} 
-				case 2:	// "1.2. 회원탈퇴" 메뉴 부분
-				{	// withdrawal() 함수에서 해당 기능 수행
-					WithdrawalUI withdrawalui;
-					withdrawalui.requestWithdrawal(members);
-					break; 
-				}
-
-			}}
-
-			case 2: { switch (menu_level_2) {
-				case 1: // "2.1. 로그인" 메뉴 부분
-				{	// login() 함수에서 해당 기능 수행
-					LoginUI loginui;
-					loginui.login(members);
-					break;
-				}
-				case 2: // "2.2. 로그아웃" 메뉴 부분
-				{	// logout() 함수에서 해당 기능 수행
-					LogoutUI logoutui;
-					logoutui.requestLogout(members);
-					break;
-				}
-
-			}}
-
-			case 3: { switch (menu_level_2) {
-				case 1: // "3.1. 채용 정보 등록" 메뉴 부분
-				{	// () 함수에서 해당 기능 수행 
-					();
-					break;
-				}
-				case 2:	// "3.2. 등록된 채용 정보 조회" 메뉴 부분
-				{	// () 함수에서 해당 기능 수행
-					();
-					break;
-				}
-
-			}}
-			
-			case 4: { switch (menu_level_2) {
-				case 1: // "4.1. 채용 정보 검색" 메뉴 부분
-				{	// () 함수에서 해당 기능 수행 
-					();
-					break;
-				}
-				case 2:	// "4.2. 채용 지원" 메뉴 부분
-				{	// () 함수에서 해당 기능 수행
-					();
-					break;
-				}
-				case 3:	// "4.3. 지원 정보 조회" 메뉴 부분
-				{	// () 함수에서 해당 기능 수행
-					();
-					break;
-				}
-				case 4:	// "4.4. 지원 취소" 메뉴 부분
-				{	// () 함수에서 해당 기능 수행
-					();
-					break;
-				}
-
-			}}
-
-			case 5: { switch (menu_level_2) {
-				case 1: // "5.1. 지원 정보 통계" 메뉴 부분
-				{	// () 함수에서 해당 기능 수행 
-					();
-					break;
-				}
-
-			}}
-
-			case 6: { switch (menu_level_2) {
-				case 1: // "6.1. 종료“ 메뉴 부분
-				{ 
-					program_exit(); 
-					is_program_exit = 1; 
-					break;
-				}
-			}}
-				
-				  return;
-		}
-	}
-}
 
 //기능: 회원가입
 void AddMemberUI::joinNewMember(vector<Member>& members)
@@ -311,3 +208,230 @@ RecruitInfoStaticUI : Boundary Class
 RecruitInfoStatic : Control Class
 작성자 : 남석현
 */
+
+
+
+
+// 현재 로그인 한 applicant -> 수정예정
+Applicant* curLoginApplicant;
+
+
+/*
+ 사용되는 곳: 지원정보조회, 지원삭제, 지원정보통계
+ 작성자: 김상혁
+ */
+vector <ApplyInfo*> Applicant::getApplyInfoList()
+{
+    return this->applyInfoList;
+}
+
+
+/*
+ 사용되는 곳: 지원정보조회
+ 작성자: 김상혁
+ */
+void Applicant::getApplyInfo()
+{
+    // 현재 로그인한 applicant의 지원목록리스트
+    vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
+    
+    //applyInfoList 회사명 기준 오름차순으로 한번 정렬해줘야함
+    
+    for (int i = 0 ; i < applyInfoList.size(); i++)
+        applyInfoList[i]->getApplyInfoDetail();
+}
+
+
+/*
+ 사용되는 곳: 지원삭제
+ 작성자: 김상혁
+ */
+void Applicant::deleteApplyInfo(string entrepreneurNumber)
+{
+    // 현재 로그인한 applicant의 지원목록리스트
+    vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
+    int j = -1;
+    
+    
+    // loop 돌면서 (사업자 번호 == entreprenerNumber)인 applyInfo 발견, 인덱스 저장 및 break
+    for (int i = 0 ; i < applyInfoList.size(); i++)
+    {
+        if (applyInfoList[i]->getEntrepreneurNumber() == entrepreneurNumber)
+        {
+            j = i;
+            break;
+        }
+    }
+    
+    // 출력 양식
+    cout << applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
+    
+    // 해당 applyInfo 삭제
+    if (j != -1)
+        applyInfoList.erase(applyInfoList.begin() + j);
+}
+
+
+/*
+ 사용되는 곳: 지원정보통계
+ 작성자: 김상혁
+ */
+void Applicant::getApplyNumsPerWork()
+{
+    // 현재 로그인한 applicant의 지원목록리스트
+    vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
+    
+    // 업무들을 모아놓은 리스트
+    vector <string> workList;
+    
+    // 업무들을 모아놓은 리스트에서 중복 제거한 리스트
+    vector <string> workListUnique;
+    
+    // loop 돌면서 업무들을 workList와 workListUnique에 push
+    for (int i = 0 ; i < applyInfoList.size(); i++)
+    {
+        string work = applyInfoList[i]->getWork();
+        workList.push_back(work);
+        workListUnique.push_back(work);
+    }
+    
+    // workListUnique에서 중복 제거
+    sort(workListUnique.begin(), workListUnique.end());
+    workListUnique.erase(unique(workListUnique.begin(), workListUnique.end(), workListUnique.end()));
+    
+    // loop 돌면서 업무와 지원횟수 출력
+    for (int i = 0 ; i < workListUnique.size() ; i++)
+    {
+        string targetWork = workListUnique[i];
+        int cnt = count(workList.begin(), workList.end(), targetWork);
+        // 출력 양식
+        cout << targetWork << ' ' << cnt << endl;
+    }
+}
+
+
+
+
+/*
+ 사용되는 곳: 지원정보조회
+ 작성자: 김상혁
+ */
+void ApplyInfo::getApplyInfoDetail()
+{
+    // 출력 양식
+    cout << getCompanyName() << " " << getWork() << " " << getNumPeople() << " " << getDeadline() << endl;
+}
+
+
+/*
+ 사용되는 곳: 지원삭제
+ 작성자: 김상혁
+ */
+string ApplyInfo::getEntrepreneurNumber()
+{
+    return this->entrepreneurNumber;
+}
+
+
+
+
+/*
+ 사용되는 곳: 지원정보조회
+ 작성자: 김상혁
+ */
+void CheckApplyInfoUI::checkApplyInfoButton(CheckApplyInfo* checkApplyInfo)
+{
+    checkApplyInfo->showApplyInfo();
+}
+
+
+/*
+ 사용되는 곳: 지원정보조회
+ 작성자: 김상혁
+ */
+CheckApplyInfo::CheckApplyInfo()  // 생성자
+{
+        CheckApplyInfoUI* checkApplyInfoUI = new CheckApplyInfoUI;
+        checkApplyInfoUI->checkApplyInfoButton(this);
+}
+
+
+/*
+ 사용되는 곳: 지원정보조회
+ 작성자: 김상혁
+ */
+void CheckApplyInfo::showApplyInfo()
+{
+    // 현재 로그인한 applicant
+    curLoginApplicant->getApplyInfo();
+}
+
+
+
+
+/*
+ 사용되는 곳: 지원삭제
+ 작성자: 김상혁
+ */
+void CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
+{
+    string entrepreneurNumber;  // 사업자 번호
+    // 입력 받음
+    cin >> entrepreneurNumber;
+    
+    cancelApply->sendCancelApplyData(entrepreneurNumber);
+}
+
+
+/*
+ 사용되는 곳: 지원삭제
+ 작성자: 김상혁
+ */
+CancelApply::CancelApply()  // 생성자
+{
+        CancelApplyUI* cancelApplyUI = new CancelApplyUI;
+        cancelApplyUI->inputCancelApplyData(this);
+}
+
+
+/*
+ 사용되는 곳: 지원삭제
+ 작성자: 김상혁
+ */
+void CancelApply::sendCancelApplyData(string entrepreneurNumber)
+{
+    curLoginApplicant->deleteApplyInfo(entrepreneurNumber);
+}
+
+
+
+
+/*
+ 사용되는 곳: 지원정보통계
+ 작성자: 김상혁
+ */
+void ApplyInfoStatisticUI::applyInfoStatisticButton(ApplyInfoStatistic *applyInfoStatistic)
+{
+    applyInfoStatistic->showStatistic();
+}
+
+
+/*
+ 사용되는 곳: 지원정보통계
+ 작성자: 김상혁
+ */
+ApplyInfoStatistic::ApplyInfoStatistic()  // 생성자
+{
+    ApplyInfoStatisticUI* applyInfoStatisticUI = new ApplyInfoStatisticUI;
+    applyInfoStatisticUI->applyInfoStatisticButton(this);
+}
+
+
+/*
+ 사용되는 곳: 지원정보통계
+ 작성자: 김상혁
+ */
+void ApplyInfoStatistic::showStatistic()
+{
+    curLoginApplicant->getApplyNumsPerWork();
+}
