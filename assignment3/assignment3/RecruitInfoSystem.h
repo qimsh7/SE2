@@ -23,7 +23,15 @@ class Client
 
 };
 
-
+/*
+doTask() 실행함수 선언
+작성자 : 최은서
+*/
+void join();
+void withdrawal();
+void login();
+void logout();
+	
 /*
 회원
 Member : Entity Class
