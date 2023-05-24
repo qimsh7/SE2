@@ -59,13 +59,13 @@ void doTask()
 
             case 3: { switch (menu_level_2) {
                 case 1: // "3.1. 채용 정보 등록" 메뉴 부분
-                {    // () 함수에서 해당 기능 수행
-                    ();
+                {    // addRecruitInfo() 함수에서 해당 기능 수행
+                    addRecruitInfo();
                     break;
                 }
                 case 2:    // "3.2. 등록된 채용 정보 조회" 메뉴 부분
-                {    // () 함수에서 해당 기능 수행
-                    ();
+                {    // checkRecruitInfo() 함수에서 해당 기능 수행
+                    checkRecruitInfo();
                     break;
                 }
 

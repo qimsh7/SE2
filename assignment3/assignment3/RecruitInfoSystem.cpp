@@ -157,6 +157,27 @@ void Logout::logout(vector<Member>& members)
 }
 
 
+/*
+doTask() 실행함수 구현
+작성자 : 남석현
+*/
+void addRecruitInfo() {
+    Company company;
+    AddRecruitInfoUI addRecruitInfoui;
+
+    AddRecruitInfo addRecruitInfo(addRecruitInfoui, company);
+
+    a_ui.setAddRecruitInfo(addRecruitInfo);
+
+    addRecruitInfo.startInterface();
+}
+
+void checkRecruitInfo() {
+    CheckRecruitInfoUI checkRecruitInfoui;
+    CheckRecruitInfo checkRecruitInfo(checkRecruitInfoui, company);
+    c_ui.setCheckRecruitInfo(checkRecruitInfo);
+    checkRecruitInfo.startInterface();
+}
 
 /*
 채용정보

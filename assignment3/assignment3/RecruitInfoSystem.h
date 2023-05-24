@@ -119,6 +119,12 @@ public:
     void requestLogout(vector<Member>& members);
 };
 
+/*
+doTask() 실행함수 선언
+작성자 : 남석현
+*/
+void addRecruitInfo();
+void checkRecruitInfo();
 
 /*
 채용정보
