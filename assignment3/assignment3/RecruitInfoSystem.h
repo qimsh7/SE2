@@ -315,8 +315,9 @@ private:
 	int numPeople; //인원수
 	string deadline; //신청마감일
 public:
-	RecruitInfo(string&  companyName, string& entrepreneurNumber, string& work, int numPeople, string& deadline); //뭔지 모르겠지만 정보를 갖는 놈 같다.
-
+	RecruitInfo(string&  companyName, string& entrepreneurNumber, string& work, int numPeople, string& deadline); //뭔지 모르겠지만 정보를 갖는 놈 같다
+	void getRecruitInfoDetail();
+	
 	//Getter
 	int getEntrepreneurNumber() const;
 	string getWork() const;
