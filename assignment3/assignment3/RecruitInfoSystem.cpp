@@ -13,6 +13,30 @@
 using namespace std;
 
 
+void join()
+{
+	AddMemberUI addmemberui;
+	addmemberui.joinNewMember(members);
+}
+
+void login()
+{
+	LoginUI loginui;
+	loginui.login(members);
+}
+
+void withdrawal()
+{
+	WithdrawalUI withdrawalui;
+	withdrawalui.requestWithdrawal(members);
+}
+
+void logout()
+{
+	LogoutUI logoutui;
+	logoutui.requestLogout(members);
+}
+
 //기능: 회원가입
 void AddMemberUI::joinNewMember(vector<Member>& members)
 {
