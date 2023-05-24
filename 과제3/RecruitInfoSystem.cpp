@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 #include <fstream>
 #include <vector>
 
@@ -25,12 +25,14 @@ void doTask()
 			case 1: { switch (menu_level_2) {
 				case 1: // "1.1. 회원가입" 메뉴 부분
 				{	// join() 함수에서 해당 기능 수행 
-					join();
+					AddMemberUI addmemberui;
+					addmemberui.joinNewMember(members);
 					break; 
 				} 
 				case 2:	// "1.2. 회원탈퇴" 메뉴 부분
 				{	// withdrawal() 함수에서 해당 기능 수행
-					withdrawal();
+					WithdrawalUI withdrawalui;
+					withdrawalui.requestWithdrawal(members);
 					break; 
 				}
 
@@ -39,12 +41,14 @@ void doTask()
 			case 2: { switch (menu_level_2) {
 				case 1: // "2.1. 로그인" 메뉴 부분
 				{	// login() 함수에서 해당 기능 수행
-					login();
+					LoginUI loginui;
+					loginui.login(members);
 					break;
 				}
 				case 2: // "2.2. 로그아웃" 메뉴 부분
 				{	// logout() 함수에서 해당 기능 수행
-					logout();
+					LogoutUI logoutui;
+					logoutui.requestLogout(members);
 					break;
 				}
 
