@@ -411,7 +411,10 @@ void Applicant::getApplyInfo()
     vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
     
     //applyInfoList 회사명 기준 오름차순으로 한번 정렬해줘야함
+    // 코딩!!!!!!!!!!
     
+    // 출력 양식
+    outputFile << "4.3. 지원 정보 조회" << endl << "> ";
     for (int i = 0 ; i < applyInfoList.size(); i++)
         applyInfoList[i]->getApplyInfoDetail();
 }
@@ -440,7 +443,7 @@ void Applicant::deleteApplyInfo(string entrepreneurNumber)
     }
     
     // 출력 양식
-    outputFile << "> ";
+    outputFile << "4.4. 지원 취소" << endl << "> ";
     outputFile << applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
     
     // 해당 applyInfo 삭제
@@ -477,6 +480,9 @@ void Applicant::getApplyNumsPerWork()
     sort(workListUnique.begin(), workListUnique.end());
     workListUnique.erase(unique(workListUnique.begin(), workListUnique.end(), workListUnique.end()));
     
+    // 출력 양식
+    outputFile << "5.1. 지원 정보 통계" << endl << "> ";
+    
     // loop 돌면서 업무와 지원횟수 출력
     for (int i = 0 ; i < workListUnique.size() ; i++)
     {
@@ -484,12 +490,9 @@ void Applicant::getApplyNumsPerWork()
         int cnt = count(workList.begin(), workList.end(), targetWork);
         
         // 출력 양식
-        outputFile << "> ";
         outputFile << targetWork << ' ' << cnt << endl;
     }
 }
-
-
 
 
 /*
@@ -500,7 +503,6 @@ void Applicant::getApplyNumsPerWork()
 void ApplyInfo::getApplyInfoDetail()
 {
     // 출력 양식
-    outputFile << "> ";
     outputFile << getCompanyName() << " " << getWork() << " " << getNumPeople() << " " << getDeadline() << endl;
 }
 
@@ -593,8 +595,6 @@ void CheckApplyInfo::showApplyInfo()
     // 현재 로그인한 applicant
     curLoginApplicant->getApplyInfo();
 }
-
-
 
 
 /*
