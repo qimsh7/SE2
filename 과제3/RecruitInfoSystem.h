@@ -1,48 +1,168 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+
+#define CLASS_H
+
+#define INPUT_FILE_NAME "input.txt"
+#define OUTPUT_FILE_NAME "output.txt"
+
+using namespace std;
+
+ifstream inputFile;
+ofstream outputFile;
+
+
+void doTask();
+
+class Client
+{
+
+};
+
+class Member
+{
+private: 
+	string ID;
+	string PW;
+	int loggedIn;		// 1ì€ ë¡œê·¸ì¸, 0ì€ ë¡œê·¸ì•„ì›ƒ ìƒíƒœ
+
+public:
+	void addNewMember(vector<Member>& members);
+	void checkMember(vector<Member>& members);
+	void deleteMember(vector<Member>& members);
+	
+	Member() : ID(""), PW(""), loggedIn(0) {}
+	Member(string str1, string str2) : ID(str1), PW(str2) {}
+
+	string getID() {
+		return ID;
+	}
+	string getPW() {
+		return PW;
+	}
+	void setLoggedIn(int value) {
+		loggedIn = value;
+	}
+
+};
+
+class NormalMember : public Member	// ì¼ë°˜ íšŒì›
+{
+private: 
+	string name;			// ì´ë¦„
+	string residentNumber;	// ì£¼ë¯¼ë²ˆí˜¸
+
+public:
+	NormalMember() : Member("", ""), name(""), residentNumber("") {}
+	NormalMember(string str1, string str2) : name(str1), residentNumber(str2) {}
+};
+
+class CompanyMember : public Member	// íšŒì‚¬ íšŒì›
+{
+private:
+	string companyName;			// íšŒì‚¬ ì´ë¦„
+	string entrepreneurNumber;	// ì‚¬ì—…ìë²ˆí˜¸
+
+public:
+	CompanyMember() : Member("", ""), companyName(""), entrepreneurNumber("") {}
+	CompanyMember(string str1, string str2) : companyName(str1), entrepreneurNumber(str2) {}
+};
+
+class AddMember
+{
+public:
+	void createNewMember(vector<Member>& members);
+};
+
+class AddMemberUI
+{
+public:
+	void joinNewMember(vector<Member>& members);
+};
+
+class Withdrawal
+{
+public:
+	void withdrawal(vector<Member>& members);
+};
+
+class WithdrawalUI
+{
+public:
+	void requestWithdrawal(vector<Member>& members);
+};
+
+class Login
+{
+public:
+	void getLoginInformation(vector<Member>& members);
+};
+
+class LoginUI
+{
+public:
+	void login(vector<Member>& members);
+};
+
+class Logout
+{
+public:
+	void logout(vector<Member>& members);
+};
+
+class LogoutUI
+{
+public:
+	void requestLogout(vector<Member>& members);
+};
+
 
 /*
-Ã¤¿ëÁ¤º¸
+ì±„ìš©ì •ë³´
 RecruitInfo : Entity Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
 
 /*
-È¸»ç
+íšŒì‚¬
 Company : Entity Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
 
 /*
-Ã¤¿ëÁ¤º¸µî·Ï
+ì±„ìš©ì •ë³´ë“±ë¡
 AddRecruitInfoUI : Boundary Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
 
 /*
-Ã¤¿ëÁ¤º¸µî·Ï
+ì±„ìš©ì •ë³´ë“±ë¡
 AddRecruitInfo : Control Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
 
 /*
-Ã¤¿ëÁ¤º¸Á¶È¸
+ì±„ìš©ì •ë³´ì¡°íšŒ
 CheckRecruitInfoUI : Boundary Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
 
 /*
-Ã¤¿ëÁ¤º¸Á¶È¸
+ì±„ìš©ì •ë³´ì¡°íšŒ
 CheckRecruitInfo : Control Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
 
 /*
-Áö¿øÁ¤º¸Åë°è
+ì§€ì›ì •ë³´í†µê³„
 RecruitInfoStaticUI : Boundary Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
 
 /*
-Áö¿øÁ¤º¸Åë°è
+ì§€ì›ì •ë³´í†µê³„
 RecruitInfoStatic : Control Class
-ÀÛ¼ºÀÚ : ³²¼®Çö
+ì‘ì„±ì : ë‚¨ì„í˜„
 */
