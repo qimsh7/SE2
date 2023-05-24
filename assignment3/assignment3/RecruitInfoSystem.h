@@ -64,6 +64,8 @@ public:
 
 };
 
+class ApplyInfo;  // 전방 선언
+
 /*
 일반회원
 NormalMember : Entity Class
@@ -74,10 +76,19 @@ class NormalMember : public Member    // 일반 회원
 private:
     string name;            // 이름
     string residentNumber;    // 주민번호
+    
+    vector <ApplyInfo*> applyInfoList;  // 지원목록
 
 public:
     NormalMember() : Member("", ""), name(""), residentNumber("") {}
     NormalMember(string str1, string str2) : name(str1), residentNumber(str2) {}
+
+    void getApplyInfo();
+    void deleteApplyInfo(string entrepreneurNumber);
+    void getApplyNumsPerWork();
+    
+    // get 함수
+    vector <ApplyInfo*> getApplyInfoList();
 };
 
 /*
@@ -457,7 +468,12 @@ public :
 };
 
 
-
+/*
+doTask() 실행함수 선언
+작성자 : 김상혁
+*/
+void checkApplyInfo();
+void cancelApplyInfo();
 
 
 /*
@@ -481,24 +497,6 @@ public:
     int getNumPeople();
     string getDeadline();
     string getEntrepreneurNumber();
-};
-
-
-/*
- Applicant : Entity Classes
- 작성자: 김상혁
- */
-class Applicant
-{
-private:
-    vector <ApplyInfo*> applyInfoList;  // 지원목록
-public:
-    void getApplyInfo();
-    void deleteApplyInfo(string entrepreneurNumber);
-    void getApplyNumsPerWork();
-    
-    // get 함수
-    vector <ApplyInfo*> getApplyInfoList();
 };
 
 

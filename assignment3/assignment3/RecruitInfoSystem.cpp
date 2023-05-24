@@ -546,32 +546,45 @@ string RecruitInfo::getEntrepreneurNumber() // 사업자번호 받아오기
 }
 
 
+/*
+doTask() 실행함수 구현
+작성자 : 김상혁
+*/
+void checkApplyInfo()
+{
+    
+}
+
+void cancelApply()
+{
+    
+}
 
 
-// 현재 로그인 한 applicant -> 수정예정
-Applicant* curLoginApplicant;
+// 현재 로그인 한 member -> 수정예정
+NormalMember* curLoginNormalMember;
 
 
 /*
- Applicant::getApplyInfoList()
+ NormalMember::getApplyInfoList()
  사용되는 곳: 지원정보조회, 지원삭제, 지원정보통계
  작성자: 김상혁
  */
-vector <ApplyInfo*> Applicant::getApplyInfoList()
+vector <ApplyInfo*> NormalMember::getApplyInfoList()
 {
     return this->applyInfoList;
 }
 
 
 /*
- Applicant::getApplyInfo()
+ NormalMember::getApplyInfo()
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
-void Applicant::getApplyInfo()
+void NormalMember::getApplyInfo()
 {
-    // 현재 로그인한 applicant의 지원목록리스트
-    vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
+    // 현재 로그인한 NormalMember의 지원목록리스트
+    vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
     
     // 출력을 위한 vector v
     vector <tuple <string, string, int, string, string> > v;
@@ -596,14 +609,14 @@ void Applicant::getApplyInfo()
 
 
 /*
- Applicant::deleteApplyInfo(string entrepreneurNumber)
+ NormalMember::deleteApplyInfo(string entrepreneurNumber)
  사용되는 곳: 지원삭제
  작성자: 김상혁
  */
-void Applicant::deleteApplyInfo(string entrepreneurNumber)
+void NormalMember::deleteApplyInfo(string entrepreneurNumber)
 {
-    // 현재 로그인한 applicant의 지원목록리스트
-    vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
+    // 현재 로그인한 NormalMember의 지원목록리스트
+    vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
     int j = -1;
     
     
@@ -628,14 +641,14 @@ void Applicant::deleteApplyInfo(string entrepreneurNumber)
 
 
 /*
- Applicant::getApplyNumsPerWork()
+ NormalMember::getApplyNumsPerWork()
  사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
-void Applicant::getApplyNumsPerWork()
+void NormalMember::getApplyNumsPerWork()
 {
-    // 현재 로그인한 applicant의 지원목록리스트
-    vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
+    // 현재 로그인한 NormalMember의 지원목록리스트
+    vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
     
     // 업무들을 모아놓은 리스트
     vector <string> workList;
@@ -766,8 +779,8 @@ CheckApplyInfo::CheckApplyInfo()
  */
 void CheckApplyInfo::showApplyInfo()
 {
-    // 현재 로그인한 applicant
-    curLoginApplicant->getApplyInfo();
+    // 현재 로그인한 NormalMember
+    curLoginNormalMember->getApplyInfo();
 }
 
 
@@ -805,7 +818,7 @@ CancelApply::CancelApply()
  */
 void CancelApply::sendCancelApplyData(string entrepreneurNumber)
 {
-    curLoginApplicant->deleteApplyInfo(entrepreneurNumber);
+    curLoginNormalMember->deleteApplyInfo(entrepreneurNumber);
 }
 
 
@@ -839,5 +852,5 @@ ApplyInfoStatistic::ApplyInfoStatistic()
  */
 void ApplyInfoStatistic::showStatistic()
 {
-    curLoginApplicant->getApplyNumsPerWork();
+    curLoginNormalMember->getApplyNumsPerWork();
 }
