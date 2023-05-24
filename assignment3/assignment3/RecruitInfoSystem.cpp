@@ -163,49 +163,196 @@ void Logout::logout(vector<Member>& members)
 RecruitInfo : Entity Class
 작성자 : 남석현
 */
+RecruitInfo::RecruitInfo(string& work, int numPeople, string& deadline)
+    : work(work), numPeople(numPeople), deadline(deadline), numAppliers(0) {}
+
+//Getter
+string RecruitInfo::getWork() const {
+    return work;
+}
+
+int RecruitInfo::getNumPeople() const {
+    return numPeople;
+}
+
+string RecruitInfo::getDeadline() const {
+    return deadline;
+}
+
+int RecruitInfo::getNumAppliers() const {
+    return numAppliers;
+}
+
+//Setter
+void RecruitInfo::setWork(string& work) {
+    this->work = work;
+}
+
+void RecruitInfo::setNumPeople(int numPeople) {
+    this->numPeople = numPeople;
+}
+
+void RecruitInfo::setDeadline(string& deadline) {
+    this->deadline = deadline;
+}
+
+void RecruitInfo::setNumAppliers(int numAppliers) {
+    this->numAppliers = numAppliers;
+}
 
 /*
 회사
 Company : Entity Class
 작성자 : 남석현
 */
+Company::Company(const string& name /* = "" */) : companyName(name) {}
+
+Company::~Company() {
+    for (RecruitInfo* info : recruitInfos) {
+        delete info;
+    }
+}
+
+void Company::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
+    RecruitInfo* newRecruitInfo = new RecruitInfo(work, numPeople, deadline);
+    recruitInfos.push_back(newRecruitInfo);
+}
+
+//생성된 모든 RecruitInfo 인스턴스 리턴
+vector<RecruitInfo*> Company::getAllRecruitInfo() const {
+    return recruitInfos;
+}
 
 /*
 채용정보등록
 AddRecruitInfoUI : Boundary Class
 작성자 : 남석현
 */
+AddRecruitInfoUI::AddRecruitInfoUI() : addRecruitInfo(nullptr) {}
+
+void AddRecruitInfoUI::setAddRecruitInfo(AddRecruitInfo& addRecruitInfo) {
+    this->addRecruitInfo = &addRecruitInfo;
+}
+
+void AddRecruitInfoUI::startInterface() {
+    string input;
+
+    getline(inputFile, input);
+
+    istringstream iss(input);
+    string work;
+    int numPeople;
+    string deadline;
+
+    iss >> work >> numPeople >> deadline;
+
+    createNewRecruitInfo(work, numPeople, deadline);
+}
+
+void AddRecruitInfoUI::createNewRecruitInfo(string& work, int numPeople, string& deadline) {
+    addRecruitInfo->addNewRecruitInfo(work, numPeople, deadline);
+}
 
 /*
 채용정보등록
 AddRecruitInfo : Control Class
 작성자 : 남석현
 */
+AddRecruitInfo::AddRecruitInfo(AddRecruitInfoUI& ui, Company& comp) : ui(ui), company(comp) {}
+
+void AddRecruitInfo::startInterface() {
+    ui.startInterface();
+}
+
+void AddRecruitInfo::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
+    company.addNewRecruitInfo(work, numPeople, deadline);
+}
 
 /*
 채용정보조회
 CheckRecruitInfoUI : Boundary Class
 작성자 : 남석현
 */
+CheckRecruitInfoUI::CheckRecruitInfoUI() : checkRecruitInfo(nullptr) {}
+
+void CheckRecruitInfoUI::setCheckRecruitInfo(CheckRecruitInfo& checkRecruitInfo) {
+    this->checkRecruitInfo = &checkRecruitInfo;
+}
+
+void CheckRecruitInfoUI::startInterface() {
+    selectCheck();
+}
+
+void CheckRecruitInfoUI::selectCheck() const {
+    vector<RecruitInfo*> recruitInfos = checkRecruitInfo->showRecruitInfo();
+
+    for (const auto& recruitInfo : recruitInfos) {
+        outputFile << "> " << recruitInfo->getWork() << " " << recruitInfo->getNumPeople() << " " << recruitInfo->getDeadline() << endl;
+    }
+}
 
 /*
 채용정보조회
 CheckRecruitInfo : Control Class
 작성자 : 남석현
 */
+CheckRecruitInfo::CheckRecruitInfo(CheckRecruitInfoUI& ui, Company& comp) : ui(ui), company(comp) {}
+
+void CheckRecruitInfo::startInterface() {
+    ui.startInterface();
+}
+
+vector<RecruitInfo*> CheckRecruitInfo::showRecruitInfo() const {
+    return company.getAllRecruitInfo();
+}
 
 /*
 지원정보통계
 RecruitInfoStaticUI : Boundary Class
 작성자 : 남석현
 */
+RecruitInfoStatisticUI::RecruitInfoStatisticUI() : recruitInfoStatistic(nullptr) {}
+
+void RecruitInfoStatisticUI::setRecruitInfoStatistic(RecruitInfoStatistic recruitInfoStatistic) {
+    this->recruitInfoStatistic = &recruitInfoStatistic;
+}
+
+void RecruitInfoStatisticUI::startInterface() {
+    selectStatistic();
+}
+
+void RecruitInfoStatisticUI::selectStatistic() const {
+    unordered_map<string, int> statistics = recruitInfoStatistic->showStatistic();
+
+    for (const auto& pair : statistics) {
+        const string& work = pair.first;
+        int numAppliers = pair.second;
+        outputFile << "> " << work << " " << numAppliers << endl;
+    }
+}
 
 /*
 지원정보통계
 RecruitInfoStatic : Control Class
 작성자 : 남석현
 */
+RecruitInfoStatistic::RecruitInfoStatistic(RecruitInfoStatisticUI& ui, Company& comp) : ui(ui), company(comp) {}
 
+void RecruitInfoStatistic::startInterface() {
+    ui.startInterface();
+}
+
+unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
+    unordered_map<string, int> statistics;
+
+    vector<RecruitInfo*> recruitInfos = company.getAllRecruitInfo();
+    for (const auto& recruitInfo : recruitInfos) {
+        const string& work = recruitInfo->getWork();
+        int numAppliers = recruitInfo->getNumAppliers();
+        statistics[work] += numAppliers;
+    }
+    return statistics;
+}
 
 
 

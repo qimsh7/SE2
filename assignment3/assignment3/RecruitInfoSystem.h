@@ -125,48 +125,174 @@ public:
 RecruitInfo : Entity Class
 작성자 : 남석현
 */
+class RecruitInfo {
+private:
+    string work;
+    int numPeople;
+    string deadline;
+    int numAppliers;
+
+public:
+    RecruitInfo(string& work, int numPeople, string& deadline);
+
+    //Getter
+    string getWork() const;
+    int getNumPeople() const;
+    string getDeadline() const;
+    int getNumAppliers() const;
+
+    //Setter
+    void setWork(string& work);
+    void setNumPeople(int numPeople);
+    void setDeadline(string& deadline);
+    void setNumAppliers(int numPeople);
+
+};
 
 /*
 회사
 Company : Entity Class
 작성자 : 남석현
 */
+class Company
+{
+private:
+    string companyName;
+    vector<RecruitInfo*> recruitInfos;
+
+public:
+    Company(const string& name = "");
+    ~Company();
+    void addNewRecruitInfo(string& work, int numPeople, string& deadline);
+    vector<RecruitInfo*> getAllRecruitInfo() const;
+};
 
 /*
 채용정보등록
 AddRecruitInfoUI : Boundary Class
 작성자 : 남석현
 */
+class AddRecruitInfo;  //전방선언
+
+class AddRecruitInfoUI
+{
+private:
+    AddRecruitInfo* addRecruitInfo;
+
+public:
+    AddRecruitInfoUI();
+
+    void setAddRecruitInfo(AddRecruitInfo& addRecruitInfo);
+
+    void startInterface();
+
+    //인자 : (업무, 인원수, 신청마감일)
+    void createNewRecruitInfo(string& work, int numPeople, string& deadline);
+};
 
 /*
 채용정보등록
 AddRecruitInfo : Control Class
 작성자 : 남석현
 */
+class AddRecruitInfoUI; //전방선언
+class Company;
+
+class AddRecruitInfo
+{
+private:
+    AddRecruitInfoUI& ui;
+    Company& company;
+
+public:
+    AddRecruitInfo(AddRecruitInfoUI& ui, Company& comp);
+    void startInterface();
+    void addNewRecruitInfo(string& work, int numPeople, string& deadline);
+};
+
 
 /*
 채용정보조회
 CheckRecruitInfoUI : Boundary Class
 작성자 : 남석현
 */
+class CheckRecruitInfo;
+
+class CheckRecruitInfoUI
+{
+private:
+    CheckRecruitInfo* checkRecruitInfo;
+
+public:
+    CheckRecruitInfoUI();
+
+    void setCheckRecruitInfo(CheckRecruitInfo& checkRecruitInfo);
+
+    void startInterface();
+
+    void selectCheck() const;
+};
 
 /*
 채용정보조회
 CheckRecruitInfo : Control Class
 작성자 : 남석현
 */
+class CheckRecruitInfoUI;
+class Company;
+
+class CheckRecruitInfo
+{
+private:
+    CheckRecruitInfoUI& ui;
+    Company& company;
+
+public:
+    CheckRecruitInfo(CheckRecruitInfoUI& ui, Company& comp);
+    void startInterface();
+    vector<RecruitInfo*> showRecruitInfo() const;
+};
 
 /*
 지원정보통계
 RecruitInfoStaticUI : Boundary Class
 작성자 : 남석현
 */
+class RecruitInfoStatistic;
+
+class RecruitInfoStatisticUI
+{
+private:
+    RecruitInfoStatistic* recruitInfoStatistic;
+
+public:
+    RecruitInfoStatisticUI();
+
+    void setRecruitInfoStatistic(RecruitInfoStatistic recruitInfoStatistic);
+
+    void startInterface();
+
+    void selectStatistic() const;
+};
 
 /*
 지원정보통계
 RecruitInfoStatic : Control Class
 작성자 : 남석현
 */
+class RecruitInfoStatisticUI;
+class Company;
+
+class RecruitInfoStatistic {
+private:
+    RecruitInfoStatisticUI& ui;
+    Company& company;
+
+public:
+    RecruitInfoStatistic(RecruitInfoStatisticUI& ui, Company& company);
+    void startInterface();
+    unordered_map<string, int> showStatistic() const;
+};
 
 
 
