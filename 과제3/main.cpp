@@ -10,8 +10,6 @@
 
 using namespace std;
 
-ifstream inputFile(INPUT_FILE_NAME);   // input.txt 를 읽기모드로 열기
-ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 를 쓰기모드로 열기
 
 // doTask() 
 void doTask()
