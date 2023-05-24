@@ -451,6 +451,73 @@ void Apply::showRecruitInfo()
 }
 
 
+/*
+ RecruitInfo::getRecruitInfo()
+ 사용되는 곳: 채용 정보 검색, 채용 지원
+ 작성자: 임준혁
+ */
+void RecruitInfo::getRecruitInfoDetail() // 정보들 5개 받아와서 출력하기
+{
+    // 출력 양식
+    outputFile << getCompanyName() << " " << getEntrepreneurNumber() << “ ” < getWork() << " " << getNumPeople() << " " << getDeadline() << endl;
+}
+
+
+/*
+ RecruitInfo::getCompanyName()
+ 사용되는 곳: 채용 정보 검색, 채용 지원
+ 작성자: 임준혁
+ */
+string RecruitInfo::getCompanyName() // 회사이름 받아오기
+{
+    return companyName;
+}
+
+
+/*
+ RecruitInfo::getWork()
+ 사용되는 곳: 채용 정보 검색, 채용 지원
+ 작성자: 임준혁
+ */
+string RecruitInfo::getWork() // 업무 받아오기
+{
+    return work;
+}
+
+
+/*
+ RecruitInfo::getNumPeople()
+ 사용되는 곳: 채용 정보 검색, 채용 지원
+ 작성자: 임준혁
+ */
+int RecruitInfo::getNumPeople() // 인원수 받아오기
+{
+    return numPeople;
+}
+
+
+/*
+ RecruitInfo::getDeadline()
+ 사용되는 곳: 채용 지원 검색, 채용 지원
+ 작성자: 임준혁
+ */
+string RecruitInfo::getDeadline() // 마감일 받아오기
+{
+    return deadline;
+}
+
+
+/*
+ RecruitInfo::getEntrepreneurNumber()
+ 사용되는 곳: 채용 정보 검색, 채용 지원
+ 작성자: 임준혁
+ */
+string RecruitInfo::getEntrepreneurNumber() // 사업자번호 받아오기
+{
+    return entrepreneurNumber;
+}
+
+
 
 
 // 현재 로그인 한 applicant -> 수정예정
