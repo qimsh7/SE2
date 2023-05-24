@@ -384,11 +384,13 @@ unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
 
 
 
+
 // 현재 로그인 한 applicant -> 수정예정
 Applicant* curLoginApplicant;
 
 
 /*
+ Applicant::getApplyInfoList()
  사용되는 곳: 지원정보조회, 지원삭제, 지원정보통계
  작성자: 김상혁
  */
@@ -399,6 +401,7 @@ vector <ApplyInfo*> Applicant::getApplyInfoList()
 
 
 /*
+ Applicant::getApplyInfo()
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
@@ -415,6 +418,7 @@ void Applicant::getApplyInfo()
 
 
 /*
+ Applicant::deleteApplyInfo(string entrepreneurNumber)
  사용되는 곳: 지원삭제
  작성자: 김상혁
  */
@@ -446,6 +450,7 @@ void Applicant::deleteApplyInfo(string entrepreneurNumber)
 
 
 /*
+ Applicant::getApplyNumsPerWork()
  사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
@@ -479,7 +484,7 @@ void Applicant::getApplyNumsPerWork()
         int cnt = count(workList.begin(), workList.end(), targetWork);
         
         // 출력 양식
-        outputFile << "> "
+        outputFile << "> ";
         outputFile << targetWork << ' ' << cnt << endl;
     }
 }
@@ -488,6 +493,7 @@ void Applicant::getApplyNumsPerWork()
 
 
 /*
+ ApplyInfo::getApplyInfoDetail()
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
@@ -500,6 +506,51 @@ void ApplyInfo::getApplyInfoDetail()
 
 
 /*
+ ApplyInfo::getCompanyName()
+ 사용되는 곳:
+ 작성자: 김상혁
+ */
+string ApplyInfo::getCompanyName()
+{
+    return this->companyName;
+}
+
+
+/*
+ ApplyInfo::getWork()
+ 사용되는 곳:
+ 작성자: 김상혁
+ */
+string ApplyInfo::getWork()
+{
+    return this->work;
+}
+
+
+/*
+ ApplyInfo::getNumPeople()
+ 사용되는 곳:
+ 작성자: 김상혁
+ */
+int ApplyInfo::getNumPeople()
+{
+    return this->numPeople;
+}
+
+
+/*
+ ApplyInfo::getDeadline()
+ 사용되는 곳:
+ 작성자: 김상혁
+ */
+string ApplyInfo::getDeadline()
+{
+    return this->deadline;
+}
+
+
+/*
+ ApplyInfo::getEntrepreneurNumber()
  사용되는 곳: 지원삭제
  작성자: 김상혁
  */
@@ -509,9 +560,8 @@ string ApplyInfo::getEntrepreneurNumber()
 }
 
 
-
-
 /*
+ CheckApplyInfoUI::checkApplyInfoButton(CheckApplyInfo* checkApplyInfo)
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
@@ -522,10 +572,11 @@ void CheckApplyInfoUI::checkApplyInfoButton(CheckApplyInfo* checkApplyInfo)
 
 
 /*
+ CheckApplyInfo::CheckApplyInfo()  // 생성자
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
-CheckApplyInfo::CheckApplyInfo()  // 생성자
+CheckApplyInfo::CheckApplyInfo()
 {
         CheckApplyInfoUI* checkApplyInfoUI = new CheckApplyInfoUI;
         checkApplyInfoUI->checkApplyInfoButton(this);
@@ -533,6 +584,7 @@ CheckApplyInfo::CheckApplyInfo()  // 생성자
 
 
 /*
+ CheckApplyInfo::showApplyInfo()
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
@@ -546,6 +598,7 @@ void CheckApplyInfo::showApplyInfo()
 
 
 /*
+ CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
  사용되는 곳: 지원삭제
  작성자: 김상혁
  */
@@ -560,10 +613,11 @@ void CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
 
 
 /*
+ CancelApply::CancelApply()  // 생성자
  사용되는 곳: 지원삭제
  작성자: 김상혁
  */
-CancelApply::CancelApply()  // 생성자
+CancelApply::CancelApply()
 {
         CancelApplyUI* cancelApplyUI = new CancelApplyUI;
         cancelApplyUI->inputCancelApplyData(this);
@@ -571,6 +625,7 @@ CancelApply::CancelApply()  // 생성자
 
 
 /*
+ CancelApply::sendCancelApplyData(string entrepreneurNumber)
  사용되는 곳: 지원삭제
  작성자: 김상혁
  */
@@ -580,9 +635,8 @@ void CancelApply::sendCancelApplyData(string entrepreneurNumber)
 }
 
 
-
-
 /*
+ ApplyInfoStatisticUI::applyInfoStatisticButton(ApplyInfoStatistic *applyInfoStatistic)
  사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
@@ -593,10 +647,11 @@ void ApplyInfoStatisticUI::applyInfoStatisticButton(ApplyInfoStatistic *applyInf
 
 
 /*
+ ApplyInfoStatistic::ApplyInfoStatistic()  // 생성자
  사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
-ApplyInfoStatistic::ApplyInfoStatistic()  // 생성자
+ApplyInfoStatistic::ApplyInfoStatistic()
 {
     ApplyInfoStatisticUI* applyInfoStatisticUI = new ApplyInfoStatisticUI;
     applyInfoStatisticUI->applyInfoStatisticButton(this);
@@ -604,6 +659,7 @@ ApplyInfoStatistic::ApplyInfoStatistic()  // 생성자
 
 
 /*
+ ApplyInfoStatistic::showStatistic()
  사용되는 곳: 지원정보통계
  작성자: 김상혁
  */

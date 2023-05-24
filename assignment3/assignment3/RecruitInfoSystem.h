@@ -304,7 +304,7 @@ public:
 
 
 /*
- ApplyInfo Entity Classes
+ ApplyInfo : Entity Classes
  작성자: 김상혁
  */
 class ApplyInfo{
@@ -326,13 +326,12 @@ public:
 };
 
 
-
-
 /*
- Applicant Entity Classes
+ Applicant : Entity Classes
  작성자: 김상혁
  */
-class Applicant{
+class Applicant
+{
 private:
     vector <ApplyInfo*> applyInfoList;  // 지원목록
 public:
@@ -345,13 +344,13 @@ public:
 };
 
 
-
-
 /*
- 지원정보조회 Control Class
+ 지원정보조회
+ CheckApplyInfo : Control Class
  작성자: 김상혁
  */
-class CheckApplyInfo{
+class CheckApplyInfo
+{
 private:
     
 public:
@@ -361,10 +360,12 @@ public:
 
 
 /*
- 지원정보조회 Boundary Class
+ 지원정보조회
+ CheckApplyInfoUI : Boundary Class
  작성자: 김상혁
  */
-class CheckApplyInfoUI{
+class CheckApplyInfoUI
+{
 private:
     
 public:
@@ -372,13 +373,13 @@ public:
 };
 
 
-
-
 /*
- 지원취소 Control Class
+ 지원취소
+ CancelApply : Control Class
  작성자: 김상혁
  */
-class CancelApply{
+class CancelApply
+{
 private:
     
 public:
@@ -388,10 +389,12 @@ public:
 
 
 /*
- 지원취소 Boundary Class
+ 지원취소
+ CancelApplyUI : Boundary Class
  작성자: 김상혁
  */
-class CancelApplyUI{
+class CancelApplyUI
+{
 private:
     
 public:
@@ -399,13 +402,13 @@ public:
 };
 
 
-
-
 /*
- 지원정보통계 Control Class
+ 지원정보통계
+ ApplyInfoStatistic : Control Class
  작성자: 김상혁
  */
-class ApplyInfoStatistic{
+class ApplyInfoStatistic
+{
 private:
     
 public:
@@ -414,19 +417,18 @@ public:
 };
 
 
-
 /*
- 지원정보통계 Boundary Class
+ 지원정보통계
+ ApplyInfoStatisticUI : Boundary Class
  작성자: 김상혁
  */
-class ApplyInfoStatisticUI{
+class ApplyInfoStatisticUI
+{
 private:
     
 public:
     void applyInfoStatisticButton(ApplyInfoStatistic* applyInfoStatistic);
 };
-
-
 
 
 #endif /* RecruitInfoSystem_h */
