@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <tuple>
 
 #define MAX_STRING 32
 #define INPUT_FILE_NAME "input.txt"
@@ -545,15 +546,25 @@ void Applicant::getApplyInfo()
     // 현재 로그인한 applicant의 지원목록리스트
     vector <ApplyInfo*> applyInfoList = curLoginApplicant->getApplyInfoList();
     
-    //applyInfoList 회사명 기준 오름차순으로 한번 정렬해줘야함
-    // 코딩!!!!!!!!!!
-    
-    // 출력 양식
-    outputFile << "4.3. 지원 정보 조회" << endl << "> ";
+    // 출력을 위한 vector v
+    vector <tuple <string, string, int, string, string> > v;
     
     // loop 돌면서 applyInfo마다 세부정보 불러오기
-    for (int i = 0 ; i < applyInfoList.size(); i++)
-        applyInfoList[i]->getApplyInfoDetail();
+    for (int i = 0 ; i < applyInfoList.size() ; i++)
+        v.push_back(applyInfoList[i]->getApplyInfoDetail());
+    
+    // v 오름차순 정렬
+    sort(v.begin(), v.end());
+    
+    // 출력 양식
+    outputFile << "4.3. 지원 정보 조회" << endl;
+    
+    // loop 돌면서 지원정보 출력
+    for (int i = 0 ; i < v.size ; i++)
+    {
+        // 출력 양식
+        outputFile << get<0>(v[i]) << ' ' << get<1>(v[i]) << ' ' << get<2>(v[i]) << ' ' << get<3>(v[i]) << endl;
+    }
 }
 
 
@@ -580,8 +591,8 @@ void Applicant::deleteApplyInfo(string entrepreneurNumber)
     }
     
     // 출력 양식
-    outputFile << "4.4. 지원 취소" << endl << "> ";
-    outputFile << applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
+    outputFile << "4.4. 지원 취소" << endl;
+    outputFile  << "> "<< applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
     
     // 해당 applyInfo 삭제
     if (j != -1)
@@ -618,7 +629,7 @@ void Applicant::getApplyNumsPerWork()
     workListUnique.erase(unique(workListUnique.begin(), workListUnique.end(), workListUnique.end()));
     
     // 출력 양식
-    outputFile << "5.1. 지원 정보 통계" << endl << "> ";
+    outputFile << "5.1. 지원 정보 통계" << endl;
     
     // loop 돌면서 업무와 지원횟수 출력
     for (int i = 0 ; i < workListUnique.size() ; i++)
@@ -627,7 +638,7 @@ void Applicant::getApplyNumsPerWork()
         int cnt = count(workList.begin(), workList.end(), targetWork);
         
         // 출력 양식
-        outputFile << targetWork << ' ' << cnt << endl;
+        outputFile << "> " << targetWork << ' ' << cnt << endl;
     }
 }
 
@@ -637,10 +648,9 @@ void Applicant::getApplyNumsPerWork()
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
-void ApplyInfo::getApplyInfoDetail()
+tuple<string, string, int, string, string> ApplyInfo::getApplyInfoDetail()
 {
-    // 출력 양식
-    outputFile << getCompanyName() << " " << getWork() << " " << getNumPeople() << " " << getDeadline() << endl;
+    return make_tuple(getCompanyName(), getWork(), getNumPeople(), getDeadline(), getEntrepreneurNumber());
 }
 
 

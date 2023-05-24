@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <tuple>
 
 #define INPUT_FILE_NAME "input.txt"
 #define OUTPUT_FILE_NAME "output.txt"
@@ -399,7 +400,8 @@ public :
  ApplyInfo : Entity Classes
  작성자: 김상혁
  */
-class ApplyInfo{
+class ApplyInfo
+{
 private:
     string companyName;  // 회사이름
     string work;  // 업무
@@ -407,7 +409,7 @@ private:
     string deadline;  // 신청 마감일
     string entrepreneurNumber;  // 사업자 번호
 public:
-    void getApplyInfoDetail();
+    tuple<string, string, int, string, string> getApplyInfoDetail();
     
     // get 함수
     string getCompanyName();
