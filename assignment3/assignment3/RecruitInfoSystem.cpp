@@ -190,7 +190,7 @@ doTask() 실행함수 구현
 작성자 : 남석현
 */
 void addRecruitInfo() {
-    Company company;
+    CompanyMember company;
     AddRecruitInfoUI addRecruitInfoui;
 
     AddRecruitInfo addRecruitInfo(addRecruitInfoui, company);
@@ -201,6 +201,7 @@ void addRecruitInfo() {
 }
 
 void checkRecruitInfo() {
+    CompanyMember company;
     CheckRecruitInfoUI checkRecruitInfoui;
     CheckRecruitInfo checkRecruitInfo(checkRecruitInfoui, company);
     c_ui.setCheckRecruitInfo(checkRecruitInfo);
@@ -251,30 +252,24 @@ void RecruitInfo::setNumAppliers(int numAppliers) {
 
 /*
 회사
-Company : Entity Class
+CompanyMember : Entity Class
 작성자 : 남석현
 */
-Company::Company(const string& name /* = "" */) : companyName(name) {}
 
-Company::~Company() {
-    for (RecruitInfo* info : recruitInfos) {
-        delete info;
-    }
-}
 
-void Company::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
+void CompanyMember::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
     RecruitInfo* newRecruitInfo = new RecruitInfo(work, numPeople, deadline);
     recruitInfos.push_back(newRecruitInfo);
 }
 
 //생성된 모든 RecruitInfo 인스턴스 리턴
-vector<RecruitInfo*> Company::getAllRecruitInfo() const {
+vector<RecruitInfo*> CompanyMember::getAllRecruitInfo() const {
     return recruitInfos;
 }
 
 /*
 지원정보 통계 sudo code
-1. Company.getAllRecruitInfo()로 vector불러오기
+1. CompanyMember.getAllRecruitInfo()로 vector불러오기
 2. for(recruitInfo : recruitinfos) 돌면서
 3. recruitInfo->setNumAppliers(recruitInfo->getNumAppliers()+1)
 */
@@ -314,14 +309,14 @@ void AddRecruitInfoUI::createNewRecruitInfo(string& work, int numPeople, string&
 AddRecruitInfo : Control Class
 작성자 : 남석현
 */
-AddRecruitInfo::AddRecruitInfo(AddRecruitInfoUI& ui, Company& comp) : ui(ui), company(comp) {}
+AddRecruitInfo::AddRecruitInfo(AddRecruitInfoUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
 
 void AddRecruitInfo::startInterface() {
     ui.startInterface();
 }
 
 void AddRecruitInfo::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
-    company.addNewRecruitInfo(work, numPeople, deadline);
+    companyMember.addNewRecruitInfo(work, numPeople, deadline);
 }
 
 /*
@@ -352,14 +347,14 @@ void CheckRecruitInfoUI::selectCheck() const {
 CheckRecruitInfo : Control Class
 작성자 : 남석현
 */
-CheckRecruitInfo::CheckRecruitInfo(CheckRecruitInfoUI& ui, Company& comp) : ui(ui), company(comp) {}
+CheckRecruitInfo::CheckRecruitInfo(CheckRecruitInfoUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
 
 void CheckRecruitInfo::startInterface() {
     ui.startInterface();
 }
 
 vector<RecruitInfo*> CheckRecruitInfo::showRecruitInfo() const {
-    return company.getAllRecruitInfo();
+    return companyMember.getAllRecruitInfo();
 }
 
 /*
@@ -392,7 +387,7 @@ void RecruitInfoStatisticUI::selectStatistic() const {
 RecruitInfoStatic : Control Class
 작성자 : 남석현
 */
-RecruitInfoStatistic::RecruitInfoStatistic(RecruitInfoStatisticUI& ui, Company& comp) : ui(ui), company(comp) {}
+RecruitInfoStatistic::RecruitInfoStatistic(RecruitInfoStatisticUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
 
 void RecruitInfoStatistic::startInterface() {
     ui.startInterface();
@@ -401,7 +396,7 @@ void RecruitInfoStatistic::startInterface() {
 unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
     unordered_map<string, int> statistics;
 
-    vector<RecruitInfo*> recruitInfos = company.getAllRecruitInfo();
+    vector<RecruitInfo*> recruitInfos = companyMember.getAllRecruitInfo();
     for (const auto& recruitInfo : recruitInfos) {
         const string& work = recruitInfo->getWork();
         int numAppliers = recruitInfo->getNumAppliers();
