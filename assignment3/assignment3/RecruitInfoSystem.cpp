@@ -12,7 +12,10 @@
 
 using namespace std;
 
-
+/*
+doTask() 실행함수 선언
+작성자 : 최은서
+*/
 void join()
 {
 	AddMemberUI addmemberui;
