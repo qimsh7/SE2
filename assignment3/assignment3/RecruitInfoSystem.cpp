@@ -16,25 +16,25 @@ using namespace std;
 doTask() 실행함수 선언
 작성자 : 최은서
 */
-void join()
+void join(vector<Member>& members)
 {
 	AddMemberUI addmemberui;
 	addmemberui.joinNewMember(members);
 }
 
-void login()
+void login(vector<Member>& members)
 {
 	LoginUI loginui;
 	loginui.login(members);
 }
 
-void withdrawal()
+void withdrawal(vector<Member>& members)
 {
 	WithdrawalUI withdrawalui;
 	withdrawalui.requestWithdrawal(members);
 }
 
-void logout()
+void logout(vector<Member>& members)
 {
 	LogoutUI logoutui;
 	logoutui.requestLogout(members);
