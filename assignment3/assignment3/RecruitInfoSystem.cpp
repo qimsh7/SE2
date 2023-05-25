@@ -93,6 +93,14 @@ void Member::addNewMember(vector<Member>& members)
 
 }
 
+//회사회원
+string CompanyMember::getCompanyName() const {
+    return companyName;
+}
+
+string CompanyMember::getEntrepreneurNumber() const {
+    return entrepreneurNumber;
+}
 
 //기능 : 회원탈퇴
 void WithdrawalUI::requestWithdrawal(vector<Member>& members)
@@ -407,48 +415,33 @@ unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
 
 
 
-/*
- ApplyUI::selectentrepreneur(Apply* apply)
- 사용되는 곳: 채용 지원
- 작성자: 임준혁
- */
-void ApplyUI::selectentrepreneur(Apply* apply)
-{
-    apply->showapplyrcruit();
-}
 
 
 /*
- Apply::Apply()  // 생성자
- 사용되는 곳: 채용지원
- 작성자: 임준혁
- */
-Apply::Apply()
-{
-        ApplyUI* applyUI = new ApplyUI;
-        applyUI->selectentrepreneur(this); // this는 무엇일까? cpp에서 받아오나보다
-}
-
-
-/*
- Apply::showapplyrecruit()
- 사용되는 곳: 채용지원
- 작성자: 임준혁
- */
-void Apply::showapplyrecruit()
-{
-    (뭐라고 써야하나)->listRecruitInfo();
-}
-
-
-/*
- ResearchRecruitInfoUI::selectCompany(ResearchRecruitInfo* researchrecruitinfo)
+ ResearchRecruitInfoUI : Boundary Class
  사용되는 곳: 채용 정보 검색
  작성자: 임준혁
  */
-void ResearchRecruitInfoUI::selectCompany(ResearchRecruitInfo* researchrecruitinfo)
-{
-    researchrecruitinfo->showRecruitInfo();
+SearchRecruitInfoUI::SearchRecruitInfoUI() : searchRecruitInfo(nullptr) {}
+
+void SearchRecruitInfoUI::setSearchRecruitInfo(SearchRecruitInfo& searchRecruitInfo) {
+    this->searchRecruitInfo = &searchRecruitInfo;
+}
+
+void SearchRecruitInfoUI::startInterface() {
+
+    string companyName;
+    inputFile >> companyName;
+
+    selectSearch(companyName);
+}
+
+void SearchRecruitInfoUI::selectSearch(string companyName) const {
+    vector<RecruitInfo*> recruitInfos = searchRecruitInfo->searchRecruitInfo(companyName);
+
+    for (const auto& recruitInfo : recruitInfos) {
+        outputFile << "> " << recruitInfo->getCompanyName() << " " << recruitInfo->entrepreneurNumber() << " " << recruitInfo->getWork() << " " << recruitInfo->getNumPeople() << " " << recruitInfo->getDeadline() << endl;
+    }
 }
 
 
@@ -457,10 +450,24 @@ void ResearchRecruitInfoUI::selectCompany(ResearchRecruitInfo* researchrecruitin
  사용되는 곳: 채용 정보 검색
  작성자: 임준혁
  */
-ResearchRecruitInfo::ResearchRecruitInfo()
-{
-        ResearchRecruitInfoUI* researchrecruitInfoUI = new ResearchRecruitInfoUI;
-        researchrecruitInfoUI->selectCompany(this); //새로 만든 저 인스턴스(?)라는 애에서 selectCompany갖고 뭐하나봐..
+SearchRecruitInfo::SearchRecruitInfo(SearchRecruitInfoUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
+
+void SearchRecruitInfo::startInterface() {
+    ui.startInterface();
+}
+
+vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) const {
+    vector<RecruitInfo*> searchedRecruitInfos;
+
+    vector<RecruitInfo*> allRecruitInfos = companyMember.getAllRecruitInfo();
+
+    //companyName과 일치하는 recruitInfos 찾기
+    for (RecruitInfo* recruitInfo : allRecruitInfos) {
+        if (recruitInfo->getCompanyName() == companyName) {
+            searchedRecruitInfos.push_back(recruitInfo)
+        }
+    }
+    return searchedRecruitInfos;
 }
 
 /*
