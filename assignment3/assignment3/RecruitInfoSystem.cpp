@@ -539,9 +539,14 @@ void cancelApply()
     CancelApply* cancelApply = new CancelApply;
 }
 
+void applyInfoStatistic()
+{
+    ApplyInfoStatistic* applyInfoStatistic = new ApplyInfoStatistic;
+}
 
 
-NormalMember* curLoginNormalMember;
+// curLoginNormalMember 전역변수
+NormalMember* curLoginNormalMember = new NormalMember;
 
 
 /*
@@ -566,7 +571,7 @@ void NormalMember::getApplyInfo()
     vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
     
     // 출력을 위한 vector v
-    vector <tuple <string, string, int, string, string> > v;
+    vector <tuple<string, string, string, int, string>> v;
     
     // loop 돌면서 applyInfo마다 세부정보 불러오기
     for (int i = 0 ; i < applyInfoList.size() ; i++)
@@ -574,16 +579,22 @@ void NormalMember::getApplyInfo()
     
     // v 오름차순 정렬
     sort(v.begin(), v.end());
+
     
     // 출력 양식
     outputFile << "4.3. 지원 정보 조회" << endl;
+    cout << "4.3. 지원 정보 조회" << endl;
     
     // loop 돌면서 지원정보 출력
     for (int i = 0 ; i < v.size() ; i++)
     {
         // 출력 양식
-        outputFile << get<0>(v[i]) << ' ' << get<1>(v[i]) << ' ' << get<2>(v[i]) << ' ' << get<3>(v[i]) << endl;
+        outputFile << "> " << get<0>(v[i]) << ' ' << get<1>(v[i]) << ' ' << get<2>(v[i]) << ' ' << get<3>(v[i]) << ' ' << get<4>(v[i]) << endl;
+        cout << "> " << get<0>(v[i]) << ' ' << get<1>(v[i]) << ' ' << get<2>(v[i]) << ' ' << get<3>(v[i]) << ' ' << get<4>(v[i]) << endl;
     }
+    
+    outputFile << endl;
+    cout << endl;
 }
 
 
@@ -598,7 +609,6 @@ void NormalMember::deleteApplyInfo(string entrepreneurNumber)
     vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
     int j = -1;
     
-    
     // loop 돌면서 (사업자 번호 == entreprenerNumber)인 applyInfo 발견, 인덱스 저장 및 break
     for (int i = 0 ; i < applyInfoList.size(); i++)
     {
@@ -612,10 +622,16 @@ void NormalMember::deleteApplyInfo(string entrepreneurNumber)
     // 출력 양식
     outputFile << "4.4. 지원 취소" << endl;
     outputFile  << "> "<< applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
+    cout << "4.4. 지원 취소" << endl;
+    cout  << "> "<< applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
     
     // 해당 applyInfo 삭제
-    if (j != -1)
+    if (j != -1){
         applyInfoList.erase(applyInfoList.begin() + j);
+        this->setApplyInfoList(applyInfoList);
+    }
+    outputFile << endl;
+    cout << endl;
 }
 
 
@@ -654,7 +670,7 @@ void NormalMember::getApplyNumsPerWork()
     for (int i = 0 ; i < workListUnique.size() ; i++)
     {
         string targetWork = workListUnique[i];
-        int cnt = count(workList.begin(), workList.end(), targetWork);
+        long cnt = count(workList.begin(), workList.end(), targetWork);
         
         // 출력 양식
         outputFile << "> " << targetWork << ' ' << cnt << endl;
@@ -667,9 +683,9 @@ void NormalMember::getApplyNumsPerWork()
  사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
-tuple<string, string, int, string, string> ApplyInfo::getApplyInfoDetail()
+tuple<string, string,string, int, string> ApplyInfo::getApplyInfoDetail()
 {
-    return make_tuple(getCompanyName(), getWork(), getNumPeople(), getDeadline(), getEntrepreneurNumber());
+    return make_tuple(this->getCompanyName(), this->getEntrepreneurNumber(), this->getWork(), this->getNumPeople(), this->getDeadline());
 }
 
 
@@ -773,6 +789,7 @@ void CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
     string entrepreneurNumber;  // 사업자 번호
     // 입력 받음
     inputFile >> entrepreneurNumber;
+    cin >> entrepreneurNumber;
     
     cancelApply->sendCancelApplyData(entrepreneurNumber);
 }

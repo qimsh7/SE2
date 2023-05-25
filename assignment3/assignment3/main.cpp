@@ -14,7 +14,6 @@ using namespace std;
 // doTask()
 void doTask()
 {
-    <<<<<<< HEAD
     vector<Member> members;
     
     if (inputFile.is_open())    //파일이 열려있는지 확인
@@ -124,6 +123,7 @@ void doTask()
                 else
                 {
                     getline(inputFile, str);
+                    cin >> str;
                 }
             }
         }

@@ -13,16 +13,25 @@
 
 using namespace std;
 
+
 ifstream inputFile(INPUT_FILE_NAME);   // input.txt 를 읽기모드로 열기
 ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 를 쓰기모드로 열기
 
 
+/*
+ 전방선언
+ */
 void doTask();
+class ApplyInfo;
+class RecruitInfo;
+class Member;
+
 
 class Client
 {
 
 };
+
 
 /*
 doTask() 실행함수 선언
@@ -32,7 +41,8 @@ void join(vector<Member>& members);
 void withdrawal(vector<Member>& members);
 void login(vector<Member>& members);
 void logout(vector<Member>& members);
-	
+
+
 /*
 회원
 Member : Entity Class
@@ -65,7 +75,6 @@ public:
 
 };
 
-class ApplyInfo;  // 전방 선언
 
 /*
 일반회원
@@ -88,11 +97,19 @@ public:
     void deleteApplyInfo(string entrepreneurNumber);
     void getApplyNumsPerWork();
     
-    // get 함수
+    void pushBackApplyInfoList(ApplyInfo* ai){
+        applyInfoList.push_back(ai);
+    }
+    
+    // getter
     vector <ApplyInfo*> getApplyInfoList();
+    
+    // setter
+    void setApplyInfoList(vector<ApplyInfo*> v){
+        this->applyInfoList = v;
+    }
 };
 
-class RecruitInfo;  // 전방 선언
 
 /*
 회사회원
@@ -440,6 +457,7 @@ doTask() 실행함수 선언
 */
 void checkApplyInfo();
 void cancelApplyInfo();
+void applyInfoStatistic();
 
 
 /*
@@ -455,9 +473,26 @@ private:
     string deadline;  // 신청 마감일
     string entrepreneurNumber;  // 사업자 번호
 public:
-    tuple<string, string, int, string, string> getApplyInfoDetail();
+    tuple<string, string, string, int, string> getApplyInfoDetail();
     
-    // get 함수
+    // setter 
+    void setCompanyName(string str){
+        this->companyName = str;
+    }
+    void setWork(string str){
+        this->work = str;
+    }
+    void setNumPeople(int num){
+        this->numPeople = num;
+    }
+    void setDeadline(string str){
+        this->deadline = str;
+    }
+    void setEntrepreneurNumber(string str){
+        this->entrepreneurNumber = str;
+    }
+    
+    // getter
     string getCompanyName();
     string getWork();
     int getNumPeople();
