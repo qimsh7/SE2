@@ -69,7 +69,7 @@ class ApplyInfo;  // 전방 선언
 /*
 일반회원
 NormalMember : Entity Class
-작성자 : 최은서
+작성자 : 최은서, 김상혁
 */
 class NormalMember : public Member    // 일반 회원
 {
@@ -91,10 +91,12 @@ public:
     vector <ApplyInfo*> getApplyInfoList();
 };
 
+class RecruitInfo;  // 전방 선언
+
 /*
 회사회원
 CompanyMember : Entity Class
-작성자 : 최은서
+작성자 : 최은서, 남석현
 */
 class CompanyMember : public Member    // 회사 회원
 {
@@ -452,13 +454,15 @@ public :
 
 /*
 채용 지원
-Apply : Control Class
-작성자 : 임준혁
+DoApply : Control Class
+작성자 : 임준혁, 김상혁
 */
-class Apply
+class DoApply
 {
+private:
+    
 public :
-	Apply(); // 얘는 뭘까?
+	DoApply(); // 얘는 뭘까?
 	void showapplyrecruit(string entrepreneurNumber); // 사업자번호주면 회사이름 사업자번호 업무보여주는 애
 };
 

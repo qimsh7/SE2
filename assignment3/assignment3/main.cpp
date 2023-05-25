@@ -16,104 +16,115 @@ void doTask()
 {
     vector<Member> members;
     
-    // 메뉴 파싱을 위한 level 구분을 위한 변수
-    int menu_level_1 = 0, menu_level_2 = 0; int is_program_exit = 0;
-    
-    while (!is_program_exit) {
-        // 입력파일에서 메뉴 숫자 2개를 읽기
-        inputFile >> menu_level_1 >> menu_level_2;
+    if (inputFile.is_open())    //파일이 열려있는지 확인
+    {
+        while (!inputFile.eof())    //파일의 끝까지 읽는것을 반복
+        {
+            string str;
 
-        // 메뉴 구분 및 해당 연산 수행
-        switch (menu_level_1) {
-            case 1: { switch (menu_level_2) {
-                case 1: // "1.1. 회원가입" 메뉴 부분
-                {    // join() 함수에서 해당 기능 수행
-                    AddMemberUI addmemberui;
-                    addmemberui.joinNewMember(members);
-                    break;
-                }
-                case 2:    // "1.2. 회원탈퇴" 메뉴 부분
-                {    // withdrawal() 함수에서 해당 기능 수행
-                    WithdrawalUI withdrawalui;
-                    withdrawalui.requestWithdrawal(members);
-                    break;
-                }
+            while (1)
+            {
+                int menu1, menu2;
+                inputFile >> menu1 >> menu2;    // 파일로부터 메뉴2개 를 입력받음
 
-            }}
-
-            case 2: { switch (menu_level_2) {
-                case 1: // "2.1. 로그인" 메뉴 부분
-                {    // login() 함수에서 해당 기능 수행
-                    LoginUI loginui;
-                    loginui.login(members);
-                    break;
-                }
-                case 2: // "2.2. 로그아웃" 메뉴 부분
-                {    // logout() 함수에서 해당 기능 수행
-                    LogoutUI logoutui;
-                    logoutui.requestLogout(members);
-                    break;
-                }
-
-            }}
-
-            case 3: { switch (menu_level_2) {
-                case 1: // "3.1. 채용 정보 등록" 메뉴 부분
-                {    // addRecruitInfo() 함수에서 해당 기능 수행
-                    addRecruitInfo();
-                    break;
-                }
-                case 2:    // "3.2. 등록된 채용 정보 조회" 메뉴 부분
-                {    // checkRecruitInfo() 함수에서 해당 기능 수행
-                    checkRecruitInfo();
-                    break;
-                }
-
-            }}
-            
-            case 4: { switch (menu_level_2) {
-                case 1: // "4.1. 채용 정보 검색" 메뉴 부분
-                {    // () 함수에서 해당 기능 수행
-                    ();
-                    break;
-                }
-                case 2:    // "4.2. 채용 지원" 메뉴 부분
-                {    // () 함수에서 해당 기능 수행
-                    ();
-                    break;
-                }
-                case 3:    // "4.3. 지원 정보 조회" 메뉴 부분
-                {    // () 함수에서 해당 기능 수행
-                    checkApplyInfo();
-                    break;
-                }
-                case 4:    // "4.4. 지원 취소" 메뉴 부분
-                {    // () 함수에서 해당 기능 수행
-                    cancelApplyInfo();
-                    break;
-                }
-
-            }}
-
-            case 5: { switch (menu_level_2) {
-                case 1: // "5.1. 지원 정보 통계" 메뉴 부분
-                {    // () 함수에서 해당 기능 수행
-                    // 지원정보 통계 합쳐야함
-                    break;
-                }
-
-            }}
-
-            case 6: { switch (menu_level_2) {
-                case 1: // "6.1. 종료“ 메뉴 부분
+                if (menu1 == 1 && menu2 == 1)
                 {
-                    program_exit();
-                    is_program_exit = 1;
-                    break;
+                    outputFile << "1.1. 회원가입" << endl;
+                    
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
                 }
-            }}
-                
-                  return;
+                else if (menu1 == 1 && menu2 == 2)
+                {
+                    outputFile << "1.2. 회원탈퇴" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 2 && menu2 == 1)
+                {
+                    outputFile << "2.1. 로그인" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 2 && menu2 == 2)
+                {
+                    outputFile << "2.2. 로그아웃" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 3 && menu2 == 1)
+                {
+                    outputFile << "3.1. 채용 정보 등록" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 3 && menu2 == 2)
+                {
+                    outputFile << "3.2. 등록된 채용 정보 조회" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 4 && menu2 == 1)
+                {
+                    outputFile << "4.1. 채용 정보 검색" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 4 && menu2 == 2)
+                {
+                    outputFile << "4.2. 채용 지원" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 4 && menu2 == 3)
+                {
+                    outputFile << "4.3. 지원 정보 조회" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 4 && menu2 == 4)
+                {
+                    outputFile << "4.4. 지원 취소" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 5 && menu2 == 1)
+                {
+                    outputFile << "5.1. 지원 정보 통계" << endl;
+
+                    // ** 필요함수 호출**
+
+                    outputFile << endl;
+                }
+                else if (menu1 == 6 && menu2 == 1)
+                {
+                    outputFile << "6.1. 종료" << endl;
+                    return; //doTask 함수종료
+                }
+                else
+                {
+                    getline(inputFile, str);
+                }
+            }
         }
     }
 }
@@ -126,9 +137,7 @@ int main()
     inputFile.open(INPUT_FILE_NAME);    // 입력 파일을 엽니다
     outputFile.open(OUTPUT_FILE_NAME);  // 출력 파일을 엽니다
 
-    if (inputFile.is_open()) {  // 파일이 정상적으로 열렸는지 확인합니다
-        doTask();
-    }
+    doTask();
 
     inputFile.close();          // 파일을 닫습니다
     outputFile.close();         // 파일을 닫습니다

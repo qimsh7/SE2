@@ -547,16 +547,16 @@ doTask() 실행함수 구현
 */
 void checkApplyInfo()
 {
-    
+    CheckApplyInfo* checkApplyInfo = new CheckApplyInfo;
 }
 
 void cancelApply()
 {
-    
+    CancelApply* cancelApply = new CancelApply;
 }
 
 
-// 현재 로그인 한 member -> 수정예정
+
 NormalMember* curLoginNormalMember;
 
 
@@ -595,7 +595,7 @@ void NormalMember::getApplyInfo()
     outputFile << "4.3. 지원 정보 조회" << endl;
     
     // loop 돌면서 지원정보 출력
-    for (int i = 0 ; i < v.size ; i++)
+    for (int i = 0 ; i < v.size() ; i++)
     {
         // 출력 양식
         outputFile << get<0>(v[i]) << ' ' << get<1>(v[i]) << ' ' << get<2>(v[i]) << ' ' << get<3>(v[i]) << endl;
