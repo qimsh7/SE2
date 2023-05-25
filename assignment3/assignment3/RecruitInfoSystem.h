@@ -116,7 +116,7 @@ public:
     void getApplyNumsPerWork();
     
     // applyInfoList에 push_back
-    void pushBackApplyInfoList(ApplyInfo* ai)
+    void addApplyInfoList(ApplyInfo* ai)
     {
         applyInfoList.push_back(ai);
     }
@@ -411,7 +411,7 @@ public:
 
 /*
 채용정보검색
-ResearchRecruitInfoUI : Boundary Class
+SearchRecruitInfoUI : Boundary Class
 작성자 : 임준혁
 */
 class SearchRecruitInfo;
@@ -434,8 +434,8 @@ public:
 
 /*
 채용정보검색
-ResearchRecruitInfo : Control Class
-작성자 : 임준혁
+SearchRecruitInfo : Control Class
+작성자: 임준혁
 */
 class SearchRecruitInfoUI;
 class CompanyMember;
@@ -455,12 +455,34 @@ public:
 
 
 /*
- 채용지원 작성 예정 by 김상혁
+ DoApply : Control Class
+ 작성자: 임준혁
  */
+class DoApply
+{
+private:
+    
+public:
+    DoApply();
+    void sendDoApplyData(string entrepreneurNumber);
+};
 
 
 /*
- ApplyInfo : Entity Classes
+ DoApplyUI : Boundary Class
+ 작성자: 임준혁
+ */
+class DoApplyUI
+{
+private:
+    
+public:
+    void inputDoApplyData(DoApply* doApply);
+};
+
+
+/*
+ ApplyInfo : Entity Class
  작성자: 김상혁
  */
 class ApplyInfo
@@ -473,6 +495,7 @@ private:
     string deadline;  // 신청 마감일
     
 public:
+    ApplyInfo(string companyName, string entrepreneurNumber, string work, int numPeople, string deadline);
     // 지원정보의 세부사항을 리턴
     tuple<string, string, string, int, string> getApplyInfoDetail();
     
