@@ -180,17 +180,16 @@ void LogoutUI::requestLogout(vector<Member>& members)
 
 void Logout::logout(vector<Member>& members)
 {
-    string targetID;
+    outputFile << "2.2. 로그아웃" << endl;
 
-    for (Member& member : members) {
-        if (member.getID() == targetID) {
-            // 로그아웃 처리
-            member.setLoggedIn(0);
-
-            outputFile << "2.2. 로그아웃" << endl;
-            outputFile << "> " << targetID << endl;
-        }
-    }
+	for (Member& member : members) {
+		if (member.getLoggedIn() == 1) {
+			// 로그아웃 처리
+			member.setLoggedIn(0);
+			outputFile << "> " << member.getID() << endl;
+			break;
+		}
+	}
 }
 
 
