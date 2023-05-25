@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 #include <tuple>
+#include <unordered_map>
 
 #define INPUT_FILE_NAME "input.txt"
 #define OUTPUT_FILE_NAME "output.txt"
@@ -216,7 +217,7 @@ void checkRecruitInfo();
 RecruitInfo : Entity Class
 작성자 : 남석현
 */
-class RecruitInfo public : CompanyMember
+class RecruitInfo : public CompanyMember
 {
 private:
     string work;
@@ -414,16 +415,7 @@ public:
 
 };
 
-/*
-채용 지원
-ApplyUI : Boundary Class
-작성자 : 임준혁
-*/
-class ApplyUI
-{
-public :
-	selectentrepreneur(Apply* apply); // 얘는 뭘까? actor에서 boundary로 이어지는 애
-};
+
 
 /*
 채용 지원

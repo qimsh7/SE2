@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <tuple>
+#include <sstream>
 
 #define MAX_STRING 32
 #define INPUT_FILE_NAME "input.txt"
@@ -203,7 +204,7 @@ void addRecruitInfo() {
 
     AddRecruitInfo addRecruitInfo(addRecruitInfoui, company);
 
-    a_ui.setAddRecruitInfo(addRecruitInfo);
+    addRecruitInfoui.setAddRecruitInfo(addRecruitInfo);
 
     addRecruitInfo.startInterface();
 }
@@ -212,7 +213,7 @@ void checkRecruitInfo() {
     CompanyMember company;
     CheckRecruitInfoUI checkRecruitInfoui;
     CheckRecruitInfo checkRecruitInfo(checkRecruitInfoui, company);
-    c_ui.setCheckRecruitInfo(checkRecruitInfo);
+    checkRecruitInfoui.setCheckRecruitInfo(checkRecruitInfo);
     checkRecruitInfo.startInterface();
 }
 
@@ -440,7 +441,7 @@ void SearchRecruitInfoUI::selectSearch(string companyName) const {
     vector<RecruitInfo*> recruitInfos = searchRecruitInfo->searchRecruitInfo(companyName);
 
     for (const auto& recruitInfo : recruitInfos) {
-        outputFile << "> " << recruitInfo->getCompanyName() << " " << recruitInfo->entrepreneurNumber() << " " << recruitInfo->getWork() << " " << recruitInfo->getNumPeople() << " " << recruitInfo->getDeadline() << endl;
+        outputFile << "> " << recruitInfo->getCompanyName() << " " << recruitInfo->getEntrepreneurNumber() << " " << recruitInfo->getWork() << " " << recruitInfo->getNumPeople() << " " << recruitInfo->getDeadline() << endl;
     }
 }
 
@@ -464,7 +465,7 @@ vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) co
     //companyName과 일치하는 recruitInfos 찾기
     for (RecruitInfo* recruitInfo : allRecruitInfos) {
         if (recruitInfo->getCompanyName() == companyName) {
-            searchedRecruitInfos.push_back(recruitInfo)
+            searchedRecruitInfos.push_back(recruitInfo);
         }
     }
     return searchedRecruitInfos;
@@ -475,10 +476,6 @@ vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) co
  사용되는 곳: 채용지원
  작성자: 임준혁
  */
-void Apply::showRecruitInfo()
-{
-    (뭐라고 써야하나)->getRecruitInfo();
-}
 
 
 /*
@@ -486,11 +483,7 @@ void Apply::showRecruitInfo()
  사용되는 곳: 채용 정보 검색, 채용 지원
  작성자: 임준혁
  */
-void RecruitInfo::getRecruitInfoDetail() // 정보들 5개 받아와서 출력하기
-{
-    // 출력 양식
-    outputFile << getCompanyName() << " " << getEntrepreneurNumber() << “ ” < getWork() << " " << getNumPeople() << " " << getDeadline() << endl;
-}
+
 
 
 /*
@@ -498,10 +491,6 @@ void RecruitInfo::getRecruitInfoDetail() // 정보들 5개 받아와서 출력�
  사용되는 곳: 채용 정보 검색, 채용 지원
  작성자: 임준혁
  */
-string RecruitInfo::getCompanyName() // 회사이름 받아오기
-{
-    return companyName;
-}
 
 
 /*
@@ -509,10 +498,7 @@ string RecruitInfo::getCompanyName() // 회사이름 받아오기
  사용되는 곳: 채용 정보 검색, 채용 지원
  작성자: 임준혁
  */
-string RecruitInfo::getWork() // 업무 받아오기
-{
-    return work;
-}
+
 
 
 /*
@@ -520,10 +506,7 @@ string RecruitInfo::getWork() // 업무 받아오기
  사용되는 곳: 채용 정보 검색, 채용 지원
  작성자: 임준혁
  */
-int RecruitInfo::getNumPeople() // 인원수 받아오기
-{
-    return numPeople;
-}
+
 
 
 /*
@@ -531,10 +514,7 @@ int RecruitInfo::getNumPeople() // 인원수 받아오기
  사용되는 곳: 채용 지원 검색, 채용 지원
  작성자: 임준혁
  */
-string RecruitInfo::getDeadline() // 마감일 받아오기
-{
-    return deadline;
-}
+
 
 
 /*
@@ -542,10 +522,7 @@ string RecruitInfo::getDeadline() // 마감일 받아오기
  사용되는 곳: 채용 정보 검색, 채용 지원
  작성자: 임준혁
  */
-string RecruitInfo::getEntrepreneurNumber() // 사업자번호 받아오기
-{
-    return entrepreneurNumber;
-}
+
 
 
 /*
