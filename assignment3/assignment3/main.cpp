@@ -14,8 +14,8 @@ using namespace std;
 // doTask()
 void doTask()
 {
-        vector<Member> members;
-
+    vector<Member> members;
+    
     if (inputFile.is_open())    //파일이 열려있는지 확인
     {
         while (!inputFile.eof())    //파일의 끝까지 읽는것을 반복
@@ -123,6 +123,7 @@ void doTask()
                 else
                 {
                     getline(inputFile, str);
+                    cin >> str;
                 }
             }
         }
