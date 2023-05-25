@@ -29,35 +29,19 @@ void doTask()
 
                 if (menu1 == 1 && menu2 == 1)
                 {
-                    outputFile << "1.1. 회원가입" << endl;
-
-                    // ** 필요함수 호출**
-
-                    outputFile << endl;
+                   join(members);
                 }
                 else if (menu1 == 1 && menu2 == 2)
                 {
-                    outputFile << "1.2. 회원탈퇴" << endl;
-
-                    // ** 필요함수 호출**
-
-                    outputFile << endl;
+                   withdrawal(members, curLoginMember);
                 }
                 else if (menu1 == 2 && menu2 == 1)
                 {
-                    outputFile << "2.1. 로그인" << endl;
-
-                    // ** 필요함수 호출**
-
-                    outputFile << endl;
+                    login(members, curLoginMember);
                 }
                 else if (menu1 == 2 && menu2 == 2)
                 {
-                    outputFile << "2.2. 로그아웃" << endl;
-
-                    // ** 필요함수 호출**
-
-                    outputFile << endl;
+                    logout(members, curLoginMember);
                 }
                 else if (menu1 == 3 && menu2 == 1)
                 {
