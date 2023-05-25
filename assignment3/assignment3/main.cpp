@@ -15,6 +15,7 @@ using namespace std;
 void doTask()
 {
     vector<Member> members;
+	Member curLoginMember;
     
     if (inputFile.is_open())    //파일이 열려있는지 확인
     {
