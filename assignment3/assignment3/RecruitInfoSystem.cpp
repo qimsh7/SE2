@@ -13,8 +13,168 @@
 
 using namespace std;
 
+
 /*
-doTask() 실행함수 선언
+회원가입 
+작성자 : 최은서
+*/
+
+void AddMemberUI::joinNewMember(vector<Member>& members)
+{
+	AddMember addMember;
+	addMember.createNewMember(members);
+}
+
+void AddMember::createNewMember(vector<Member>& members)
+{
+	Member member;
+	member.addNewMember(members);
+}
+
+void Member::addNewMember(vector<Member>& members)
+{
+	outputFile << "1.1. 회원가입" << endl;
+
+	string name, number, ID, PW;
+
+	int memberCategory = 0;				//일반회원인지 회사회원인지 구분
+
+	// 입력 형식 : 이름, 주민번호, ID, Password를 파일로부터 읽음
+	inputFile >> memberCategory;
+
+	if (memberCategory == 1)			// 회사회원 회원가입
+	{
+		inputFile >> name >> number >> ID >> PW;
+
+		CompanyMember companyMember(name, number);	// 생성자를 통해 companyName과 entrepreneurNumber 설정
+		companyMember.ID = ID;
+		companyMember.PW = PW;
+
+		companyMember.setCategory(1);
+
+		members.push_back(companyMember);
+
+	}
+
+	else if (memberCategory == 2)		// 일반회원 회원가입
+	{
+		inputFile >> name >> number >> ID >> PW;
+
+		NormalMember normalMember(name, number);	// 생성자를 통해 name과 residentNumber 설정
+		normalMember.ID = ID;
+		normalMember.PW = PW;
+
+		normalMember.setCategory(2);
+
+		members.push_back(normalMember);
+
+	}
+
+	outputFile << "> " << memberCategory << " " << name << " " << number << " " << ID << " " << PW << endl;
+
+}
+
+
+/*
+회원탈퇴
+작성자 : 최은서
+*/
+void WithdrawalUI::requestWithdrawal(vector<Member>& members, Member& curLoginMember)
+{
+	Withdrawal withdrawal;
+	withdrawal.withdrawal(members, curLoginMember);
+}
+
+void Withdrawal::withdrawal(vector<Member>& members, Member& curLoginMember)
+{
+	Member member;
+	member.deleteMember(members, curLoginMember);
+}
+
+void Member::deleteMember(vector<Member>& members, Member& curLoginMember)
+{
+	outputFile << "1.2. 회원탈퇴" << endl;
+
+	for (auto it = members.begin(); it != members.end(); ++it)
+	{
+		if (it->getID() == curLoginMember.getID())
+		{
+			members.erase(it);
+			break;
+		}
+	}
+
+	outputFile << "> " << curLoginMember.getID() << endl;
+
+}
+
+
+/*
+로그인 
+작성자 : 최은서
+*/
+void LoginUI::login(vector<Member>& members, Member& curLoginMember)
+{
+	Login login;
+	login.getLoginInformation(members, curLoginMember);
+}
+
+void Login::getLoginInformation(vector<Member>& members, Member& curLoginMember)
+{
+	Member member;
+	member.checkMember(members, curLoginMember);
+}
+
+void Member::checkMember(vector<Member>& members, Member& curLoginMember)
+{
+	outputFile << "2.1. 로그인" << endl;
+
+	string targetID;
+	string targetPW;
+
+	inputFile >> targetID >> targetPW;
+
+	for (Member& member : members) 
+	{
+		if (member.getID() == targetID && member.getPW() == targetPW) 
+		{
+			curLoginMember = member;  // 현재 로그인 중인 멤버 업데이트
+			outputFile << "> " << targetID << " " << targetPW << endl;
+
+			return;
+		}
+	}
+}
+
+
+/*
+로그아웃
+작성자 : 최은서
+*/
+void LogoutUI::requestLogout(vector<Member>& members, Member& curLoginMember)
+{
+	Logout logout;
+	logout.logout(members, curLoginMember);
+}
+
+void Logout::logout(vector<Member>& members, Member& curLoginMember)
+{
+	outputFile << "2.2. 로그아웃" << endl;
+
+	for (Member& member : members) 
+	{
+		if (member.getID() == curLoginMember.getID()) 
+		{
+			outputFile << "> " << member.getID() << endl;
+			curLoginMember = Member();  // 현재 로그인 중인 멤버를 기본생성자로 초기화
+			break;
+		}
+	}
+}
+
+
+/*
+doTask() 실행함수 
 작성자 : 최은서
 */
 void join(vector<Member>& members)
@@ -23,175 +183,23 @@ void join(vector<Member>& members)
 	addmemberui.joinNewMember(members);
 }
 
-void login(vector<Member>& members)
+void login(vector<Member>& members, Member& curLoginMember)
 {
 	LoginUI loginui;
-	loginui.login(members);
+	loginui.login(members, curLoginMember);
 }
 
-void withdrawal(vector<Member>& members)
+void withdrawal(vector<Member>& members, Member& curLoginMember)
 {
 	WithdrawalUI withdrawalui;
-	withdrawalui.requestWithdrawal(members);
+	withdrawalui.requestWithdrawal(members, curLoginMember);
 }
 
-void logout(vector<Member>& members)
+void logout(vector<Member>& members, Member& curLoginMember)
 {
 	LogoutUI logoutui;
-	logoutui.requestLogout(members);
+	logoutui.requestLogout(members, curLoginMember);
 }
-
-//기능: 회원가입
-void AddMemberUI::joinNewMember(vector<Member>& members)
-{
-    AddMember addMember;
-    addMember.createNewMember(members);
-}
-
-void AddMember::createNewMember(vector<Member>& members)
-{
-    Member member;
-    member.addNewMember(members);
-}
-
-void Member::addNewMember(vector<Member>& members)
-{
-    string name, number, ID, PW;
-
-    int memberCategory = 0;                //일반회원인지 회사회원인지 구분
-
-    // 입력 형식 : 이름, 주민번호, ID, Password를 파일로부터 읽음
-    inputFile >> memberCategory;
-
-    if (memberCategory == 1)            // 회사회원 회원가입
-    {
-        inputFile >> name >> number >> ID >> PW;
-
-        CompanyMember companyMember(name, number);    // 생성자를 통해 companyName과 entrepreneurNumber 설정
-        companyMember.ID = ID;
-        companyMember.PW = PW;
-        companyMember.loggedIn = 0; // 로그아웃 상태로 초기화
-
-        members.push_back(companyMember);
-
-    }
-
-    else if (memberCategory == 2)        // 일반회원 회원가입
-    {
-        inputFile >> name >> number >> ID >> PW;
-
-        NormalMember normalMember(name, number);    // 생성자를 통해 name과 residentNumber 설정
-        normalMember.ID = ID;
-        normalMember.PW = PW;
-        normalMember.loggedIn = 0; // 로그아웃 상태로 초기화
-
-        members.push_back(normalMember);
-
-    }
-
-    outputFile << "1.1. 회원가입" << endl;
-    outputFile << "> " << memberCategory << " " << name << " " << number << " " << ID << " " << PW << endl;
-
-}
-
-//회사회원
-string CompanyMember::getCompanyName() const {
-    return companyName;
-}
-
-string CompanyMember::getEntrepreneurNumber() const {
-    return entrepreneurNumber;
-}
-
-//기능 : 회원탈퇴
-void WithdrawalUI::requestWithdrawal(vector<Member>& members)
-{
-    Withdrawal withdrawal;
-    withdrawal.withdrawal(members);
-}
-
-void Withdrawal::withdrawal(vector<Member>& members)
-{
-    Member member;
-    member.deleteMember(members);
-}
-
-void Member::deleteMember(vector<Member>& members)
-{
-    string targetID;
-    inputFile >> targetID;
-
-    for (auto it = members.begin(); it != members.end(); ++it)
-    {
-        if (it->getID() == targetID)
-        {
-            members.erase(it);
-            break;
-        }
-    }
-
-    outputFile << "1.2. 회원탈퇴" << endl;
-    outputFile << "> " << targetID << endl;
-
-}
-
-
-//기능 : 로그인
-void LoginUI::login(vector<Member>& members)
-{
-    Login login;
-    login.getLoginInformation(members);
-}
-
-void Login::getLoginInformation(vector<Member>& members)
-{
-    Member member;
-    member.checkMember(members);
-}
-
-void Member::checkMember(vector<Member>& members)
-{
-    string targetID;
-    string targetPW;
-
-    inputFile >> targetID >> targetPW;
-
-    for (Member& member : members) {
-        if (member.getID() == targetID && member.getPW() == targetPW) {
-            // 로그인 성공
-            member.setLoggedIn(1);
-
-            outputFile << "2.1. 로그인" << endl;
-            outputFile << "> " << targetID << " " << targetPW << endl;
-
-            return;
-        }
-    }
-    
-}
-
-
-//기능 : 로그아웃
-void LogoutUI::requestLogout(vector<Member>& members)
-{
-    Logout logout;
-    logout.logout(members);
-}
-
-void Logout::logout(vector<Member>& members)
-{
-    outputFile << "2.2. 로그아웃" << endl;
-
-	for (Member& member : members) {
-		if (member.getLoggedIn() == 1) {
-			// 로그아웃 처리
-			member.setLoggedIn(0);
-			outputFile << "> " << member.getID() << endl;
-			break;
-		}
-	}
-}
-
 
 /*
 doTask() 실행함수 구현
@@ -645,13 +653,13 @@ void NormalMember::getApplyNumsPerWork()
 {
     // 현재 로그인한 NormalMember의 지원목록리스트
     vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
-    
+
     // 업무들을 모아놓은 리스트
     vector <string> workList;
-    
+
     // 업무들을 모아놓은 리스트에서 중복 제거한 리스트
     vector <string> workListUnique;
-    
+
     // loop 돌면서 업무들을 workList와 workListUnique에 push
     for (int i = 0 ; i < applyInfoList.size(); i++)
     {
@@ -659,23 +667,29 @@ void NormalMember::getApplyNumsPerWork()
         workList.push_back(work);
         workListUnique.push_back(work);
     }
-    
+
     // workListUnique에서 중복 제거
     sort(workListUnique.begin(), workListUnique.end());
-    workListUnique.erase(unique(workListUnique.begin(), workListUnique.end(), workListUnique.end()));
-    
+    workListUnique.erase(unique(workListUnique.begin(), workListUnique.end()), workListUnique.end());
+
     // 출력 양식
     outputFile << "5.1. 지원 정보 통계" << endl;
-    
+    cout << "5.1. 지원 정보 통계" << endl;
+
     // loop 돌면서 업무와 지원횟수 출력
     for (int i = 0 ; i < workListUnique.size() ; i++)
     {
         string targetWork = workListUnique[i];
         long cnt = count(workList.begin(), workList.end(), targetWork);
-        
+
         // 출력 양식
         outputFile << "> " << targetWork << ' ' << cnt << endl;
+        cout << "> " << targetWork << ' ' << cnt << endl;
     }
+    
+    // 출력 양식
+    outputFile << endl;
+    cout << endl;
 }
 
 
