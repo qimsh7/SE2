@@ -27,10 +27,10 @@ class Client
 doTask() 실행함수 선언
 작성자 : 최은서
 */
-void join();
-void withdrawal();
-void login();
-void logout();
+void join(vector<Member>& members);
+void withdrawal(vector<Member>& members);
+void login(vector<Member>& members);
+void logout(vector<Member>& members);
 	
 /*
 회원
