@@ -689,61 +689,6 @@ tuple<string, string,string, int, string> ApplyInfo::getApplyInfoDetail()
 
 
 /*
- ApplyInfo::getCompanyName()
- 사용되는 곳:
- 작성자: 김상혁
- */
-string ApplyInfo::getCompanyName()
-{
-    return this->companyName;
-}
-
-
-/*
- ApplyInfo::getWork()
- 사용되는 곳:
- 작성자: 김상혁
- */
-string ApplyInfo::getWork()
-{
-    return this->work;
-}
-
-
-/*
- ApplyInfo::getNumPeople()
- 사용되는 곳:
- 작성자: 김상혁
- */
-int ApplyInfo::getNumPeople()
-{
-    return this->numPeople;
-}
-
-
-/*
- ApplyInfo::getDeadline()
- 사용되는 곳:
- 작성자: 김상혁
- */
-string ApplyInfo::getDeadline()
-{
-    return this->deadline;
-}
-
-
-/*
- ApplyInfo::getEntrepreneurNumber()
- 사용되는 곳: 지원삭제
- 작성자: 김상혁
- */
-string ApplyInfo::getEntrepreneurNumber()
-{
-    return this->entrepreneurNumber;
-}
-
-
-/*
  CheckApplyInfoUI::checkApplyInfoButton(CheckApplyInfo* checkApplyInfo)
  사용되는 곳: 지원정보조회
  작성자: 김상혁

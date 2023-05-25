@@ -468,16 +468,20 @@ class ApplyInfo
 {
 private:
     string companyName;  // 회사이름
+    string entrepreneurNumber;  // 사업자 번호
     string work;  // 업무
     int numPeople;  // 인원수
     string deadline;  // 신청 마감일
-    string entrepreneurNumber;  // 사업자 번호
+    
 public:
     tuple<string, string, string, int, string> getApplyInfoDetail();
     
     // setter 
     void setCompanyName(string str){
         this->companyName = str;
+    }
+    void setEntrepreneurNumber(string str){
+        this->entrepreneurNumber = str;
     }
     void setWork(string str){
         this->work = str;
@@ -488,16 +492,24 @@ public:
     void setDeadline(string str){
         this->deadline = str;
     }
-    void setEntrepreneurNumber(string str){
-        this->entrepreneurNumber = str;
-    }
     
     // getter
-    string getCompanyName();
-    string getWork();
-    int getNumPeople();
-    string getDeadline();
-    string getEntrepreneurNumber();
+    string getCompanyName(){
+        return this->companyName;
+    }
+    string getEntrepreneurNumber(){
+        return this->entrepreneurNumber;
+    }
+    string getWork(){
+        return this->work;
+    }
+    int getNumPeople(){
+        return this->numPeople;
+    }
+    string getDeadline(){
+        return this->deadline;
+    }
+    
 };
 
 
