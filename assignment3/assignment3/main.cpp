@@ -17,16 +17,21 @@ void doTask()
     vector<Member> members;
 	Member curLoginMember;
     
-    if (inputFile.is_open())    //파일이 열려있는지 확인
+    Member* ptrCurLoginMember = &curLoginMember;
+    NormalMember* curLoginNormalMember = (NormalMember*)ptrCurLoginMember;
+    
+    if (inputFile.is_open())  //파일이 열려있는지 확인
     {
-        while (!inputFile.eof())    //파일의 끝까지 읽는것을 반복
+        while (!inputFile.eof())  //파일의 끝까지 읽는것을 반복
         {
             string str;
 
             while (1)
             {
                 int menu1, menu2;
-                inputFile >> menu1 >> menu2;    // 파일로부터 메뉴2개 를 입력받음
+                
+                // 파일에서 메뉴 숫자 2개 입력받기
+                inputFile >> menu1 >> menu2;
 
                 if (menu1 == 1 && menu2 == 1)
                 {
@@ -80,7 +85,7 @@ void doTask()
                 {
                     outputFile << "4.3. 지원 정보 조회" << endl;
 
-                    // ** 필요함수 호출**
+                    checkApplyInfo();
 
                     outputFile << endl;
                 }
@@ -88,7 +93,7 @@ void doTask()
                 {
                     outputFile << "4.4. 지원 취소" << endl;
 
-                    // ** 필요함수 호출**
+                    cancelApply();
 
                     outputFile << endl;
                 }
@@ -96,9 +101,13 @@ void doTask()
                 {
                     outputFile << "5.1. 지원 정보 통계" << endl;
 
-                    // ** 필요함수 호출**
-                    //회사회원인 경우
-                    void recruitInfoStatistic();
+                    /*
+                     두 기능 합칠 예정
+                     */
+                    // 회사회원인 경우
+                    recruitInfoStatistic();
+//                    // 일반회원인 경우
+//                    applyInfoStatistic();
 
                     outputFile << endl;
                 }
@@ -110,23 +119,23 @@ void doTask()
                 else
                 {
                     getline(inputFile, str);
-                    cin >> str;
                 }
-            }
-        }
-    }
-}
+            }  // while문 종료
+        }  // while문 종료
+    }  // if문 종료
+}  // doTask() 종료
 
-// 메인 함수
+// main 함수
 int main()
 {
-    inputFile.open(INPUT_FILE_NAME);    // 입력 파일을 엽니다
-    outputFile.open(OUTPUT_FILE_NAME);  // 출력 파일을 엽니다
-
+    // 파일 열기: 헤더 파일에서 실행
+    
+    // doTask() 함수 호출
     doTask();
 
-    inputFile.close();          // 파일을 닫습니다
-    outputFile.close();         // 파일을 닫습니다
+    // 파일 닫기
+    inputFile.close();
+    outputFile.close();
 
     return 0;
-}
+}  // main() 종료

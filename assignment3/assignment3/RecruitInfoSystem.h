@@ -14,17 +14,43 @@
 using namespace std;
 
 
-ifstream inputFile(INPUT_FILE_NAME);   // input.txt 를 읽기모드로 열기
-ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 를 쓰기모드로 열기
+ifstream inputFile(INPUT_FILE_NAME);   // input.txt 읽기모드로 열기
+ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 쓰기모드로 열기
 
 
 /*
  전방선언
  */
-void doTask();
 class ApplyInfo;
 class RecruitInfo;
 class Member;
+
+
+/*
+doTask() 실행함수 선언
+작성자 : 최은서, 남석현, 임준혁, 김상혁
+*/
+// 작성자: 최은서
+void join(vector<Member>& members);
+void withdrawal(vector<Member>& members, Member& curLoginMember);
+void login(vector<Member>& members, Member& curLoginMember);
+void logout(vector<Member>& members, Member& curLoginMember);
+
+// 작성자: 남석현
+void addRecruitInfo();
+void checkRecruitInfo();
+void recruitInfoStatistic();
+void searchRecruitInfo();
+
+// 작성자: 임준혁
+// 작성 예정 by 남석현, 김상혁
+
+// 작성자: 김상혁
+void checkApplyInfo();
+void cancelApply();
+void applyInfoStatistic();
+
+
 
 
 /*
@@ -35,9 +61,9 @@ Member : Entity Class
 class Member
 {
 private:
-	string ID;
-	string PW;	
-	int category; // 1이면 회사회원, 2인경우 일반회원
+	string ID;  // 회원 ID
+	string PW;  // 회원 password
+	int category; // 1이면 회사회원, 2이면 일반회원
 
 public:
 	void addNewMember(vector<Member>& members);
@@ -47,32 +73,37 @@ public:
 	Member() : ID(""), PW(""), category(0) {}
 	Member(string str1, string str2) : ID(str1), PW(str2), category(0) {}
 
-	string getID() {
+	string getID()
+    {
 		return ID;
 	}
-	string getPW() {
+	string getPW()
+    {
 		return PW;
 	}
 
 	// 회원 구분시 사용
-	int getCategory() {
+	int getCategory()
+    {
 		return category;
 	}
-	void setCategory(int num) {
+	void setCategory(int num)
+    {
 		category = num;
 	}
 };
+
 
 /*
 일반회원
 NormalMember : Entity Class
 작성자 : 최은서, 김상혁
 */
-class NormalMember : public Member    // 일반 회원
+class NormalMember : public Member  // 일반 회원
 {
 private:
-    string name;            // 이름
-    string residentNumber;    // 주민번호
+    string name;  // 이름
+    string residentNumber;  // 주민번호
     
     vector <ApplyInfo*> applyInfoList;  // 지원목록
 
@@ -84,12 +115,17 @@ public:
     void deleteApplyInfo(string entrepreneurNumber);
     void getApplyNumsPerWork();
     
-    void pushBackApplyInfoList(ApplyInfo* ai){
+    // applyInfoList에 push_back
+    void pushBackApplyInfoList(ApplyInfo* ai)
+    {
         applyInfoList.push_back(ai);
     }
     
     // getter
-    vector <ApplyInfo*> getApplyInfoList();
+    vector <ApplyInfo*> getApplyInfoList()
+    {
+        return this->applyInfoList;
+    }
     
     // setter
     void setApplyInfoList(vector<ApplyInfo*> v){
@@ -103,18 +139,19 @@ public:
 CompanyMember : Entity Class
 작성자 : 최은서, 남석현
 */
-class CompanyMember : public Member    // 회사 회원
+class CompanyMember : public Member  // 회사 회원
 {
 private:
-    string companyName;            // 회사 이름
-    string entrepreneurNumber;    // 사업자번호
+    string companyName;  // 회사 이름
+    string entrepreneurNumber;  // 사업자 번호
     vector<RecruitInfo*> recruitInfos;
 
 
 public:
     CompanyMember() : Member("", ""), companyName(""), entrepreneurNumber("") {}
     CompanyMember(string str1, string str2) : companyName(str1), entrepreneurNumber(str2) {}
-    //Getter
+    
+    // Getter
     string getCompanyName() const;
     string getEntrepreneurNumber() const;
     void addNewRecruitInfo(string& work, int numPeople, string& deadline);
@@ -211,23 +248,7 @@ public:
 	void requestLogout(vector<Member>& members, Member& curLoginMember);
 };
 
-/*
-doTask() 실행함수 선언
-작성자 : 최은서
-*/
-void join(vector<Member>& members);
-void withdrawal(vector<Member>& members, Member& curLoginMember);
-void login(vector<Member>& members, Member& curLoginMember);
-void logout(vector<Member>& members, Member& curLoginMember);
 
-/*
-doTask() 실행함수 선언
-작성자 : 남석현
-*/
-void addRecruitInfo();
-void checkRecruitInfo();
-void recruitInfoStatistic();
-void searchRecruitInfo();
 
 /*
 채용정보
@@ -433,29 +454,9 @@ public:
 };
 
 
-
 /*
-채용 지원
-DoApply : Control Class
-작성자 : 임준혁, 김상혁
-*/
-class DoApply
-{
-private:
-    
-public :
-	DoApply(); // 얘는 뭘까?
-	void showapplyrecruit(string entrepreneurNumber); // 사업자번호주면 회사이름 사업자번호 업무보여주는 애
-};
-
-
-/*
-doTask() 실행함수 선언
-작성자 : 김상혁
-*/
-void checkApplyInfo();
-void cancelApplyInfo();
-void applyInfoStatistic();
+ 채용지원 작성 예정 by 김상혁
+ */
 
 
 /*
@@ -465,49 +466,59 @@ void applyInfoStatistic();
 class ApplyInfo
 {
 private:
-    string companyName;  // 회사이름
+    string companyName;  // 회사 이름
     string entrepreneurNumber;  // 사업자 번호
     string work;  // 업무
     int numPeople;  // 인원수
     string deadline;  // 신청 마감일
     
 public:
+    // 지원정보의 세부사항을 리턴
     tuple<string, string, string, int, string> getApplyInfoDetail();
     
     // setter 
-    void setCompanyName(string str){
+    void setCompanyName(string str)
+    {
         this->companyName = str;
     }
-    void setEntrepreneurNumber(string str){
+    void setEntrepreneurNumber(string str)
+    {
         this->entrepreneurNumber = str;
     }
-    void setWork(string str){
+    void setWork(string str)
+    {
         this->work = str;
     }
-    void setNumPeople(int num){
+    void setNumPeople(int num)
+    {
         this->numPeople = num;
     }
-    void setDeadline(string str){
+    void setDeadline(string str)
+    {
         this->deadline = str;
     }
     
     // getter
-    string getCompanyName(){
+    string getCompanyName()
+    {
         return this->companyName;
     }
-    string getEntrepreneurNumber(){
+    string getEntrepreneurNumber()
+    {
         return this->entrepreneurNumber;
     }
-    string getWork(){
+    string getWork()
+    {
         return this->work;
     }
-    int getNumPeople(){
+    int getNumPeople()
+    {
         return this->numPeople;
     }
-    string getDeadline(){
+    string getDeadline()
+    {
         return this->deadline;
     }
-    
 };
 
 
@@ -596,6 +607,8 @@ private:
 public:
     void applyInfoStatisticButton(ApplyInfoStatistic* applyInfoStatistic);
 };
+
+
 
 
 #endif /* RecruitInfoSystem_h */

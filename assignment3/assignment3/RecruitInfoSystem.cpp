@@ -8,10 +8,101 @@
 #include <sstream>
 
 #define MAX_STRING 32
-#define INPUT_FILE_NAME "input.txt"
-#define OUTPUT_FILE_NAME "output.txt"
 
 using namespace std;
+
+
+/*
+doTask() 실행함수 구현
+작성자 : 최은서, 남석현, 임준혁, 김상혁
+*/
+
+// 작성자: 최은서
+void join(vector<Member>& members)
+{
+    AddMemberUI addmemberui;
+    addmemberui.joinNewMember(members);
+}
+
+void login(vector<Member>& members, Member& curLoginMember)
+{
+    LoginUI loginui;
+    loginui.login(members, curLoginMember);
+}
+
+void withdrawal(vector<Member>& members, Member& curLoginMember)
+{
+    WithdrawalUI withdrawalui;
+    withdrawalui.requestWithdrawal(members, curLoginMember);
+}
+
+void logout(vector<Member>& members, Member& curLoginMember)
+{
+    LogoutUI logoutui;
+    logoutui.requestLogout(members, curLoginMember);
+}
+
+// 작성자: 남석현
+CompanyMember* curLoginCompanyMember = new CompanyMember;
+
+void addRecruitInfo()
+{
+    AddRecruitInfoUI addRecruitInfoui;
+
+    AddRecruitInfo addRecruitInfo(addRecruitInfoui, curLoginCompanyMember);
+
+    addRecruitInfoui.setAddRecruitInfo(addRecruitInfo);
+
+    addRecruitInfo.startInterface();
+}
+
+void checkRecruitInfo()
+{
+    CheckRecruitInfoUI checkRecruitInfoui;
+    CheckRecruitInfo checkRecruitInfo(checkRecruitInfoui, curLoginCompanyMember);
+    checkRecruitInfoui.setCheckRecruitInfo(checkRecruitInfo);
+    checkRecruitInfo.startInterface();
+}
+
+void recruitInfoStatistic()
+{
+    RecruitInfoStatisticUI recruitInfoStatisticui;
+    RecruitInfoStatistic recruitInfoStatistic(recruitInfoStatisticui, curLoginCompanyMember);
+    recruitInfoStatisticui.setRecruitInfoStatistic(recruitInfoStatistic);
+    recruitInfoStatistic.startInterface();
+
+}
+
+void searchRecruitInfo()
+{
+    SearchRecruitInfoUI searchRecruitInfoui;
+    SearchRecruitInfo searchRecruitInfo(searchRecruitInfoui, curLoginCompanyMember);
+    searchRecruitInfoui.setSearchRecruitInfo(searchRecruitInfo);
+    searchRecruitInfo.startInterface();
+}
+
+// 작성자: 임준혁
+/*
+ 작성예정 by 남석현, 김상혁
+ */
+
+// 작성자: 김상혁
+void checkApplyInfo()
+{
+    CheckApplyInfo* checkApplyInfo = new CheckApplyInfo;
+}
+
+void cancelApply()
+{
+    CancelApply* cancelApply = new CancelApply;
+}
+
+void applyInfoStatistic()
+{
+    ApplyInfoStatistic* applyInfoStatistic = new ApplyInfoStatistic;
+}
+
+
 
 
 /*
@@ -173,72 +264,7 @@ void Logout::logout(vector<Member>& members, Member& curLoginMember)
 }
 
 
-/*
-doTask() 실행함수 
-작성자 : 최은서
-*/
-void join(vector<Member>& members)
-{
-	AddMemberUI addmemberui;
-	addmemberui.joinNewMember(members);
-}
 
-void login(vector<Member>& members, Member& curLoginMember)
-{
-	LoginUI loginui;
-	loginui.login(members, curLoginMember);
-}
-
-void withdrawal(vector<Member>& members, Member& curLoginMember)
-{
-	WithdrawalUI withdrawalui;
-	withdrawalui.requestWithdrawal(members, curLoginMember);
-}
-
-void logout(vector<Member>& members, Member& curLoginMember)
-{
-	LogoutUI logoutui;
-	logoutui.requestLogout(members, curLoginMember);
-}
-
-/*
-doTask() 실행함수 구현
-작성자 : 남석현
-*/
-
-CompanyMember* curLoginCompanyMember = new CompanyMember;
-
-void addRecruitInfo() {
-    AddRecruitInfoUI addRecruitInfoui;
-
-    AddRecruitInfo addRecruitInfo(addRecruitInfoui, curLoginCompanyMember);
-
-    addRecruitInfoui.setAddRecruitInfo(addRecruitInfo);
-
-    addRecruitInfo.startInterface();
-}
-
-void checkRecruitInfo() {
-    CheckRecruitInfoUI checkRecruitInfoui;
-    CheckRecruitInfo checkRecruitInfo(checkRecruitInfoui, curLoginCompanyMember);
-    checkRecruitInfoui.setCheckRecruitInfo(checkRecruitInfo);
-    checkRecruitInfo.startInterface();
-}
-
-void recruitInfoStatistic() {
-    RecruitInfoStatisticUI recruitInfoStatisticui;
-    RecruitInfoStatistic recruitInfoStatistic(recruitInfoStatisticui, curLoginCompanyMember);
-    recruitInfoStatisticui.setRecruitInfoStatistic(recruitInfoStatistic);
-    recruitInfoStatistic.startInterface();
-
-}
-
-void searchRecruitInfo() {
-    SearchRecruitInfoUI searchRecruitInfoui;
-    SearchRecruitInfo searchRecruitInfo(searchRecruitInfoui, curLoginCompanyMember);
-    searchRecruitInfoui.setSearchRecruitInfo(searchRecruitInfo);
-    searchRecruitInfo.startInterface();
-}
 
 /*
 채용정보
@@ -248,37 +274,45 @@ RecruitInfo : Entity Class
 RecruitInfo::RecruitInfo(string& work, int numPeople, string& deadline)
     : work(work), numPeople(numPeople), deadline(deadline), numAppliers(0) {}
 
-//Getter
-string RecruitInfo::getWork() const {
+// getter
+string RecruitInfo::getWork() const
+{
     return work;
 }
 
-int RecruitInfo::getNumPeople() const {
+int RecruitInfo::getNumPeople() const
+{
     return numPeople;
 }
 
-string RecruitInfo::getDeadline() const {
+string RecruitInfo::getDeadline() const
+{
     return deadline;
 }
 
-int RecruitInfo::getNumAppliers() const {
+int RecruitInfo::getNumAppliers() const
+{
     return numAppliers;
 }
 
 //Setter
-void RecruitInfo::setWork(string& work) {
+void RecruitInfo::setWork(string& work)
+{
     this->work = work;
 }
 
-void RecruitInfo::setNumPeople(int numPeople) {
+void RecruitInfo::setNumPeople(int numPeople)
+{
     this->numPeople = numPeople;
 }
 
-void RecruitInfo::setDeadline(string& deadline) {
+void RecruitInfo::setDeadline(string& deadline)
+{
     this->deadline = deadline;
 }
 
-void RecruitInfo::setNumAppliers(int numAppliers) {
+void RecruitInfo::setNumAppliers(int numAppliers)
+{
     this->numAppliers = numAppliers;
 }
 
@@ -288,15 +322,15 @@ CompanyMember : Entity Class
 작성자 : 남석현
 */
 
-
-
-void CompanyMember::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
+void CompanyMember::addNewRecruitInfo(string& work, int numPeople, string& deadline)
+{
     RecruitInfo* newRecruitInfo = new RecruitInfo(work, numPeople, deadline);
     curLoginCompanyMember->recruitInfos.push_back(newRecruitInfo);
 }
 
 //생성된 모든 RecruitInfo 인스턴스 리턴
-vector<RecruitInfo*> CompanyMember::getAllRecruitInfo() const {
+vector<RecruitInfo*> CompanyMember::getAllRecruitInfo() const
+{
     return this->recruitInfos;
 }
 
@@ -314,11 +348,13 @@ AddRecruitInfoUI : Boundary Class
 */
 AddRecruitInfoUI::AddRecruitInfoUI() : addRecruitInfo(nullptr) {}
 
-void AddRecruitInfoUI::setAddRecruitInfo(AddRecruitInfo& addRecruitInfo) {
+void AddRecruitInfoUI::setAddRecruitInfo(AddRecruitInfo& addRecruitInfo)
+{
     this->addRecruitInfo = &addRecruitInfo;
 }
 
-void AddRecruitInfoUI::startInterface() {
+void AddRecruitInfoUI::startInterface()
+{
     string input;
 
     getline(inputFile, input);
@@ -333,7 +369,8 @@ void AddRecruitInfoUI::startInterface() {
     createNewRecruitInfo(work, numPeople, deadline);
 }
 
-void AddRecruitInfoUI::createNewRecruitInfo(string& work, int numPeople, string& deadline) {
+void AddRecruitInfoUI::createNewRecruitInfo(string& work, int numPeople, string& deadline)
+{
     addRecruitInfo->addNewRecruitInfo(work, numPeople, deadline);
 }
 
@@ -344,11 +381,13 @@ AddRecruitInfo : Control Class
 */
 AddRecruitInfo::AddRecruitInfo(AddRecruitInfoUI& ui, CompanyMember* comp) : ui(ui), companyMember() {}
 
-void AddRecruitInfo::startInterface() {
+void AddRecruitInfo::startInterface()
+{
     ui.startInterface();
 }
 
-void AddRecruitInfo::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
+void AddRecruitInfo::addNewRecruitInfo(string& work, int numPeople, string& deadline)
+{
     curLoginCompanyMember->addNewRecruitInfo(work, numPeople, deadline);
 }
 
@@ -359,18 +398,22 @@ CheckRecruitInfoUI : Boundary Class
 */
 CheckRecruitInfoUI::CheckRecruitInfoUI() : checkRecruitInfo(nullptr) {}
 
-void CheckRecruitInfoUI::setCheckRecruitInfo(CheckRecruitInfo& checkRecruitInfo) {
+void CheckRecruitInfoUI::setCheckRecruitInfo(CheckRecruitInfo& checkRecruitInfo)
+{
     this->checkRecruitInfo = &checkRecruitInfo;
 }
 
-void CheckRecruitInfoUI::startInterface() {
+void CheckRecruitInfoUI::startInterface()
+{
     selectCheck();
 }
 
-void CheckRecruitInfoUI::selectCheck() const {
+void CheckRecruitInfoUI::selectCheck() const
+{
     vector<RecruitInfo*> recruitInfos = checkRecruitInfo->showRecruitInfo();
 
-    for (const auto& recruitInfo : recruitInfos) {
+    for (const auto& recruitInfo : recruitInfos)
+    {
         outputFile << "> " << recruitInfo->getWork() << " " << recruitInfo->getNumPeople() << " " << recruitInfo->getDeadline() << endl;
     }
 }
@@ -382,11 +425,13 @@ CheckRecruitInfo : Control Class
 */
 CheckRecruitInfo::CheckRecruitInfo(CheckRecruitInfoUI& ui, CompanyMember* comp) : ui(ui), companyMember() {}
 
-void CheckRecruitInfo::startInterface() {
+void CheckRecruitInfo::startInterface()
+{
     ui.startInterface();
 }
 
-vector<RecruitInfo*> CheckRecruitInfo::showRecruitInfo() const {
+vector<RecruitInfo*> CheckRecruitInfo::showRecruitInfo() const
+{
     return curLoginCompanyMember->getAllRecruitInfo();
 }
 
@@ -397,15 +442,18 @@ RecruitInfoStaticUI : Boundary Class
 */
 RecruitInfoStatisticUI::RecruitInfoStatisticUI() : recruitInfoStatistic(nullptr) {}
 
-void RecruitInfoStatisticUI::setRecruitInfoStatistic(RecruitInfoStatistic recruitInfoStatistic) {
+void RecruitInfoStatisticUI::setRecruitInfoStatistic(RecruitInfoStatistic recruitInfoStatistic)
+{
     this->recruitInfoStatistic = &recruitInfoStatistic;
 }
 
-void RecruitInfoStatisticUI::startInterface() {
+void RecruitInfoStatisticUI::startInterface()
+{
     selectStatistic();
 }
 
-void RecruitInfoStatisticUI::selectStatistic() const {
+void RecruitInfoStatisticUI::selectStatistic() const
+{
     unordered_map<string, int> statistics = recruitInfoStatistic->showStatistic();
 
     for (const auto& pair : statistics) {
@@ -422,11 +470,13 @@ RecruitInfoStatic : Control Class
 */
 RecruitInfoStatistic::RecruitInfoStatistic(RecruitInfoStatisticUI& ui, CompanyMember* comp) : ui(ui), companyMember() {}
 
-void RecruitInfoStatistic::startInterface() {
+void RecruitInfoStatistic::startInterface()
+{
     ui.startInterface();
 }
 
-unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
+unordered_map<string, int> RecruitInfoStatistic::showStatistic() const
+{
     unordered_map<string, int> statistics;
 
     vector<RecruitInfo*> recruitInfos = curLoginCompanyMember->getAllRecruitInfo();
@@ -441,7 +491,6 @@ unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
 
 
 
-
 /*
  SearchRecruitInfoUI : Boundary Class
  사용되는 곳: 채용 정보 검색
@@ -449,26 +498,28 @@ unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
  */
 SearchRecruitInfoUI::SearchRecruitInfoUI() : searchRecruitInfo(nullptr) {}
 
-void SearchRecruitInfoUI::setSearchRecruitInfo(SearchRecruitInfo& searchRecruitInfo) {
+void SearchRecruitInfoUI::setSearchRecruitInfo(SearchRecruitInfo& searchRecruitInfo)
+{
     this->searchRecruitInfo = &searchRecruitInfo;
 }
 
-void SearchRecruitInfoUI::startInterface() {
-
+void SearchRecruitInfoUI::startInterface()
+{
     string companyName;
     inputFile >> companyName;
 
     selectSearch(companyName);
 }
 
-void SearchRecruitInfoUI::selectSearch(string companyName) const {
+void SearchRecruitInfoUI::selectSearch(string companyName) const
+{
     vector<RecruitInfo*> recruitInfos = searchRecruitInfo->searchRecruitInfo(companyName);
 
-    for (const auto& recruitInfo : recruitInfos) {
+    for (const auto& recruitInfo : recruitInfos)
+    {
         outputFile << "> " << recruitInfo->getCompanyName() << " " << recruitInfo->getEntrepreneurNumber() << " " << recruitInfo->getWork() << " " << recruitInfo->getNumPeople() << " " << recruitInfo->getDeadline() << endl;
     }
 }
-
 
 /*
  SearchRecruitInfo : Control Class
@@ -477,116 +528,43 @@ void SearchRecruitInfoUI::selectSearch(string companyName) const {
  */
 SearchRecruitInfo::SearchRecruitInfo(SearchRecruitInfoUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
 
-void SearchRecruitInfo::startInterface() {
+void SearchRecruitInfo::startInterface()
+{
     ui.startInterface();
 }
 
-vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) const {
+vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) const
+{
     vector<RecruitInfo*> searchedRecruitInfos;
 
     vector<RecruitInfo*> allRecruitInfos = curLoginCompanyMember->getAllRecruitInfo();
 
     //companyName과 일치하는 recruitInfos 찾기
-    for (RecruitInfo* recruitInfo : allRecruitInfos) {
-        if (recruitInfo->getCompanyName() == companyName) {
+    for (RecruitInfo* recruitInfo : allRecruitInfos)
+    {
+        if (recruitInfo->getCompanyName() == companyName)
+        {
             searchedRecruitInfos.push_back(recruitInfo);
         }
     }
     return searchedRecruitInfos;
 }
 
-/*
- Apply::showapplyrecruit()
- 사용되는 곳: 채용지원
- 작성자: 임준혁
- */
-
 
 /*
- RecruitInfo::getRecruitInfo()
- 사용되는 곳: 채용 정보 검색, 채용 지원
- 작성자: 임준혁
+ 채용지원코드 작성예정 by 김상혁
  */
 
 
 
-/*
- RecruitInfo::getCompanyName()
- 사용되는 곳: 채용 정보 검색, 채용 지원
- 작성자: 임준혁
- */
 
-
-/*
- RecruitInfo::getWork()
- 사용되는 곳: 채용 정보 검색, 채용 지원
- 작성자: 임준혁
- */
-
-
-
-/*
- RecruitInfo::getNumPeople()
- 사용되는 곳: 채용 정보 검색, 채용 지원
- 작성자: 임준혁
- */
-
-
-
-/*
- RecruitInfo::getDeadline()
- 사용되는 곳: 채용 지원 검색, 채용 지원
- 작성자: 임준혁
- */
-
-
-
-/*
- RecruitInfo::getEntrepreneurNumber()
- 사용되는 곳: 채용 정보 검색, 채용 지원
- 작성자: 임준혁
- */
-
-
-
-/*
-doTask() 실행함수 구현
-작성자 : 김상혁
-*/
-void checkApplyInfo()
-{
-    CheckApplyInfo* checkApplyInfo = new CheckApplyInfo;
-}
-
-void cancelApply()
-{
-    CancelApply* cancelApply = new CancelApply;
-}
-
-void applyInfoStatistic()
-{
-    ApplyInfoStatistic* applyInfoStatistic = new ApplyInfoStatistic;
-}
-
-
-// curLoginNormalMember 전역변수
-NormalMember* curLoginNormalMember = new NormalMember;
-
-
-/*
- NormalMember::getApplyInfoList()
- 사용되는 곳: 지원정보조회, 지원삭제, 지원정보통계
- 작성자: 김상혁
- */
-vector <ApplyInfo*> NormalMember::getApplyInfoList()
-{
-    return this->applyInfoList;
-}
+Member curLoginMember;
+Member* ptrCurLoginMember = &curLoginMember;
+NormalMember* curLoginNormalMember = (NormalMember*)ptrCurLoginMember;
 
 
 /*
  NormalMember::getApplyInfo()
- 사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
 void NormalMember::getApplyInfo()
