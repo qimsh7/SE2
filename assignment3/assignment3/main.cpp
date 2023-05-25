@@ -3,10 +3,11 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <algorithm>
+#include <tuple>
+#include <sstream>
 
 #define MAX_STRING 32
-#define INPUT_FILE_NAME "input.txt"
-#define OUTPUT_FILE_NAME "output.txt"
 
 using namespace std;
 
@@ -15,10 +16,7 @@ using namespace std;
 void doTask()
 {
     vector<Member> members;
-	Member curLoginMember;
-    
-    Member* ptrCurLoginMember = &curLoginMember;
-    NormalMember* curLoginNormalMember = (NormalMember*)ptrCurLoginMember;
+    Member curLoginMember;
     
     if (inputFile.is_open())  //파일이 열려있는지 확인
     {
@@ -35,19 +33,35 @@ void doTask()
 
                 if (menu1 == 1 && menu2 == 1)
                 {
-                   join(members);
+                    outputFile << "1.1. 회원가입" << endl;
+                    
+                    join(members);
+                    
+                    outputFile << endl;
                 }
                 else if (menu1 == 1 && menu2 == 2)
                 {
-                   withdrawal(members, curLoginMember);
+                    outputFile << "1.2. 회원탈퇴" << endl;
+
+                    withdrawal(members, curLoginMember);
+                    
+                    outputFile << endl;
                 }
                 else if (menu1 == 2 && menu2 == 1)
                 {
+                    outputFile << "2.1. 로그인" << endl;
+                    
                     login(members, curLoginMember);
+                    
+                    outputFile << endl;
                 }
                 else if (menu1 == 2 && menu2 == 2)
                 {
+                    outputFile << "2.2. 로그아웃" << endl;
+                    
                     logout(members, curLoginMember);
+                    
+                    outputFile << endl;
                 }
                 else if (menu1 == 3 && menu2 == 1)
                 {
@@ -77,7 +91,7 @@ void doTask()
                 {
                     outputFile << "4.2. 채용 지원" << endl;
 
-                    // ** 필요함수 호출**
+                    // 작성 예정 by 김상혁
 
                     outputFile << endl;
                 }
@@ -106,8 +120,8 @@ void doTask()
                      */
                     // 회사회원인 경우
                     recruitInfoStatistic();
-//                    // 일반회원인 경우
-//                    applyInfoStatistic();
+//                  // 일반회원인 경우
+//                  applyInfoStatistic();
 
                     outputFile << endl;
                 }
@@ -124,6 +138,7 @@ void doTask()
         }  // while문 종료
     }  // if문 종료
 }  // doTask() 종료
+
 
 // main 함수
 int main()

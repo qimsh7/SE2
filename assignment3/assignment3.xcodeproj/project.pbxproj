@@ -28,6 +28,8 @@
 		2363AF572A1DB744004C7E6B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2363AF5E2A1DB7DB004C7E6B /* RecruitInfoSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RecruitInfoSystem.cpp; sourceTree = "<group>"; };
 		2363AF602A1DB828004C7E6B /* RecruitInfoSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecruitInfoSystem.h; sourceTree = "<group>"; };
+		23A4649B2A1FE3BF00ADFF03 /* input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
+		23A4649C2A1FE3C300ADFF03 /* output.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,8 @@
 				2363AF572A1DB744004C7E6B /* main.cpp */,
 				2363AF5E2A1DB7DB004C7E6B /* RecruitInfoSystem.cpp */,
 				2363AF602A1DB828004C7E6B /* RecruitInfoSystem.h */,
+				23A4649B2A1FE3BF00ADFF03 /* input.txt */,
+				23A4649C2A1FE3C300ADFF03 /* output.txt */,
 			);
 			path = assignment3;
 			sourceTree = "<group>";

@@ -12,6 +12,10 @@
 using namespace std;
 
 
+CompanyMember* curLoginCompanyMember = new CompanyMember;
+NormalMember* curLoginNormalMember = new NormalMember;
+
+
 /*
 doTask() 실행함수 구현
 작성자 : 최은서, 남석현, 임준혁, 김상혁
@@ -43,8 +47,6 @@ void logout(vector<Member>& members, Member& curLoginMember)
 }
 
 // 작성자: 남석현
-CompanyMember* curLoginCompanyMember = new CompanyMember;
-
 void addRecruitInfo()
 {
     AddRecruitInfoUI addRecruitInfoui;
@@ -73,18 +75,19 @@ void recruitInfoStatistic()
 
 }
 
-void searchRecruitInfo()
+// 작성자: 임준혁
+void searchRecruitInfo()  // 오류나서 주석처리했습니다 by 김상혁
 {
-    SearchRecruitInfoUI searchRecruitInfoui;
-    SearchRecruitInfo searchRecruitInfo(searchRecruitInfoui, curLoginCompanyMember);
-    searchRecruitInfoui.setSearchRecruitInfo(searchRecruitInfo);
-    searchRecruitInfo.startInterface();
+//    SearchRecruitInfoUI searchRecruitInfoui;
+//    SearchRecruitInfo searchRecruitInfo(searchRecruitInfoui, curLoginCompanyMember);
+//    searchRecruitInfoui.setSearchRecruitInfo(searchRecruitInfo);
+//    searchRecruitInfo.startInterface();
 }
 
-// 작성자: 임준혁
-/*
- 작성예정 by 남석현, 김상혁
- */
+void doApply()
+{
+    DoApply* doApply = new DoApply;
+}
 
 // 작성자: 김상혁
 void checkApplyInfo()
@@ -106,7 +109,7 @@ void applyInfoStatistic()
 
 
 /*
-회원가입 
+회원가입
 작성자 : 최은서
 */
 
@@ -124,8 +127,6 @@ void AddMember::createNewMember(vector<Member>& members)
 
 void Member::addNewMember(vector<Member>& members)
 {
-	outputFile << "1.1. 회원가입" << endl;
-
 	string name, number, ID, PW;
 
 	int memberCategory = 0;				//일반회원인지 회사회원인지 구분
@@ -184,8 +185,6 @@ void Withdrawal::withdrawal(vector<Member>& members, Member& curLoginMember)
 
 void Member::deleteMember(vector<Member>& members, Member& curLoginMember)
 {
-	outputFile << "1.2. 회원탈퇴" << endl;
-
 	for (auto it = members.begin(); it != members.end(); ++it)
 	{
 		if (it->getID() == curLoginMember.getID())
@@ -201,7 +200,7 @@ void Member::deleteMember(vector<Member>& members, Member& curLoginMember)
 
 
 /*
-로그인 
+로그인
 작성자 : 최은서
 */
 void LoginUI::login(vector<Member>& members, Member& curLoginMember)
@@ -218,16 +217,14 @@ void Login::getLoginInformation(vector<Member>& members, Member& curLoginMember)
 
 void Member::checkMember(vector<Member>& members, Member& curLoginMember)
 {
-	outputFile << "2.1. 로그인" << endl;
-
 	string targetID;
 	string targetPW;
 
 	inputFile >> targetID >> targetPW;
 
-	for (Member& member : members) 
+	for (Member& member : members)
 	{
-		if (member.getID() == targetID && member.getPW() == targetPW) 
+		if (member.getID() == targetID && member.getPW() == targetPW)
 		{
 			curLoginMember = member;  // 현재 로그인 중인 멤버 업데이트
 			outputFile << "> " << targetID << " " << targetPW << endl;
@@ -250,11 +247,9 @@ void LogoutUI::requestLogout(vector<Member>& members, Member& curLoginMember)
 
 void Logout::logout(vector<Member>& members, Member& curLoginMember)
 {
-	outputFile << "2.2. 로그아웃" << endl;
-
-	for (Member& member : members) 
+	for (Member& member : members)
 	{
-		if (member.getID() == curLoginMember.getID()) 
+		if (member.getID() == curLoginMember.getID())
 		{
 			outputFile << "> " << member.getID() << endl;
 			curLoginMember = Member();  // 현재 로그인 중인 멤버를 기본생성자로 초기화
@@ -552,15 +547,40 @@ vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) co
 
 
 /*
- 채용지원코드 작성예정 by 김상혁
+ DoApplyUI::inputDoApplyData(CancelApply* cancelApply)
+ 작성자: 임준혁
  */
+void DoApplyUI::inputDoApplyData(DoApply* doApply)
+{
+    string entrepreneurNumber;  // 사업자 번호
+    // 입력 받음
+    inputFile >> entrepreneurNumber;
+
+    doApply->sendDoApplyData(entrepreneurNumber);
+}
 
 
+/*
+ DoApply::DoApply()  // 생성자
+ 작성자: 임준혁
+ */
+DoApply::DoApply()
+{
+    DoApplyUI* doApplyUI = new DoApplyUI;
+    doApplyUI->inputDoApplyData(this);
+}
 
 
-Member curLoginMember;
-Member* ptrCurLoginMember = &curLoginMember;
-NormalMember* curLoginNormalMember = (NormalMember*)ptrCurLoginMember;
+/*
+ DoApply::sendDoApplyData(string entrepreneurNumber)
+ 작성자: 임준혁
+ */
+void DoApply::sendDoApplyData(string entrepreneurNumber)
+{
+    // 작성 예정 by 김상혁
+}
+
+
 
 
 /*
@@ -570,48 +590,38 @@ NormalMember* curLoginNormalMember = (NormalMember*)ptrCurLoginMember;
 void NormalMember::getApplyInfo()
 {
     // 현재 로그인한 NormalMember의 지원목록리스트
-    vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
-    
+    vector <RecruitInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
+
     // 출력을 위한 vector v
     vector <tuple<string, string, string, int, string>> v;
-    
+
     // loop 돌면서 applyInfo마다 세부정보 불러오기
     for (int i = 0 ; i < applyInfoList.size() ; i++)
         v.push_back(applyInfoList[i]->getApplyInfoDetail());
-    
+
     // v 오름차순 정렬
     sort(v.begin(), v.end());
 
-    
-    // 출력 양식
-    outputFile << "4.3. 지원 정보 조회" << endl;
-    cout << "4.3. 지원 정보 조회" << endl;
-    
     // loop 돌면서 지원정보 출력
     for (int i = 0 ; i < v.size() ; i++)
     {
         // 출력 양식
         outputFile << "> " << get<0>(v[i]) << ' ' << get<1>(v[i]) << ' ' << get<2>(v[i]) << ' ' << get<3>(v[i]) << ' ' << get<4>(v[i]) << endl;
-        cout << "> " << get<0>(v[i]) << ' ' << get<1>(v[i]) << ' ' << get<2>(v[i]) << ' ' << get<3>(v[i]) << ' ' << get<4>(v[i]) << endl;
     }
-    
-    outputFile << endl;
-    cout << endl;
 }
 
 
 /*
  NormalMember::deleteApplyInfo(string entrepreneurNumber)
- 사용되는 곳: 지원삭제
  작성자: 김상혁
  */
 void NormalMember::deleteApplyInfo(string entrepreneurNumber)
 {
     // 현재 로그인한 NormalMember의 지원목록리스트
-    vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
+    vector <RecruitInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
     int j = -1;
-    
-    // loop 돌면서 (사업자 번호 == entreprenerNumber)인 applyInfo 발견, 인덱스 저장 및 break
+
+    // loop 돌면서 (사업자 번호 == entreprenerNumber)인 RecruitInfo 발견, 인덱스 저장 및 break
     for (int i = 0 ; i < applyInfoList.size(); i++)
     {
         if (applyInfoList[i]->getEntrepreneurNumber() == entrepreneurNumber)
@@ -620,32 +630,27 @@ void NormalMember::deleteApplyInfo(string entrepreneurNumber)
             break;
         }
     }
-    
+
     // 출력 양식
     outputFile << "4.4. 지원 취소" << endl;
     outputFile  << "> "<< applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
-    cout << "4.4. 지원 취소" << endl;
-    cout  << "> "<< applyInfoList[j]->getCompanyName() << ' ' << applyInfoList[j]->getEntrepreneurNumber() << ' ' << applyInfoList[j]->getWork() << endl;
-    
-    // 해당 applyInfo 삭제
+
+    // 해당 RecruitInfo 삭제
     if (j != -1){
         applyInfoList.erase(applyInfoList.begin() + j);
         this->setApplyInfoList(applyInfoList);
     }
-    outputFile << endl;
-    cout << endl;
 }
 
 
 /*
  NormalMember::getApplyNumsPerWork()
- 사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
 void NormalMember::getApplyNumsPerWork()
 {
     // 현재 로그인한 NormalMember의 지원목록리스트
-    vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
+    vector <RecruitInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
 
     // 업무들을 모아놓은 리스트
     vector <string> workList;
@@ -667,7 +672,6 @@ void NormalMember::getApplyNumsPerWork()
 
     // 출력 양식
     outputFile << "5.1. 지원 정보 통계" << endl;
-    cout << "5.1. 지원 정보 통계" << endl;
 
     // loop 돌면서 업무와 지원횟수 출력
     for (int i = 0 ; i < workListUnique.size() ; i++)
@@ -677,21 +681,15 @@ void NormalMember::getApplyNumsPerWork()
 
         // 출력 양식
         outputFile << "> " << targetWork << ' ' << cnt << endl;
-        cout << "> " << targetWork << ' ' << cnt << endl;
     }
-    
-    // 출력 양식
-    outputFile << endl;
-    cout << endl;
 }
 
 
 /*
- ApplyInfo::getApplyInfoDetail()
- 사용되는 곳: 지원정보조회
+ RecruitInfo::getApplyInfoDetail()
  작성자: 김상혁
  */
-tuple<string, string,string, int, string> ApplyInfo::getApplyInfoDetail()
+tuple<string, string,string, int, string> RecruitInfo::getApplyInfoDetail()
 {
     return make_tuple(this->getCompanyName(), this->getEntrepreneurNumber(), this->getWork(), this->getNumPeople(), this->getDeadline());
 }
@@ -699,7 +697,6 @@ tuple<string, string,string, int, string> ApplyInfo::getApplyInfoDetail()
 
 /*
  CheckApplyInfoUI::checkApplyInfoButton(CheckApplyInfo* checkApplyInfo)
- 사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
 void CheckApplyInfoUI::checkApplyInfoButton(CheckApplyInfo* checkApplyInfo)
@@ -710,7 +707,6 @@ void CheckApplyInfoUI::checkApplyInfoButton(CheckApplyInfo* checkApplyInfo)
 
 /*
  CheckApplyInfo::CheckApplyInfo()  // 생성자
- 사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
 CheckApplyInfo::CheckApplyInfo()
@@ -722,7 +718,6 @@ CheckApplyInfo::CheckApplyInfo()
 
 /*
  CheckApplyInfo::showApplyInfo()
- 사용되는 곳: 지원정보조회
  작성자: 김상혁
  */
 void CheckApplyInfo::showApplyInfo()
@@ -734,7 +729,6 @@ void CheckApplyInfo::showApplyInfo()
 
 /*
  CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
- 사용되는 곳: 지원삭제
  작성자: 김상혁
  */
 void CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
@@ -743,14 +737,13 @@ void CancelApplyUI::inputCancelApplyData(CancelApply* cancelApply)
     // 입력 받음
     inputFile >> entrepreneurNumber;
     cin >> entrepreneurNumber;
-    
+
     cancelApply->sendCancelApplyData(entrepreneurNumber);
 }
 
 
 /*
  CancelApply::CancelApply()  // 생성자
- 사용되는 곳: 지원삭제
  작성자: 김상혁
  */
 CancelApply::CancelApply()
@@ -762,7 +755,6 @@ CancelApply::CancelApply()
 
 /*
  CancelApply::sendCancelApplyData(string entrepreneurNumber)
- 사용되는 곳: 지원삭제
  작성자: 김상혁
  */
 void CancelApply::sendCancelApplyData(string entrepreneurNumber)
@@ -773,7 +765,6 @@ void CancelApply::sendCancelApplyData(string entrepreneurNumber)
 
 /*
  ApplyInfoStatisticUI::applyInfoStatisticButton(ApplyInfoStatistic *applyInfoStatistic)
- 사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
 void ApplyInfoStatisticUI::applyInfoStatisticButton(ApplyInfoStatistic *applyInfoStatistic)
@@ -784,7 +775,6 @@ void ApplyInfoStatisticUI::applyInfoStatisticButton(ApplyInfoStatistic *applyInf
 
 /*
  ApplyInfoStatistic::ApplyInfoStatistic()  // 생성자
- 사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
 ApplyInfoStatistic::ApplyInfoStatistic()
@@ -796,7 +786,6 @@ ApplyInfoStatistic::ApplyInfoStatistic()
 
 /*
  ApplyInfoStatistic::showStatistic()
- 사용되는 곳: 지원정보통계
  작성자: 김상혁
  */
 void ApplyInfoStatistic::showStatistic()

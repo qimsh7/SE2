@@ -21,7 +21,6 @@ ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 쓰기모드로 열기
 /*
  전방선언
  */
-class ApplyInfo;
 class RecruitInfo;
 class Member;
 
@@ -30,6 +29,7 @@ class Member;
 doTask() 실행함수 선언
 작성자 : 최은서, 남석현, 임준혁, 김상혁
 */
+
 // 작성자: 최은서
 void join(vector<Member>& members);
 void withdrawal(vector<Member>& members, Member& curLoginMember);
@@ -105,7 +105,7 @@ private:
     string name;  // 이름
     string residentNumber;  // 주민번호
     
-    vector <ApplyInfo*> applyInfoList;  // 지원목록
+    vector <RecruitInfo*> applyInfoList;  // 지원목록
 
 public:
     NormalMember() : Member("", ""), name(""), residentNumber("") {}
@@ -115,21 +115,21 @@ public:
     void deleteApplyInfo(string entrepreneurNumber);
     void getApplyNumsPerWork();
     
-    // applyInfoList에 push_back
-    void addApplyInfoList(ApplyInfo* ai)
+    // applyInfoList에 applyInfo추가
+    void addApplyInfoList(RecruitInfo* applyInfo)
     {
-        applyInfoList.push_back(ai);
+        applyInfoList.push_back(applyInfo);
     }
     
     // getter
-    vector <ApplyInfo*> getApplyInfoList()
+    vector <RecruitInfo*> getApplyInfoList()
     {
         return this->applyInfoList;
     }
     
     // setter
-    void setApplyInfoList(vector<ApplyInfo*> v){
-        this->applyInfoList = v;
+    void setApplyInfoList(vector<RecruitInfo*> applyInfoList){
+        this->applyInfoList = applyInfoList;
     }
 };
 
@@ -152,8 +152,14 @@ public:
     CompanyMember(string str1, string str2) : companyName(str1), entrepreneurNumber(str2) {}
     
     // Getter
-    string getCompanyName() const;
-    string getEntrepreneurNumber() const;
+    string getCompanyName() const
+    {
+        return this->companyName;
+    }
+    string getEntrepreneurNumber() const{
+        return this->entrepreneurNumber;
+    }
+    
     void addNewRecruitInfo(string& work, int numPeople, string& deadline);
     vector<RecruitInfo*> getAllRecruitInfo() const;
 };
@@ -253,7 +259,7 @@ public:
 /*
 채용정보
 RecruitInfo : Entity Class
-작성자 : 남석현
+작성자 : 남석현, 김상혁
 */
 class RecruitInfo : public CompanyMember
 {
@@ -265,6 +271,9 @@ private:
 
 public:
     RecruitInfo(string& work, int numPeople, string& deadline);
+    
+    // 채용정보의 세부사항을 리턴
+    tuple<string, string, string, int, string> getApplyInfoDetail();
 
     //Getter
     string getWork() const;
@@ -481,68 +490,6 @@ public:
 };
 
 
-/*
- ApplyInfo : Entity Class
- 작성자: 김상혁
- */
-class ApplyInfo
-{
-private:
-    string companyName;  // 회사 이름
-    string entrepreneurNumber;  // 사업자 번호
-    string work;  // 업무
-    int numPeople;  // 인원수
-    string deadline;  // 신청 마감일
-    
-public:
-    ApplyInfo(string companyName, string entrepreneurNumber, string work, int numPeople, string deadline);
-    // 지원정보의 세부사항을 리턴
-    tuple<string, string, string, int, string> getApplyInfoDetail();
-    
-    // setter 
-    void setCompanyName(string str)
-    {
-        this->companyName = str;
-    }
-    void setEntrepreneurNumber(string str)
-    {
-        this->entrepreneurNumber = str;
-    }
-    void setWork(string str)
-    {
-        this->work = str;
-    }
-    void setNumPeople(int num)
-    {
-        this->numPeople = num;
-    }
-    void setDeadline(string str)
-    {
-        this->deadline = str;
-    }
-    
-    // getter
-    string getCompanyName()
-    {
-        return this->companyName;
-    }
-    string getEntrepreneurNumber()
-    {
-        return this->entrepreneurNumber;
-    }
-    string getWork()
-    {
-        return this->work;
-    }
-    int getNumPeople()
-    {
-        return this->numPeople;
-    }
-    string getDeadline()
-    {
-        return this->deadline;
-    }
-};
 
 
 /*
