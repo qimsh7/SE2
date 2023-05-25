@@ -21,98 +21,98 @@ void doTask()
         while (!inputFile.eof())    //파일의 끝까지 읽는것을 반복
         {
             string str;
-            
+
             while (1)
             {
                 int menu1, menu2;
                 inputFile >> menu1 >> menu2;    // 파일로부터 메뉴2개 를 입력받음
-                
+
                 if (menu1 == 1 && menu2 == 1)
                 {
                     outputFile << "1.1. 회원가입" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 1 && menu2 == 2)
                 {
                     outputFile << "1.2. 회원탈퇴" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 2 && menu2 == 1)
                 {
                     outputFile << "2.1. 로그인" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 2 && menu2 == 2)
                 {
                     outputFile << "2.2. 로그아웃" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 3 && menu2 == 1)
                 {
                     outputFile << "3.1. 채용 정보 등록" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 3 && menu2 == 2)
                 {
                     outputFile << "3.2. 등록된 채용 정보 조회" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 4 && menu2 == 1)
                 {
                     outputFile << "4.1. 채용 정보 검색" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 4 && menu2 == 2)
                 {
                     outputFile << "4.2. 채용 지원" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 4 && menu2 == 3)
                 {
                     outputFile << "4.3. 지원 정보 조회" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 4 && menu2 == 4)
                 {
                     outputFile << "4.4. 지원 취소" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 5 && menu2 == 1)
                 {
                     outputFile << "5.1. 지원 정보 통계" << endl;
-                    
+
                     // ** 필요함수 호출**
-                    
+
                     outputFile << endl;
                 }
                 else if (menu1 == 6 && menu2 == 1)

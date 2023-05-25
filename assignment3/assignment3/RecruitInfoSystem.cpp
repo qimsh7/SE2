@@ -264,15 +264,17 @@ CompanyMember : Entity Class
 작성자 : 남석현
 */
 
+CompanyMember* curLoginCompanyMember;
+
 
 void CompanyMember::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
     RecruitInfo* newRecruitInfo = new RecruitInfo(work, numPeople, deadline);
-    recruitInfos.push_back(newRecruitInfo);
+    curLoginCompanyMember->recruitInfos.push_back(newRecruitInfo);
 }
 
 //생성된 모든 RecruitInfo 인스턴스 리턴
 vector<RecruitInfo*> CompanyMember::getAllRecruitInfo() const {
-    return recruitInfos;
+    return this->recruitInfos;
 }
 
 /*
@@ -324,7 +326,7 @@ void AddRecruitInfo::startInterface() {
 }
 
 void AddRecruitInfo::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
-    companyMember.addNewRecruitInfo(work, numPeople, deadline);
+    curLoginCompanyMember->addNewRecruitInfo(work, numPeople, deadline);
 }
 
 /*
@@ -362,7 +364,7 @@ void CheckRecruitInfo::startInterface() {
 }
 
 vector<RecruitInfo*> CheckRecruitInfo::showRecruitInfo() const {
-    return companyMember.getAllRecruitInfo();
+    return curLoginCompanyMember->getAllRecruitInfo();
 }
 
 /*
