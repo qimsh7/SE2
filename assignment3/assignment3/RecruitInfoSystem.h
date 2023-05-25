@@ -69,6 +69,9 @@ public:
     string getPW() {
         return PW;
     }
+    int getLoggedIn() {
+	return loggedIn;
+	}
     void setLoggedIn(int value) {
         loggedIn = value;
     }
