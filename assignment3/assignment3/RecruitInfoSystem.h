@@ -226,6 +226,8 @@ doTask() 실행함수 선언
 */
 void addRecruitInfo();
 void checkRecruitInfo();
+void recruitInfoStatistic();
+void searchRecruitInfo();
 
 /*
 채용정보

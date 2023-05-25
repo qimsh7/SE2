@@ -225,6 +225,21 @@ void checkRecruitInfo() {
     checkRecruitInfo.startInterface();
 }
 
+void recruitInfoStatistic() {
+    RecruitInfoStatisticUI recruitInfoStatisticui;
+    RecruitInfoStatistic recruitInfoStatistic(recruitInfoStatisticui, curLoginCompanyMember);
+    recruitInfoStatisticui.setRecruitInfoStatistic(recruitInfoStatistic);
+    recruitInfoStatistic.startInterface();
+
+}
+
+void searchRecruitInfo() {
+    SearchRecruitInfoUI searchRecruitInfoui;
+    SearchRecruitInfo searchRecruitInfo(searchRecruitInfoui, curLoginCompanyMember);
+    searchRecruitInfoui.setSearchRecruitInfo(searchRecruitInfo);
+    searchRecruitInfo.startInterface();
+}
+
 /*
 채용정보
 RecruitInfo : Entity Class
@@ -428,7 +443,7 @@ unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
 
 
 /*
- ResearchRecruitInfoUI : Boundary Class
+ SearchRecruitInfoUI : Boundary Class
  사용되는 곳: 채용 정보 검색
  작성자: 임준혁
  */
@@ -456,7 +471,7 @@ void SearchRecruitInfoUI::selectSearch(string companyName) const {
 
 
 /*
- ResearchRecruitInfo::ResearchRecruitInfo()  // 생성자
+ SearchRecruitInfo : Control Class
  사용되는 곳: 채용 정보 검색
  작성자: 임준혁
  */
@@ -469,7 +484,7 @@ void SearchRecruitInfo::startInterface() {
 vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) const {
     vector<RecruitInfo*> searchedRecruitInfos;
 
-    vector<RecruitInfo*> allRecruitInfos = companyMember.getAllRecruitInfo();
+    vector<RecruitInfo*> allRecruitInfos = curLoginCompanyMember->getAllRecruitInfo();
 
     //companyName과 일치하는 recruitInfos 찾기
     for (RecruitInfo* recruitInfo : allRecruitInfos) {

@@ -48,7 +48,7 @@ void doTask()
                 {
                     outputFile << "3.1. 채용 정보 등록" << endl;
 
-                    // ** 필요함수 호출**
+                    void addRecruitInfo();
 
                     outputFile << endl;
                 }
@@ -56,7 +56,7 @@ void doTask()
                 {
                     outputFile << "3.2. 등록된 채용 정보 조회" << endl;
 
-                    // ** 필요함수 호출**
+                    void checkRecruitInfo();
 
                     outputFile << endl;
                 }
@@ -64,7 +64,7 @@ void doTask()
                 {
                     outputFile << "4.1. 채용 정보 검색" << endl;
 
-                    // ** 필요함수 호출**
+                    void searchRecruitInfo();
 
                     outputFile << endl;
                 }
@@ -97,6 +97,8 @@ void doTask()
                     outputFile << "5.1. 지원 정보 통계" << endl;
 
                     // ** 필요함수 호출**
+                    //회사회원인 경우
+                    void recruitInfoStatistic();
 
                     outputFile << endl;
                 }
