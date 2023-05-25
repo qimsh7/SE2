@@ -645,13 +645,13 @@ void NormalMember::getApplyNumsPerWork()
 {
     // 현재 로그인한 NormalMember의 지원목록리스트
     vector <ApplyInfo*> applyInfoList = curLoginNormalMember->getApplyInfoList();
-    
+
     // 업무들을 모아놓은 리스트
     vector <string> workList;
-    
+
     // 업무들을 모아놓은 리스트에서 중복 제거한 리스트
     vector <string> workListUnique;
-    
+
     // loop 돌면서 업무들을 workList와 workListUnique에 push
     for (int i = 0 ; i < applyInfoList.size(); i++)
     {
@@ -659,23 +659,29 @@ void NormalMember::getApplyNumsPerWork()
         workList.push_back(work);
         workListUnique.push_back(work);
     }
-    
+
     // workListUnique에서 중복 제거
     sort(workListUnique.begin(), workListUnique.end());
-    workListUnique.erase(unique(workListUnique.begin(), workListUnique.end(), workListUnique.end()));
-    
+    workListUnique.erase(unique(workListUnique.begin(), workListUnique.end()), workListUnique.end());
+
     // 출력 양식
     outputFile << "5.1. 지원 정보 통계" << endl;
-    
+    cout << "5.1. 지원 정보 통계" << endl;
+
     // loop 돌면서 업무와 지원횟수 출력
     for (int i = 0 ; i < workListUnique.size() ; i++)
     {
         string targetWork = workListUnique[i];
         long cnt = count(workList.begin(), workList.end(), targetWork);
-        
+
         // 출력 양식
         outputFile << "> " << targetWork << ' ' << cnt << endl;
+        cout << "> " << targetWork << ' ' << cnt << endl;
     }
+    
+    // 출력 양식
+    outputFile << endl;
+    cout << endl;
 }
 
 
