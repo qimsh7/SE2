@@ -27,22 +27,6 @@ class RecruitInfo;
 class Member;
 
 
-class Client
-{
-
-};
-
-
-/*
-doTask() 실행함수 선언
-작성자 : 최은서
-*/
-void join(vector<Member>& members);
-void withdrawal(vector<Member>& members);
-void login(vector<Member>& members);
-void logout(vector<Member>& members);
-
-
 /*
 회원
 Member : Entity Class
@@ -51,33 +35,33 @@ Member : Entity Class
 class Member
 {
 private:
-    string ID;
-    string PW;
-    int loggedIn;        // 1은 로그인, 0은 로그아웃 상태
+	string ID;
+	string PW;	
+	int category; // 1이면 회사회원, 2인경우 일반회원
 
 public:
-    void addNewMember(vector<Member>& members);
-    void checkMember(vector<Member>& members);
-    void deleteMember(vector<Member>& members);
-    
-    Member() : ID(""), PW(""), loggedIn(0) {}
-    Member(string str1, string str2) : ID(str1), PW(str2) {}
+	void addNewMember(vector<Member>& members);
+	void checkMember(vector<Member>& members, Member& curLoginMember);
+	void deleteMember(vector<Member>& members, Member& curLoginMember);
 
-    string getID() {
-        return ID;
-    }
-    string getPW() {
-        return PW;
-    }
-    int getLoggedIn() {
-	return loggedIn;
+	Member() : ID(""), PW(""), category(0) {}
+	Member(string str1, string str2) : ID(str1), PW(str2), category(0) {}
+
+	string getID() {
+		return ID;
 	}
-    void setLoggedIn(int value) {
-        loggedIn = value;
-    }
+	string getPW() {
+		return PW;
+	}
 
+	// 회원 구분시 사용
+	int getCategory() {
+		return category;
+	}
+	void setCategory(int num) {
+		category = num;
+	}
 };
-
 
 /*
 일반회원
@@ -169,7 +153,7 @@ Withdrawal : Control Class
 class Withdrawal
 {
 public:
-    void withdrawal(vector<Member>& members);
+	void withdrawal(vector<Member>& members, Member& curLoginMember);
 };
 
 /*
@@ -180,7 +164,7 @@ WithdrawalUI : Boundary Class
 class WithdrawalUI
 {
 public:
-    void requestWithdrawal(vector<Member>& members);
+	void requestWithdrawal(vector<Member>& members, Member& curLoginMember);
 };
 
 /*
@@ -191,7 +175,7 @@ Login : Control Class
 class Login
 {
 public:
-    void getLoginInformation(vector<Member>& members);
+	void getLoginInformation(vector<Member>& members, Member& curLoginMember);
 };
 
 /*
@@ -202,7 +186,7 @@ LoginUI : Boundary Class
 class LoginUI
 {
 public:
-    void login(vector<Member>& members);
+	void login(vector<Member>& members, Member& curLoginMember);
 };
 
 /*
@@ -213,7 +197,7 @@ Logout : Control Class
 class Logout
 {
 public:
-    void logout(vector<Member>& members);
+	void logout(vector<Member>& members, Member& curLoginMember);
 };
 
 /*
@@ -224,8 +208,17 @@ LogoutUI : Boudary Class
 class LogoutUI
 {
 public:
-    void requestLogout(vector<Member>& members);
+	void requestLogout(vector<Member>& members, Member& curLoginMember);
 };
+
+/*
+doTask() 실행함수 선언
+작성자 : 최은서
+*/
+void join(vector<Member>& members);
+void withdrawal(vector<Member>& members, Member& curLoginMember);
+void login(vector<Member>& members, Member& curLoginMember);
+void logout(vector<Member>& members, Member& curLoginMember);
 
 /*
 doTask() 실행함수 선언
