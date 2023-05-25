@@ -197,11 +197,13 @@ void Logout::logout(vector<Member>& members)
 doTask() 실행함수 구현
 작성자 : 남석현
 */
+
+CompanyMember* curLoginCompanyMember = new CompanyMember;
+
 void addRecruitInfo() {
-    CompanyMember company;
     AddRecruitInfoUI addRecruitInfoui;
 
-    AddRecruitInfo addRecruitInfo(addRecruitInfoui, company);
+    AddRecruitInfo addRecruitInfo(addRecruitInfoui, curLoginCompanyMember);
 
     addRecruitInfoui.setAddRecruitInfo(addRecruitInfo);
 
@@ -209,9 +211,8 @@ void addRecruitInfo() {
 }
 
 void checkRecruitInfo() {
-    CompanyMember company;
     CheckRecruitInfoUI checkRecruitInfoui;
-    CheckRecruitInfo checkRecruitInfo(checkRecruitInfoui, company);
+    CheckRecruitInfo checkRecruitInfo(checkRecruitInfoui, curLoginCompanyMember);
     checkRecruitInfoui.setCheckRecruitInfo(checkRecruitInfo);
     checkRecruitInfo.startInterface();
 }
@@ -264,7 +265,6 @@ CompanyMember : Entity Class
 작성자 : 남석현
 */
 
-CompanyMember* curLoginCompanyMember;
 
 
 void CompanyMember::addNewRecruitInfo(string& work, int numPeople, string& deadline) {
@@ -319,7 +319,7 @@ void AddRecruitInfoUI::createNewRecruitInfo(string& work, int numPeople, string&
 AddRecruitInfo : Control Class
 작성자 : 남석현
 */
-AddRecruitInfo::AddRecruitInfo(AddRecruitInfoUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
+AddRecruitInfo::AddRecruitInfo(AddRecruitInfoUI& ui, CompanyMember* comp) : ui(ui), companyMember() {}
 
 void AddRecruitInfo::startInterface() {
     ui.startInterface();
@@ -357,7 +357,7 @@ void CheckRecruitInfoUI::selectCheck() const {
 CheckRecruitInfo : Control Class
 작성자 : 남석현
 */
-CheckRecruitInfo::CheckRecruitInfo(CheckRecruitInfoUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
+CheckRecruitInfo::CheckRecruitInfo(CheckRecruitInfoUI& ui, CompanyMember* comp) : ui(ui), companyMember() {}
 
 void CheckRecruitInfo::startInterface() {
     ui.startInterface();
@@ -397,7 +397,7 @@ void RecruitInfoStatisticUI::selectStatistic() const {
 RecruitInfoStatic : Control Class
 작성자 : 남석현
 */
-RecruitInfoStatistic::RecruitInfoStatistic(RecruitInfoStatisticUI& ui, CompanyMember& comp) : ui(ui), companyMember(comp) {}
+RecruitInfoStatistic::RecruitInfoStatistic(RecruitInfoStatisticUI& ui, CompanyMember* comp) : ui(ui), companyMember() {}
 
 void RecruitInfoStatistic::startInterface() {
     ui.startInterface();
@@ -406,7 +406,7 @@ void RecruitInfoStatistic::startInterface() {
 unordered_map<string, int> RecruitInfoStatistic::showStatistic() const {
     unordered_map<string, int> statistics;
 
-    vector<RecruitInfo*> recruitInfos = companyMember.getAllRecruitInfo();
+    vector<RecruitInfo*> recruitInfos = curLoginCompanyMember->getAllRecruitInfo();
     for (const auto& recruitInfo : recruitInfos) {
         const string& work = recruitInfo->getWork();
         int numAppliers = recruitInfo->getNumAppliers();

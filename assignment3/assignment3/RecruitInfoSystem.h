@@ -300,10 +300,10 @@ class AddRecruitInfo
 {
 private:
     AddRecruitInfoUI& ui;
-    CompanyMember& companyMember;
+    CompanyMember* companyMember;
 
 public:
-    AddRecruitInfo(AddRecruitInfoUI& ui, CompanyMember& comp);
+    AddRecruitInfo(AddRecruitInfoUI& ui, CompanyMember* comp);
     void startInterface();
     void addNewRecruitInfo(string& work, int numPeople, string& deadline);
 };
@@ -343,10 +343,10 @@ class CheckRecruitInfo
 {
 private:
     CheckRecruitInfoUI& ui;
-    CompanyMember& companyMember;
+    CompanyMember* companyMember;
 
 public:
-    CheckRecruitInfo(CheckRecruitInfoUI& ui, CompanyMember& comp);
+    CheckRecruitInfo(CheckRecruitInfoUI& ui, CompanyMember* comp);
     void startInterface();
     vector<RecruitInfo*> showRecruitInfo() const;
 };
@@ -384,10 +384,10 @@ class CompanyMember;
 class RecruitInfoStatistic {
 private:
     RecruitInfoStatisticUI& ui;
-    CompanyMember& companyMember;
+    CompanyMember* companyMember;
 
 public:
-    RecruitInfoStatistic(RecruitInfoStatisticUI& ui, CompanyMember& company);
+    RecruitInfoStatistic(RecruitInfoStatisticUI& ui, CompanyMember* company);
     void startInterface();
     unordered_map<string, int> showStatistic() const;
 };
