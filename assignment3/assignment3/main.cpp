@@ -616,7 +616,6 @@ void DoApply::sendDoApplyData(string entrepreneurNumber)
 
 
 
-
 /*
  NormalMember::getApplyInfo()
  작성자: 김상혁
@@ -703,9 +702,6 @@ void NormalMember::getApplyNumsPerWork()
     // workListUnique에서 중복 제거
     sort(workListUnique.begin(), workListUnique.end());
     workListUnique.erase(unique(workListUnique.begin(), workListUnique.end()), workListUnique.end());
-
-    // 출력 양식
-    outputFile << "5.1. 지원 정보 통계" << endl;
 
     // loop 돌면서 업무와 지원횟수 출력
     for (int i = 0 ; i < workListUnique.size() ; i++)
@@ -906,7 +902,7 @@ void doTask()
                 {
                     outputFile << "4.2. 채용 지원" << endl;
 
-                    // 작성 예정 by 김상혁
+                    doApply();
 
                     outputFile << endl;
                 }
