@@ -1400,7 +1400,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGHZSn2HyrZIHU="
 							},
-							"name": "즉시 지원"
+							"name": "채용 지원"
 						},
 						{
 							"_type": "UMLUseCase",
@@ -7758,7 +7758,7 @@
 													"top": 474,
 													"width": 80,
 													"height": 13,
-													"text": "즉시 지원"
+													"text": "채용 지원"
 												},
 												{
 													"_type": "LabelView",

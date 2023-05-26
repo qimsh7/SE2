@@ -324,6 +324,7 @@ void RecruitInfo::setNumAppliers(int numAppliers)
     this->numAppliers = numAppliers;
 }
 
+
 /*
 회사
 CompanyMember : Entity Class
@@ -609,7 +610,7 @@ void DoApply::sendDoApplyData(string entrepreneurNumber)
         int numPeople = recruitInfoList[j]->getNumPeople();
         string deadline = recruitInfoList[j]->getDeadline();
         
-        // 여기 담아서 보냄 curLoginNormalMember->addApplyInfoList()
+        // curLoginNormalMember->addApplyInfoList(RecruitInfo(work, numPeople, deadline));
     }
     
 }

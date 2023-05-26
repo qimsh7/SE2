@@ -18,6 +18,7 @@ ifstream inputFile(INPUT_FILE_NAME);   // input.txt 읽기모드로 열기
 ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 쓰기모드로 열기
 
 
+
 /*
  전방선언
  */
