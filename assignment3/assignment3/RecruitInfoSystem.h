@@ -453,14 +453,16 @@ class SearchRecruitInfo
 {
 private:
     SearchRecruitInfoUI& ui;
-    CompanyMember& companyMember;
+    CompanyMember* companyMember;
 
 public:
-    SearchRecruitInfo(SearchRecruitInfoUI& ui, CompanyMember& companyMember);
+    SearchRecruitInfo(SearchRecruitInfoUI& ui, CompanyMember* companyMember);
     void startInterface();
-    vector<RecruitInfo*> searchRecruitInfo(string compayName) const;
+    vector<RecruitInfo*> searchRecruitInfo(string companyName) const;
 
 };
+
+
 
 
 /*

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2363AF582A1DB744004C7E6B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2363AF572A1DB744004C7E6B /* main.cpp */; };
-		2363AF5F2A1DB7DB004C7E6B /* RecruitInfoSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2363AF5E2A1DB7DB004C7E6B /* RecruitInfoSystem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		2363AF542A1DB744004C7E6B /* assignment3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment3; sourceTree = BUILT_PRODUCTS_DIR; };
 		2363AF572A1DB744004C7E6B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		2363AF5E2A1DB7DB004C7E6B /* RecruitInfoSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RecruitInfoSystem.cpp; sourceTree = "<group>"; };
 		2363AF602A1DB828004C7E6B /* RecruitInfoSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecruitInfoSystem.h; sourceTree = "<group>"; };
 		23A4649B2A1FE3BF00ADFF03 /* input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
 		23A4649C2A1FE3C300ADFF03 /* output.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				2363AF572A1DB744004C7E6B /* main.cpp */,
-				2363AF5E2A1DB7DB004C7E6B /* RecruitInfoSystem.cpp */,
 				2363AF602A1DB828004C7E6B /* RecruitInfoSystem.h */,
 				23A4649B2A1FE3BF00ADFF03 /* input.txt */,
 				23A4649C2A1FE3C300ADFF03 /* output.txt */,
@@ -129,7 +126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2363AF582A1DB744004C7E6B /* main.cpp in Sources */,
-				2363AF5F2A1DB7DB004C7E6B /* RecruitInfoSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
