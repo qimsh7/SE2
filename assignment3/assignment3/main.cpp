@@ -11,10 +11,13 @@
 
 using namespace std;
 
+/*
+ 전역변수
+ */
 Member curLoginMember = Member();
 CompanyMember* curLoginCompanyMember = new CompanyMember;
 NormalMember* curLoginNormalMember = new NormalMember;
-
+vector <RecruitInfo*> recruitInfoList;
 
 /*
 doTask() 실행함수 구현
@@ -76,7 +79,7 @@ void recruitInfoStatistic()
 }
 
 // 작성자: 임준혁
-void searchRecruitInfo()  // 오류나서 주석처리했습니다 by 김상혁
+void searchRecruitInfo()
 {
     SearchRecruitInfoUI searchRecruitInfoui;
     SearchRecruitInfo searchRecruitInfo(searchRecruitInfoui, curLoginCompanyMember);
@@ -327,10 +330,13 @@ CompanyMember : Entity Class
 작성자 : 남석현
 */
 
+vector<RecruitInfo*> allRecruitInfos;
+
 void CompanyMember::addNewRecruitInfo(string& work, int numPeople, string& deadline)
 {
     RecruitInfo* newRecruitInfo = new RecruitInfo(work, numPeople, deadline);
     curLoginCompanyMember->recruitInfos.push_back(newRecruitInfo);
+    allRecruitInfos.push_back(newRecruitInfo);
 }
 
 //생성된 모든 RecruitInfo 인스턴스 리턴
@@ -378,6 +384,7 @@ void AddRecruitInfoUI::createNewRecruitInfo(string& work, int numPeople, string&
 {
     addRecruitInfo->addNewRecruitInfo(work, numPeople, deadline);
 }
+
 
 /*
 채용정보등록
@@ -544,8 +551,6 @@ vector<RecruitInfo*> SearchRecruitInfo::searchRecruitInfo(string companyName) co
 {
     vector<RecruitInfo*> searchedRecruitInfos;
 
-    vector<RecruitInfo*> allRecruitInfos = curLoginCompanyMember->getAllRecruitInfo();
-
     //companyName과 일치하는 recruitInfos 찾기
     for (RecruitInfo* recruitInfo : allRecruitInfos)
     {
@@ -589,7 +594,24 @@ DoApply::DoApply()
  */
 void DoApply::sendDoApplyData(string entrepreneurNumber)
 {
-    // 작성 예정 by 김상혁
+    int j = -1;
+    for (int i = 0 ; i < recruitInfoList.size() ; i++){
+        if (recruitInfoList[i]->getEntrepreneurNumber() == entrepreneurNumber)
+        {
+            j = i;
+            break;
+        }
+    }
+    if (j != -1)
+    {
+        string companyName = recruitInfoList[j]->getCompanyName();
+        string work = recruitInfoList[j]->getWork();
+        int numPeople = recruitInfoList[j]->getNumPeople();
+        string deadline = recruitInfoList[j]->getDeadline();
+        
+        // 여기 담아서 보냄 curLoginNormalMember->addApplyInfoList()
+    }
+    
 }
 
 
@@ -911,11 +933,15 @@ void doTask()
                     /*
                      두 기능 합칠 예정
                      */
-                    // 회사회원인 경우
-                    recruitInfoStatistic();
-//                  // 일반회원인 경우
-//                  applyInfoStatistic();
-
+                    if (curLoginMember.getCategory() == 1)
+                    {
+                        recruitInfoStatistic();
+                    }
+                    else
+                    {
+                        applyInfoStatistic();
+                    }
+    
                     outputFile << endl;
                 }
                 else if (menu1 == 6 && menu2 == 1)

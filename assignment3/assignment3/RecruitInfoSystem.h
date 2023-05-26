@@ -24,6 +24,7 @@ ofstream outputFile(OUTPUT_FILE_NAME); // output.txt 쓰기모드로 열기
 class RecruitInfo;
 class Member;
 
+extern vector <RecruitInfo*> allRecruitInfos;
 
 /*
 doTask() 실행함수 선언
@@ -43,7 +44,8 @@ void recruitInfoStatistic();
 void searchRecruitInfo();
 
 // 작성자: 임준혁
-// 작성 예정 by 남석현, 김상혁
+void searchRecruitInfo();
+void doApply();
 
 // 작성자: 김상혁
 void checkApplyInfo();
